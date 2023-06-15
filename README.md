@@ -9,6 +9,8 @@
 - 프로젝트 명 : TOMAHAWK 🍖
 - 주요기능 : 맛집 소개 및 후기 사이트
 - 구성원 : 강재헌, 금동준, 문승우 엄용식
+![KakaoTalk_20230615_160553083](https://github.com/dyrlqhffo/TOMAHAWK/assets/126575197/da9a727e-d510-43ef-9248-4453ef327924)
+
 
 
 ## 2️⃣ 상세내용
