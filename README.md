@@ -26,7 +26,7 @@
 ![jQuery badge](https://img.shields.io/badge/-jQuery-%23F7DF1E?style=flat-square&logo=jquery&logoColor=white&color=0769AD)
 ![AJAX badge](https://img.shields.io/badge/-AJAX-%23F7DF1E?style=flat-square&color=4e575d)<br>
 ![Servlet&Jsp badge](https://img.shields.io/badge/-Servlet%26Jsp-green)
-![oracle badge](https://img.shields.io/badge/-Oracle_19c-%23F7DF1E?style=flat-square&logo=oracle&logoColor=white&color=e62e18)
+![oracle badge](https://img.shields.io/badge/-Oracle_11c-%23F7DF1E?style=flat-square&logo=oracle&logoColor=white&color=e62e18)
 ![AWS badge](https://img.shields.io/badge/-AWS_EC2-%23F7DF1E?style=flat-square&logo=amazonaws&logoColor=white&color=232F3E)
 ![Eclipse badge](https://img.shields.io/badge/eclipse-2c2255?style=flat-square&logo=eclipse&logoColor=white)
 ![notion badge](https://img.shields.io/badge/-Notion-%23F7DF1E?style=flat-square&logo=notion&logoColor=white&color=000000)
