@@ -57,4 +57,8 @@ create table bookmark(
 	CONSTRAINT FK_MEMBER_TO_BOOKMARK FOREIGN KEY (EMAIL)REFERENCES MEMBER(EMAIL)
 )
 
-
+create sequence toma_board_seq nocache;
+create sequence toma_report_seq nocache;
+create sequence toma_shop_seq nocache;
+create sequence toma_comment_seq nocache;
+create sequence toma_bookmark_seq nocache;
