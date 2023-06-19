@@ -20,7 +20,7 @@ create table board(
 )
 
 create table report(
-	report_no number not null,
+	report_no number primary key,
 	board_no number not null,
 	email varchar2(25) not null,
 	report_type varchar2(90) not null,
