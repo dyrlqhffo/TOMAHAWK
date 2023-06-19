@@ -8,12 +8,12 @@ public class CommentVO {
 	private String commentContent;
 	private String commentDate;
 	private String commentEditDate;
-	private long score;
+	private double score;
 	public CommentVO() {
 		super();
 	}
 	public CommentVO(long commentNo, MemberVO member, BoardVO board, ShopVO shop, String commentContent,
-			String commentDate, String commentEditDate, long score) {
+			String commentDate, String commentEditDate, double score) {
 		super();
 		this.commentNo = commentNo;
 		this.member = member;
@@ -66,10 +66,10 @@ public class CommentVO {
 	public void setCommentEditDate(String commentEditDate) {
 		this.commentEditDate = commentEditDate;
 	}
-	public long getScore() {
+	public double getScore() {
 		return score;
 	}
-	public void setScore(long score) {
+	public void setScore(double score) {
 		this.score = score;
 	}
 	@Override
