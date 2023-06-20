@@ -9,9 +9,11 @@ public class CommentVO {
 	private String commentDate;
 	private String commentEditDate;
 	private double score;
+
 	public CommentVO() {
 		super();
 	}
+
 	public CommentVO(long commentNo, MemberVO member, BoardVO board, ShopVO shop, String commentContent,
 			String commentDate, String commentEditDate, double score) {
 		super();
@@ -24,54 +26,71 @@ public class CommentVO {
 		this.commentEditDate = commentEditDate;
 		this.score = score;
 	}
+
 	public long getCommentNo() {
 		return commentNo;
 	}
+
 	public void setCommentNo(long commentNo) {
 		this.commentNo = commentNo;
 	}
+
 	public MemberVO getMember() {
 		return member;
 	}
+
 	public void setMember(MemberVO member) {
 		this.member = member;
 	}
+
 	public BoardVO getBoard() {
 		return board;
 	}
+
 	public void setBoard(BoardVO board) {
 		this.board = board;
 	}
+
 	public ShopVO getShop() {
 		return shop;
 	}
+
 	public void setShop(ShopVO shop) {
 		this.shop = shop;
 	}
+
 	public String getCommentContent() {
 		return commentContent;
 	}
+
 	public void setCommentContent(String commentContent) {
 		this.commentContent = commentContent;
 	}
+
 	public String getCommentDate() {
 		return commentDate;
 	}
+
 	public void setCommentDate(String commentDate) {
 		this.commentDate = commentDate;
 	}
+
 	public String getCommentEditDate() {
 		return commentEditDate;
 	}
+
 	public void setCommentEditDate(String commentEditDate) {
 		this.commentEditDate = commentEditDate;
 	}
+
 	public double getScore() {
 		return score;
 	}
+
 	public void setScore(double score) {
 		this.score = score;
 	}
+
 	@Override
 	public String toString() {
 		return "CommentVO [commentNo=" + commentNo + ", member=" + member + ", board=" + board + ", shop=" + shop
