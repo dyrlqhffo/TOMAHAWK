@@ -1,64 +1,84 @@
-create table member(
-	email varchar2(25) primary key,
-	password varchar2(25) not null,
-	name varchar2(15) not null,
-	nick varchar2(30) not null,
-	tel char(11) not null,
-	admin number default 0
+CREATE TABLE member(
+	email VARCHAR2(25) PRIMARY KEY,
+	password VARCHAR2(25) NOT NULL,
+	name VARCHAR2(15) NOT NULL,
+	nick VARCHAR2(30) NOT NULL,
+	tel CHAR(11) NOT NULL,
+	admin NUMBER DEFAULT 0
 )
 
-create table board(
-	board_no number primary key,
-	email varchar2(25) not null,
-	title varchar2(300) not null,
-	content clob not null,
-	reg_date date not null,
-	edit_date date null,
-	hits number default 0,
-	board_like number default 0,
+CREATE TABLE board(
+	board_no NUMBER PRIMARY KEY,
+	email VARCHAR2(25) NOT NULL,
+	title VARCHAR2(300) NOT NULL,
+	content CLOB NOT NULL,
+	reg_date DATE NOT NULL,
+	edit_date DATE NULL,
+	hits number DEFAULT 0,
 	CONSTRAINT board_fk FOREIGN KEY(email) REFERENCES member(email)
 )
 
-create table report(
-	report_no number primary key,
-	board_no number not null,
-	email varchar2(25) not null,
-	report_type varchar2(90) not null,
-	CONSTRAINT FK_BOARD_TO_REPORT FOREIGN KEY (BOARD_NO) REFERENCES BOARD(BOARD_NO),
-	CONSTRAINT FK_MEMBER_TO_REPORT FOREIGN KEY(EMAIL)REFERENCES MEMBER(EMAIL)
+CREATE TABLE report(
+	report_no NUMBER PRIMARY KEY,
+	board_no NUMBER NOT NULL,
+	email VARCHAR2(25) NOT NULL,
+	report_type VARCHAR2(90) NOT NULL,
+	CONSTRAINT FK_BOARD_TO_REPORT FOREIGN KEY (board_no) REFERENCES board(board_no),
+	CONSTRAINT FK_MEMBER_TO_REPORT FOREIGN KEY(email) REFERENCES member(email)
 )
 
-create table shop(
-	shop_no number primary key,
-	shop_name varchar2(90) not null,
-	shop_type varchar2(45) not null,
-	shop_address varchar2(150) not null
+CREATE TABLE shop(
+	shop_no NUMBER PRIMARY KEY,
+	shop_name VARCHAR2(90) NOT NULL,
+	shop_type VARCHAR2(45) NOT NULL,
+	shop_address VARCHAR2(150) NOT NULL
 )
 
-create table comment_1(
-	comment_no number primary key,
-	email varchar2(25) not null,
-	board_no number not null,
-	shop_no number not null,
-	comment_content clob not null,
-	comment_date date not null,
-	comment_edit_date date not null,
-	score number null,
-	CONSTRAINT FK_MEMBER_TO_COMMENT FOREIGN KEY(email) REFERENCES MEMBER(email),
-	CONSTRAINT FK_BOARD_TO_COMMENT FOREIGN KEY(BOARD_NO) REFERENCES BOARD(BOARD_NO),
-	CONSTRAINT FK_SHOP_TO_COMMENT FOREIGN KEY (SHOP_NO) REFERENCES SHOP(SHOP_NO)
+DROP TABLE COMMENT;
+
+SELECT * FROM COMMENT
+
+CREATE TABLE comments(
+	comment_no NUMBER PRIMARY KEY,
+	email VARCHAR2(25) NOT NULL,
+	board_no NUMBER NOT NULL,
+	shop_no NUMBER NOT NULL,
+	comment_content CLOB NOT NULL,
+	comment_date DATE NOT NULL,
+	comment_edit_date DATE NOT NULL,
+	score NUMBER NULL,
+	CONSTRAINT FK_MEMBER_TO_COMMENT FOREIGN KEY(email) REFERENCES member(email),
+	CONSTRAINT FK_BOARD_TO_COMMENT FOREIGN KEY(board_no) REFERENCES board(board_no),
+	CONSTRAINT FK_SHOP_TO_COMMENT FOREIGN KEY (shop_no) REFERENCES shop(shop_no)
 )
 
-create table bookmark(
-	bookmark_no number primary key,
-	shop_no number not null,
-	email varchar2(25) not null,
-	CONSTRAINT FK_SHOP_TO_BOOKMARK FOREIGN KEY (SHOP_NO)REFERENCES SHOP(SHOP_NO),
-	CONSTRAINT FK_MEMBER_TO_BOOKMARK FOREIGN KEY (EMAIL)REFERENCES MEMBER(EMAIL)
+CREATE TABLE bookmark(
+	bookmark_no NUMBER PRIMARY KEY,
+	shop_no NUMBER NOT NULL,
+	email VARCHAR2(25) NOT NULL,
+	CONSTRAINT FK_SHOP_TO_BOOKMARK FOREIGN KEY (shop_no)REFERENCES shop(shop_no),
+	CONSTRAINT FK_MEMBER_TO_BOOKMARK FOREIGN KEY (email)REFERENCES member(email)
 )
 
-create sequence toma_board_seq nocache;
-create sequence toma_report_seq nocache;
-create sequence toma_shop_seq nocache;
-create sequence toma_comment_seq nocache;
-create sequence toma_bookmark_seq nocache;
+CREATE SEQUENCE toma_board_seq NOCACHE;
+CREATE SEQUENCE toma_report_seq NOCACHE;
+CREATE SEQUENCE toma_shop_seq NOCACHE;
+CREATE SEQUENCE toma_comment_seq NOCACHE;
+CREATE SEQUENCE toma_bookmark_seq NOCACHE;
+
+DROP SEQUENCE toma_board_seq;
+DROP SEQUENCE toma_report_seq;
+DROP SEQUENCE toma_shop_seq;
+DROP SEQUENCE toma_comment_seq;
+DROP SEQUENCE toma_bookmark_seq;
+
+SELECT * FROM board;
+SELECT * FROM member;
+SELECT * FROM report;
+SELECT * FROM comment_1;
+SELECT * FROM shop;
+SELECT * FROM bookmark;
+
+
+
+
