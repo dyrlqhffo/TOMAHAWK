@@ -139,8 +139,7 @@
 	
 	<nav class="navbar navbar-expand-lg navbar-light bg">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
-	  		<img src="${pageContext.request.contextPath }/images/logo.png">
-	  		<span class="logo-text">토마호크 커뮤니티</span>
+	  		<img src="${pageContext.request.contextPath }/images/totom.png">
 	  	</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
