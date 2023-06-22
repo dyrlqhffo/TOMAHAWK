@@ -26,10 +26,10 @@
                 <!-- 아이디 -->
                 <div>
                     <h3 class="join_title">
-                        <label for="id">이메일</label>
+                        <label for="email">이메일</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" id="id" name="email" class="int" maxlength="30" placeholder="이메일 형식의 아이디를 입력해주세요."required>
+                        <input type="text" id="email" name="email" class="int" maxlength="30" placeholder="이메일 형식의 아이디를 입력해주세요."required>
                     </span>
                     <span class="error_next_box"></span>
                 </div>

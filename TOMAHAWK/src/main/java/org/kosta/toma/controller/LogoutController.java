@@ -9,11 +9,12 @@ public class LogoutController implements Controller{
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equals("POST")==false)
-			throw new ServletException("로그아웃 서비스는 POST방식만 가능합니다");
+			throw new ServletException("POST METHOD 방식만 로그인 가능합니다");
 		HttpSession session=request.getSession(false);
-		if(session!=null)
+		if(session!=null) {
 			session.invalidate();
-		return "redirect:BoardList.do";
+		}
+		return "redirect:index.jsp";
 	}
 }
 

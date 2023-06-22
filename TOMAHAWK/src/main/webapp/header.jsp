@@ -159,12 +159,11 @@
 	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">공지사항 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<c:choose>
-	      			<c:when test="${user != null}">
+	      			<c:when test="${mvo != null}">
 						<li class="nav-item">
-			        		<button onclick="myFunction()" class="nav-link dropdown-toggle" href="#">${user.name }님 </button>
+			        		<button onclick="myFunction()" class="nav-link dropdown-toggle" href="#">${mvo.nick}님 </button>
 			        		<div id="myDropdown" class="dropdown-content">
-							    <a href="${pageContext.request.contextPath }/mypage/mypage_view.jsp">마이페이지</a>
-							    <a href="${pageContext.request.contextPath }/login/userlogout.lo">로그아웃</a>
+							    <a href="${pageContext.request.contextPath}/mypage/mypage.jsp">마이페이지</a>
 							 </div>
 			      		</li>
 			      		
@@ -199,7 +198,7 @@
 												
 												<!-- 로그인 입력 부분 -->
 												<div class="signForm_middle">
-													<form action="${pageContext.request.contextPath }/login/userloginOk.lo" method="post" id="loginForm">
+													<form action="${pageContext.request.contextPath }/Login.do" method="post" id="loginForm">
 														<p class="titleText">이메일</p>
 														<div class="inputText">
 															<input id="signForm_email" placeholder="이메일을 입력해 주세요." type="email" name="email">
@@ -308,10 +307,20 @@
                   <i class="fa fa-search" aria-hidden="true"></i>
                 </button>
                </form>
+               <c:choose>
+               <c:when test="${mvo==null}">
                 <button type="button" class="nav-link order_online" data-toggle="modal" data-target="#exampleModal">
 							  로그인 
 				</button>
-              
+				</c:when>
+				<c:otherwise>
+				<form action="Logout.do" method="post" id="logout" >
+				<button type="button" class="nav-link order_online" data-toggle="modal" data-target="#exampleModal" onclick="logout()">
+							  로그아웃 
+				</button>
+				</form>
+				</c:otherwise>
+				</c:choose>
             </div>
 	</nav>
 
@@ -374,6 +383,9 @@
 		  }
 		}
 		
+		function logout(){
+			document.getElementById('logout').submit();
+		}
 		
 	</script>
 	

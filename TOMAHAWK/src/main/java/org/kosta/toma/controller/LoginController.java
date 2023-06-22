@@ -21,7 +21,7 @@ public class LoginController implements Controller {
 		}else {
 			HttpSession session=request.getSession();
 			session.setAttribute("mvo", mvo);
-			return "redirect:BoardList.do";
+			return "redirect:index.jsp";
 		}
 	}
 
