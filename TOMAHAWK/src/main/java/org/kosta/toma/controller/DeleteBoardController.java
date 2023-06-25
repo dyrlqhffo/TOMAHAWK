@@ -11,11 +11,15 @@ public class DeleteBoardController implements Controller{
 	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
+		if (request.getMethod().equals("POST") == false) {
+			throw new ServletException("POST 방식만 서비스 됩니다.");
+		}
 		HttpSession session = request.getSession(false);
-		if(request.getMethod().equals("POST")==false) 
-			throw new ServletException("POST방식만 가능합니다");
-		if(session==null||session.getAttribute("mvo")==null)
-			return "redirect:index.jsp";
+		if (session == null || session.getAttribute("member") == null) {		
+			System.out.println("---비인증 상태이므로 서비스 제공이 불가합니다---");
+			return "redirect:FindPostList.do";
+		}
+		
 		long no=Long.parseLong(request.getParameter("no"));
 		BoardDAO.getInstance().deleteBoardByNo(no);
 		return "redirect:FindBoardList.do";

@@ -12,8 +12,12 @@ public class DeleteMemberController implements Controller {
 
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-		if(request.getMethod().equals("POST")==false)
-			throw new ServletException("POST METHOD 방식만 로그인 가능합니다");
+		HttpSession session = request.getSession(false);
+		if(session == null || session.getAttribute("member") == null) {
+			System.out.println("---[로그인 상태가 아니므로 회원 탈퇴가 불가합니다.]---");
+			return "redirect:index.jsp";		
+		}
+		
 		String email = request.getParameter("email");
 		MemberDAO.getInstance().deleteMember(email);
 		return "Logout.do";
