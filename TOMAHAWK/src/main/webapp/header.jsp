@@ -162,13 +162,14 @@
 	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendBoard()">자유 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
+
 	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendShop()">식당 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">리뷰 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="board.jsp">리뷰 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">공지사항 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="board.jsp">공지사항 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		</c:if>
 	      		<c:choose>

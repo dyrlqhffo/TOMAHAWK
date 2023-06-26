@@ -43,14 +43,49 @@
          Board
         </h2>
       </div>
+     
+<form method="post" action="${pageContext.request.contextPath}/FreeBoardList.do" id="freeBoardList">
 
-      <ul class="filters_menu">
-        <li class="active" data-filter="*">All</li>
-        <li data-filter=".free">자유게시판</li>
-        <li data-filter=".review">식당 리뷰 게시판</li>
-        <li data-filter=".pasta">식당 게시판</li>
-        <li data-filter=".notice">공지사항</li>
-      </ul>
+	      <ul class="filters_menu">
+	        <li class="active" data-filter="*">All</li>
+	        <li data-filter=".free" id="freeBoardList">자유게시판</li>
+	        <li data-filter=".review">식당 리뷰 게시판</li>
+	        <li data-filter=".pasta">식당 게시판</li>
+	        <li data-filter=".notice">공지사항</li>
+	      </ul>
+
+ <!-- 	
+	<script type="text/javascript">
+		$(document).ready(function() {
+		    $(".filters_menu li").click(function() {
+		        var filterType = $(this).attr("data-filter");
+		
+		        $.ajax({
+		            url: 'FreeBoardList.do', 
+		            type: 'GET',
+		            dataType: 'json',
+		            data: { filterType: filterType },
+		            success: function(data) {
+		                var postsTableBody = '';
+		                $.each(data, function(index, board) {
+		                    postsTableBody += '<tr>';
+		                    postsTableBody += '<td>' + board.boardNo + '</td>';
+		                    postsTableBody += '<td><a href="ReadBoard.do?no=' + board.boardNo + '">' + board.title + '</a></td>';
+		                    postsTableBody += '<td>' + board.member.nick + '</td>';
+		                    postsTableBody += '<td>' + board.registerDate + '</td>';
+		                    postsTableBody += '<td>' + board.hits + '</td>';
+		                    postsTableBody += '</tr>';
+		                });
+		                $(".boardlist tbody").html(postsTableBody);
+		            },
+		            error: function(jqXHR, textStatus, errorThrown) {
+		                console.log(textStatus, errorThrown);
+		            }
+		        });
+		    });
+		});
+		</script>
+-->			
 	
       <div class="filters-content">
         <div class="row grid">
@@ -74,7 +109,7 @@
 	                  </c:otherwise>
 	              </c:choose>
                    <pre style="color : white;">${board.member.nick}${board.registerDate}</pre>
-                  <pre style="color : white;">${board.hits}</pre>
+                   <pre style="color : white;">${board.hits}</pre>
                 </div>
               </div>
             </div>
@@ -82,24 +117,33 @@
           </c:forEach>
         </div>
      </div>
+     </form>
      <br>
-     <button class="btn btn-success" type="button" onclick="location.href=${pageContext.request.contextPath }/WriteBoard.do">글쓰기</button>
-  <ul class="pagination justify-content-center" style="margin:20px 0">
+     
+     <!--  <form action="WriteBoardForm.do" method="post">-->
+     <!--  <button type="button" onclick="location.href=WriteBoardForm.do" class="btn btn-primary" >글쓰기</button> -->
+     <!-- <button class="btn btn-primary" type="button" onclick="location.href=WriteBoardForm.do">글쓰기</button> </form> -->
+    
+     <form action="WriteBoardForm.do" method="post">
+     <button type="button" class="btn btn-primary">글쓰기</button> 
+     </form>
+    
+    <ul class="pagination justify-content-center" style="margin:20px 0">
 	<c:if test="${pagination.previousPageGroup}">
-	<li class="page-item"><a class="page-link" href="FindBoardList.do?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
+	<li class="page-item"><a class="page-link" href="BoardList.do?pageNo=${pagination.startPageOfPageGroup-1}">이전</a></li>
 	</c:if>
 	<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
 		<c:choose>
 			<c:when test="${page==pagination.nowPage}">
-				<li class="page-item active"><a class="page-link" href="FindBoardList.do?pageNo=${page}">${page}</a></li>
+				<li class="page-item active"><a class="page-link" href="BoardList.do?pageNo=${page}">${page}</a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="page-item"><a class="page-link" href="FindBoardList.do?pageNo=${page}">${page}</a></li>
+				<li class="page-item"><a class="page-link" href="BoardList.do?pageNo=${page}">${page}</a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:if test="${pagination.nextPageGroup}">
-  	<li class="page-item"><a class="page-link" href="FindBoardList.do?pageNo=${pagination.endPageOfPageGroup+1}">Next</a></li>
+  	<li class="page-item"><a class="page-link" href="BoardList.do?pageNo=${pagination.endPageOfPageGroup+1}">다음</a></li>
   	</c:if>
 </ul>
 </div>
