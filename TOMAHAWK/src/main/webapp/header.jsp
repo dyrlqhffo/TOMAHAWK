@@ -26,11 +26,7 @@
     font-weight: normal;
     font-style: normal;
 	}  
-	
-	.navbar{
-		padding: 0.5rem 1rem 5rem;
-	}
-	
+
 	.navbar-brand{
 		margin-left: 4%;
 	}
@@ -55,15 +51,21 @@
     	background-color: transparent;
 	}
 	
-	.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-lin{
+	.navbar-light .navbar-nav .active>.nav-link, .navbar-light .navbar-nav .nav-link.active, .navbar-light .navbar-nav .nav-link.show, .navbar-light .navbar-nav .show>.nav-lin,navbar-collapse{
+		color: white;
+	}
+	.navbar-light .navbar-nav .active>.nav-link{
 		color: white;
 	}
 	
 	.nav-link{
 		margin-left: 15px;
 		letter-spacing: 2px;
+		color: white;
 	}
-	
+	.nav-link a{
+		color: white;
+	}
 	.logo-text{
 		font-size: 1.05rem;
 		color: #545454;
@@ -89,11 +91,13 @@
 	
 	/* dropdown */
 	.dropdown-content{
+		z-index: 1;
 		display: none;
    		position: fixed;
 	}
 	
 	.dropdown-content a {
+		z-index: 1;
 	    color: #545454;
 	    padding: 12px 16px;
 	    text-decoration: none;
@@ -113,6 +117,9 @@
 	
 	.show {display:block;}
 	
+	#lnb.fixed{
+	position: fixed; left: 0; top: 0; width: 100%;
+	}
 </style>
 
 </head>
@@ -140,7 +147,7 @@
 		</script>
 	</c:if>
 	
-	<nav class="navbar navbar-expand-lg navbar-light bg">
+	<nav class="navbar navbar-expand-lg navbar-light bg" id="lnb">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
 	  		<img src="${pageContext.request.contextPath }/images/logo.png">
 	  		<span class="logo-text">토마호크 커뮤니티</span>
@@ -150,11 +157,12 @@
 	  	</button>
 	  	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 	    	<ul class="navbar-nav">
+	      		<c:if test="${sessionScope.mvo != null }">
 	      		<li class="nav-item active"> 
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/FindBoardList.do">자유 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendBoard()">자유 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">식당 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendShop()">식당 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
 	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">리뷰 게시판 <span class="sr-only">(current)</span></a>
@@ -162,6 +170,7 @@
 	      		<li class="nav-item active">
 	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">공지사항 <span class="sr-only">(current)</span></a>
 	      		</li>
+	      		</c:if>
 	      		<c:choose>
 	      			<c:when test="${sessionScope.mvo != null}">
 						<li class="nav-item">
@@ -382,8 +391,32 @@
 		    }
 		  }
 		}
-		
-		
+		function sendBoard(){
+		    let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '${pageContext.request.contextPath}/FindBoardList.do');
+		    document.body.appendChild(f);
+		    f.submit();
+		}
+		function sendShop(){
+		    let f = document.createElement('form');
+		    f.setAttribute('method', 'post');
+		    f.setAttribute('action', '${pageContext.request.contextPath}/FindShopList.shop');
+		    document.body.appendChild(f);
+		    f.submit();
+		}
+		$(function() {
+		    var lnb = $("#lnb").offset().top;
+		    $(window).scroll(function() {
+		      var window = $(this).scrollTop();
+
+		      if(lnb <= window) {
+		        $("#lnb").addClass("fixed");
+		      } else {
+		        $("#lnb").removeClass("fixed");
+		      }
+		    })
+		  });
 	</script>
 	
 	<!-- 부트스트랩 -->

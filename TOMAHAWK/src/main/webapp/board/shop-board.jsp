@@ -22,18 +22,15 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="js/custom.js"></script>
 </head>
-
 <body class="sub_page">
-
   <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
+      <!-- <img src="images/hero-bg.jpg" alt=""> -->
     </div>
     <!-- header section strats -->
     <c:import url="../header.jsp"/>
     <!-- end header section -->
   </div>
-
   <!-- food section -->
 
   <section class="food_section layout_padding">
