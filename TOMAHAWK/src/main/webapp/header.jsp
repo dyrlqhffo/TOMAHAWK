@@ -141,8 +141,8 @@
 	</c:if>
 	
 	<nav class="navbar navbar-expand-lg navbar-light bg">
-		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
-	  		<img src="${pageContext.request.contextPath }/images/logo.png">
+		<a class="navbar-brand" href="${pageContext.request.contextPath }/index.jsp">
+	  		<img src="${pageContext.request.contextPath}/images/logo.png">
 	  		<span class="logo-text">토마호크 커뮤니티</span>
 	  	</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -151,16 +151,16 @@
 	  	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 	    	<ul class="navbar-nav">
 	      		<li class="nav-item active"> 
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/FindBoardList.do">자유 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="${pageContext.request.contextPath }/FreeBoardList.do">자유 게시판<span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">식당 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="board.jsp">식당 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">리뷰 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="board.jsp">리뷰 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="${pageContext.request.contextPath }/board/board.jsp">공지사항 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="board.jsp">공지사항 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<c:choose>
 	      			<c:when test="${sessionScope.mvo != null}">

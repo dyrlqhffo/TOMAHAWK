@@ -3,8 +3,8 @@ package org.kosta.toma.model;
 public class Pagination {
 	
 	private long nowPage=1;
-	private long postCountPerPage=6;
-	private long pageCountPerPageGroup=4;
+	private long postCountPerPage=10;
+	private long pageCountPerPageGroup=5;
 	private long totalPostCount;
 	
 	public Pagination(long totalPostCount) {

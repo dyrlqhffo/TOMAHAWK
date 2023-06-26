@@ -14,14 +14,14 @@ public class DeleteBoardController implements Controller{
 		if (request.getMethod().equals("POST") == false) {
 			throw new ServletException("POST 방식만 서비스 됩니다.");
 		}
-		HttpSession session = request.getSession(false);
-		if (session == null || session.getAttribute("member") == null) {		
+		HttpSession session = request.getSession();
+		if (session == null || session.getAttribute("mvo") == null) {		
 			System.out.println("---비인증 상태이므로 서비스 제공이 불가합니다---");
-			return "redirect:FindPostList.do";
+			return "redirect:index.jsp";
 		}
 		
-		long no=Long.parseLong(request.getParameter("no"));
-		BoardDAO.getInstance().deleteBoardByNo(no);
-		return "redirect:FindBoardList.do";
+        long boardNo = Long.parseLong(request.getParameter("boardNo"));
+        BoardDAO.getInstance().deleteBoardByNo(boardNo);
+        return "redirect:FreeBoardList.do";
 	}
 }
