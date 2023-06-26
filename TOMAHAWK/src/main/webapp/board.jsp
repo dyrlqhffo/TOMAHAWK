@@ -54,39 +54,6 @@
 	        <li data-filter=".notice">공지사항</li>
 	      </ul>
 
- <!-- 	
-	<script type="text/javascript">
-		$(document).ready(function() {
-		    $(".filters_menu li").click(function() {
-		        var filterType = $(this).attr("data-filter");
-		
-		        $.ajax({
-		            url: 'FreeBoardList.do', 
-		            type: 'GET',
-		            dataType: 'json',
-		            data: { filterType: filterType },
-		            success: function(data) {
-		                var postsTableBody = '';
-		                $.each(data, function(index, board) {
-		                    postsTableBody += '<tr>';
-		                    postsTableBody += '<td>' + board.boardNo + '</td>';
-		                    postsTableBody += '<td><a href="ReadBoard.do?no=' + board.boardNo + '">' + board.title + '</a></td>';
-		                    postsTableBody += '<td>' + board.member.nick + '</td>';
-		                    postsTableBody += '<td>' + board.registerDate + '</td>';
-		                    postsTableBody += '<td>' + board.hits + '</td>';
-		                    postsTableBody += '</tr>';
-		                });
-		                $(".boardlist tbody").html(postsTableBody);
-		            },
-		            error: function(jqXHR, textStatus, errorThrown) {
-		                console.log(textStatus, errorThrown);
-		            }
-		        });
-		    });
-		});
-		</script>
--->			
-	
       <div class="filters-content">
         <div class="row grid">
         <c:forEach items="${list}" var="board">

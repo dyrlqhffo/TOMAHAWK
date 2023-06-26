@@ -395,7 +395,7 @@
 		function sendBoard(){
 		    let f = document.createElement('form');
 		    f.setAttribute('method', 'post');
-		    f.setAttribute('action', '${pageContext.request.contextPath}/FreeFindBoardList.do');
+		    f.setAttribute('action', '${pageContext.request.contextPath}/FreeBoardList.do');
 		    document.body.appendChild(f);
 		    f.submit();
 		}
