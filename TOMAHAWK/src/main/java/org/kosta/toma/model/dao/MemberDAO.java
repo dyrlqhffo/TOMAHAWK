@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.kosta.toma.model.DataSourceManager;
@@ -146,4 +147,38 @@ public class MemberDAO {
 			closeAll(pstmt, con);
 		}
 }
+	public void updatePw(String email, String AuthenticationKey) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		try {
+			String sql = "update member set password=? where email=?";
+			con = dataSource.getConnection();
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, AuthenticationKey);
+			pstmt.setString(2, email);
+			pstmt.executeUpdate();
+		} finally {
+			closeAll(pstmt, con);
+		}
+	}
+	public int FindPwCheck(String email, String name) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			con = dataSource.getConnection();
+			String sql = "select count(*) from member where email = ? and name = ?";
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, name);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+		}finally {
+			closeAll(rs, pstmt, con);
+		}
+		return result;
+	}
 }
