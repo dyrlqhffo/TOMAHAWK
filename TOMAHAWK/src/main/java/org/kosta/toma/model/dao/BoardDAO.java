@@ -89,7 +89,6 @@ public class BoardDAO {
 			sql.append("AS rnum, b.board_no, b.title, b.reg_date, b.hits, b.email, b.content, b.board_type ");
 			sql.append("FROM board b WHERE b.board_type='free') b ");
 			sql.append("INNER JOIN member m ON b.email = m.email WHERE rnum between ? AND ?");
-			System.out.println(sql.toString());
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setLong(1, pagination.getStartRowNumber());
 			pstmt.setLong(2, pagination.getEndRowNumber());

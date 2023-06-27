@@ -1,9 +1,7 @@
 package org.kosta.toma.controller.shop;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.dao.ShopDAO;

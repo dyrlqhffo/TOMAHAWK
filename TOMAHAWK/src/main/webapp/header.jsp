@@ -179,6 +179,7 @@
 			        		<div id="myDropdown" class="dropdown-content">
 							    <a href="${pageContext.request.contextPath }/UpdateMemberForm.do">회원 수정</a>
 							    <a href="${pageContext.request.contextPath }/UpdatePasswordForm.do">비밀번호 수정</a>
+							    <a href="${pageContext.request.contextPath }/BookmarkList.book">북마크</a>
 							 </div>
 			      		</li>
 	      			</c:when>

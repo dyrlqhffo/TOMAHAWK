@@ -37,11 +37,30 @@
 		<tr>
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-success" onclick="deleteShop()">삭제</button>			
-			<button type="button" class="btn btn-success" onclick="updateShop()">수정</button>	
+			<button type="button" class="btn btn-success" onclick="updateShop()">수정</button>
+			<c:forEach items="${bookmark}" var="bookmark">
+ 			<c:choose>
+				<c:when test="${bookmark.shop.shopNo eq shop.shopNo}">
+					<button type="button" class="btn btn-success" onclick="deleteBookmark()">북마크 해제</button>
+				</c:when>
+<%-- 				<c:when test="${bookmark.shop.shopNo ne shop.shopNo}">
+					<button type="button" class="btn btn-success" onclick="setBookmark()">북마크 설정</button>
+				</c:when> --%>
+				<c:otherwise>
+					<button type="button" class="btn btn-success" onclick="setBookmark()">북마크 설정</button>
+				</c:otherwise>
+			</c:choose>
+			</c:forEach>
 			<form method="post" action="${pageContext.request.contextPath}/DeleteShop.shop" id="deleteShopForm">
 				<input type="hidden" name="shopNo" value="${shop.shopNo}">
 			</form>
 			<form method="post" action="${pageContext.request.contextPath}/updateShopForm.shop" id="updateShopForm">
+				<input type="hidden" name="shopNo" value="${shop.shopNo}">
+			</form>
+			<form method="post" action="${pageContext.request.contextPath}/SetBookmark.book" id="SetBookmarkForm">
+				<input type="hidden" name="shopNo" value="${shop.shopNo}">
+			</form>
+			<form method="post" action="${pageContext.request.contextPath}/DeleteBookmark.book" id="deleteBookmarkForm">
 				<input type="hidden" name="shopNo" value="${shop.shopNo}">
 			</form>
 			<script type="text/javascript">
@@ -53,6 +72,16 @@
 				function updateShop() {
 					if (confirm("수정 하겠습니까?")) {
 						document.getElementById("updateShopForm").submit();
+				    }
+				}
+				function setBookmark() {
+					if (confirm("북마크 설정하시겠습니까?")) {
+						document.getElementById("SetBookmarkForm").submit();
+				    }
+				}
+				function deleteBookmark() {
+					if (confirm("북마크 해제하시겠습니까?")) {
+						document.getElementById("deleteBookmarkForm").submit();
 				    }
 				}
 			</script>					
