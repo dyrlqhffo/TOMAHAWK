@@ -1,4 +1,4 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.free;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +34,7 @@ public class UpdateBoardController implements Controller {
         board.setMember(member);
         board.setBoardType(boardType);
         BoardDAO.getInstance().updateBoard(board);
-        return "redirect:FreeBoardList.do";
+        return "redirect:FreeBoardList.free";
 	}
 }
 

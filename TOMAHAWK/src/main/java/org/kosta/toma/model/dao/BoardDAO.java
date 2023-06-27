@@ -231,5 +231,4 @@ public class BoardDAO {
 			closeAll(pstmt, con);
 		}
 	}
-
 }

@@ -1,4 +1,4 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.free;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;

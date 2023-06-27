@@ -1,16 +1,11 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.free;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.kosta.toma.model.dao.BoardDAO;
-import org.kosta.toma.model.vo.BoardVO;
-import org.kosta.toma.model.vo.MemberVO;
-
 public class WriteBoardFormController implements Controller {
-
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if (request.getMethod().equals("POST") == false) {

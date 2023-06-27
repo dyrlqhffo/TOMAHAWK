@@ -32,17 +32,10 @@ values(toma_board_seq.nextval,'hellojava@naver.com','안녕4','하이',sysdate,s
 =======
 
 
-select bookmark_no from BOOKMARK where shop_no = 23 and email = 'dnflcld123@naver.com'
 
-select count(*) from BOOKMARK where shop_no = 23 and email = 'dnflcld123@naver.com'
-commit
-
-delete from BOOKMARK where shop_no =  and email=
 
 select sysdate from dual
 
-
-select * 
 
 
 >>>>>>> refs/heads/feature/main2
@@ -89,18 +82,6 @@ CREATE TABLE bookmark(
 	CONSTRAINT FK_SHOP_TO_BOOKMARK FOREIGN KEY (shop_no)REFERENCES shop(shop_no),
 	CONSTRAINT FK_MEMBER_TO_BOOKMARK FOREIGN KEY (email)REFERENCES member(email)
 )
-insert into BOOKMARK(bookmark_no,shop_no,email) values (toma_bookmark_seq.nextval,20,'dnflcld123@naver.com');
-
-
-SELECT bm.bookmark_no,s.shop_no,m.email
-FROM ()
-WHERE
-
-select bm.bookmark_no,s.shop_no,m.email,s.shop_name
-FROM (SELECT row_number() over(ORDER BY bookmark_no DESC) as rnum,bookmark_no,shop_no,email FROM bookmark) bm
-inner join shop s ON bm.shop_no=s.shop_no
-inner join member m on bm.email = m.email
-where bm.email='dnflcld123@naver.com'
 
 CREATE SEQUENCE toma_board_seq NOCACHE;
 CREATE SEQUENCE toma_report_seq NOCACHE;

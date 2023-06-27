@@ -23,8 +23,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
-  
-<title>title</title>
+<title>자유게시판 상세조회</title>
 </head>
 <body class="sub_page">
 <div class="hero_area">
@@ -33,7 +32,6 @@
     </div>
    <%@ include file ="../header.jsp"%>
 </div>
-
 <div class="container pt-3">
 <a href="${pageContext.request.contextPath}/index.jsp">HOME</a> &nbsp;&nbsp;&nbsp;
 	<c:if test="${sessionScope.mvo != null}">
@@ -52,7 +50,6 @@
 <h1>자유게시판 상세조회</h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
-
 <table class="table table-boarderd">
 		<thead class="thead-light">
 			<tr>
@@ -64,10 +61,6 @@
 		</thead>
 		<tbody>
 			<tr>
-				<%-- 
-				  pre tag : db에 저장된 글형식 그대로 표현( 줄바꿈 등이 표현됨 ) 
-					         pre tag 라인인 행변경없이 한라인으로 표현해야 함   
-				 --%>
 				<td colspan="5">
 					<pre><font size="4">${board.content}</font></pre>
 				</td>
@@ -78,15 +71,15 @@
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
-			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.do" id="deleteBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.shop" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
-			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.do" id="updateBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.shop" id="updateBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
 			<script type="text/javascript">
 				function deletePost() {
-					if (confirm("정말로 삭제 하겠습니까?")) {
+					if (confirm("정말로 삭제 하시겠습니까?")) {
 						document.getElementById("deleteBoardForm").submit();
 				    }
 				}
@@ -98,9 +91,8 @@
 			</script>					
 		</td>
 	</tr>
-	
 	</c:if>
-		</table>
+	</table>
 </div>
 </body>
 </html>
