@@ -11,49 +11,55 @@ import org.kosta.toma.model.DataSourceManager;
 import org.kosta.toma.model.vo.MemberVO;
 
 public class MemberDAO {
-	private static MemberDAO instance=new MemberDAO();
+	private static MemberDAO instance = new MemberDAO();
 	private DataSource dataSource;
+
 	private MemberDAO() {
-		this.dataSource=DataSourceManager.getInstance().getDataSource();
+		this.dataSource = DataSourceManager.getInstance().getDataSource();
 	}
-	public static MemberDAO getInstance()   {			
+
+	public static MemberDAO getInstance() {
 		return instance;
 	}
-	public void closeAll(PreparedStatement pstmt,Connection con) throws SQLException {
-		if(pstmt!=null)
+
+	public void closeAll(PreparedStatement pstmt, Connection con) throws SQLException {
+		if (pstmt != null)
 			pstmt.close();
-		if(con!=null)
+		if (con != null)
 			con.close();
 	}
-	public void closeAll(ResultSet rs,PreparedStatement pstmt,Connection con) throws SQLException {
-		if(rs!=null)
+
+	public void closeAll(ResultSet rs, PreparedStatement pstmt, Connection con) throws SQLException {
+		if (rs != null)
 			rs.close();
 		closeAll(pstmt, con);
 	}
+
 	public MemberVO login(String email, String password) throws SQLException {
-		Connection con=null;
-		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-		MemberVO mvo=null;
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		MemberVO mvo = null;
 		try {
-			con=dataSource.getConnection();
-			String sql="SELECT nick,name,tel,admin FROM member WHERE email=? AND password=?";
-			pstmt=con.prepareStatement(sql);
+			con = dataSource.getConnection();
+			String sql = "SELECT nick, name, tel, admin FROM member WHERE email = ? AND password = ?";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
 			pstmt.setString(2, password);
-			rs=pstmt.executeQuery();
-			if(rs.next())
-				mvo=new MemberVO(email, rs.getString(1),rs.getString(2),password,rs.getString(3),rs.getLong(4));
-		}finally {
+			rs = pstmt.executeQuery();
+			if (rs.next())
+				mvo = new MemberVO(email, rs.getString(1), rs.getString(2), password, rs.getString(3), rs.getLong(4));
+		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return mvo;
 	}
+
 	public void register(MemberVO vo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "insert into member(email,nick,name,password,tel,admin)values(?,?,?,?,?,0)";
+			String sql = "INSERT INTO member(email, nick, name, password, tel, admin) VALUES(?, ?, ?, ?, ?, 0)";
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, vo.getEmail());
@@ -66,6 +72,7 @@ public class MemberDAO {
 			closeAll(pstmt, con);
 		}
 	}
+
 	public int checkId(String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -73,18 +80,19 @@ public class MemberDAO {
 		int result = 0;
 		try {
 			con = dataSource.getConnection();
-			String sql = "select count(*) from member where email = ?";
-			pstmt=con.prepareStatement(sql);
+			String sql = "SELECT COUNT(*) FROM member WHERE email = ?";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result = rs.getInt(1);
 			}
-		}finally {
+		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return result;
 	}
+
 	public int checkNick(String nick) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -92,23 +100,24 @@ public class MemberDAO {
 		int result = 0;
 		try {
 			con = dataSource.getConnection();
-			String sql = "select count(*) from member where nick = ?";
-			pstmt=con.prepareStatement(sql);
+			String sql = "SELECT COUNT(*) FROM member WHERE nick = ?";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, nick);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result = rs.getInt(1);
 			}
-		}finally {
+		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return result;
 	}
+
 	public void updateMember(String email, String nick, String name, String tel) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "update member set nick = ?,name = ?,tel=? where email=?";
+			String sql = "UPDATE member SET nick = ?, name = ?, tel = ? WHERE email = ?";
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, nick);
@@ -120,11 +129,12 @@ public class MemberDAO {
 			closeAll(pstmt, con);
 		}
 	}
-	public void updatePassword(String email,String password) throws SQLException {
+
+	public void updatePassword(String email, String password) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "update member set password=? where email=?";
+			String sql = "UPDATE member SET password = ? WHERE email = ?";
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, password);
@@ -134,11 +144,12 @@ public class MemberDAO {
 			closeAll(pstmt, con);
 		}
 	}
+
 	public void deleteMember(String email) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "delete from member where email= ?";
+			String sql = "DELETE FROM member WHERE email = ?";
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
@@ -146,12 +157,13 @@ public class MemberDAO {
 		} finally {
 			closeAll(pstmt, con);
 		}
-}
+	}
+
 	public void updatePw(String email, String AuthenticationKey) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		try {
-			String sql = "update member set password=? where email=?";
+			String sql = "UPDATE member SET password = ? WHERE email = ?";
 			con = dataSource.getConnection();
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, AuthenticationKey);
@@ -161,6 +173,7 @@ public class MemberDAO {
 			closeAll(pstmt, con);
 		}
 	}
+
 	public int FindPwCheck(String email, String name) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -168,15 +181,15 @@ public class MemberDAO {
 		int result = 0;
 		try {
 			con = dataSource.getConnection();
-			String sql = "select count(*) from member where email = ? and name = ?";
-			pstmt=con.prepareStatement(sql);
+			String sql = "SELECT COUNT(*) FROM member WHERE email = ? AND name = ?";
+			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, email);
 			pstmt.setString(2, name);
 			rs = pstmt.executeQuery();
-			if(rs.next()) {
+			if (rs.next()) {
 				result = rs.getInt(1);
 			}
-		}finally {
+		} finally {
 			closeAll(rs, pstmt, con);
 		}
 		return result;

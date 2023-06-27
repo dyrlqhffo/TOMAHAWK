@@ -32,12 +32,11 @@
     </div>
    <%@ include file ="../header.jsp"%>
 </div>
-
 <div class="container pt-3">
 	<a href="${pageContext.request.contextPath}/index.jsp">HOME</a> &nbsp;&nbsp;&nbsp;
 	<c:if test="${sessionScope.mvo != null}">
 	<a id="logoutLink" href="#">로그아웃</a>
-	<form method="post" action="${pageContext.request.contextPath}/Logout.do" id="logoutForm"></form>
+	<form method="post" action="${pageContext.request.contextPath}/Logout.free" id="logoutForm"></form>
 	<script>
 		document.getElementById("logoutLink").addEventListener('click', function(event) {
 			event.preventDefault();
@@ -52,7 +51,6 @@
 <hr style="border-top: 3px solid gray"> 
 <br>
 	<table class="table table-boarderd table-hover boardlist">
-			
 				<thead class="thead-light" align="center">
 					<tr style="background-color: #ccffee;">
 						<th>글 번호</th>
@@ -62,7 +60,6 @@
 						<th>조회수</th>
 					</tr>
 				</thead>
-				
 				<tbody align="center">
 				<c:forEach items="${freeBoardList}" var="board">
 					<tr>
@@ -73,7 +70,7 @@
 								${board.title}	
 							</c:when>
 							<c:otherwise>
-								<a href="ReadBoard.do?boardNo=${board.boardNo}">${board.title}</a>
+								<a href="${pageContext.request.contextPath}/ReadBoard.free?boardNo=${board.boardNo}">${board.title}</a>
 							</c:otherwise>
 						</c:choose>
 						</td>
@@ -84,31 +81,27 @@
 				</c:forEach>
 				</tbody>
 			</table>
-
 				<c:if test="${sessionScope.mvo != null}">
-				     <form action="WriteBoardForm.do" method="post">
+				     <form action="${pageContext.request.contextPath}/WriteBoardForm.free" method="post">
 				     <button type="submit" class="btn btn-primary">글쓰기</button> 
 				     </form>
 				</c:if>
-	
 			<ul class="pagination justify-content-center" style="margin:20px 0">	
 				<c:if test="${pagination.previousPageGroup}">
-					<li class="page-item"><a class="page-link" href="FreeBoardList.do?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
 				</c:if>
-
-				<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
-					<c:choose>
-						<c:when test="${page == pagination.nowPage}"> 
-							<li class="page-item active"><a class="page-link" href="FreeBoardList.do?pageNo=${page}">${page}</a></li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item"><a class="page-link" href="FreeBoardList.do?pageNo=${page}">${page}</a></li>
-						</c:otherwise>
-					</c:choose> 
-				</c:forEach>
-				
+					<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
+						<c:choose>
+							<c:when test="${page == pagination.nowPage}"> 
+								<li class="page-item active"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${page}">${page}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${page}">${page}</a></li>
+							</c:otherwise>
+						</c:choose> 
+					</c:forEach>
 				<c:if test="${pagination.nextPageGroup}">		
-			  		<li class="page-item"><a class="page-link" href="FreeBoardList.do?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
+			  		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
 			  	</c:if>     
 			</ul>
 </div>

@@ -6,6 +6,7 @@ public class HandlerMapping {
 	public static HandlerMapping getInstance() {
 		return instance;
 	}
+	@SuppressWarnings("deprecation")
 	public Controller create(String command) throws InstantiationException, IllegalAccessException, ClassNotFoundException {
 		StringBuilder classInfo=new StringBuilder(this.getClass().getPackage().getName());
 		classInfo.append(".").append(command).append("Controller");
