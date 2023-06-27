@@ -151,7 +151,8 @@ public class ShopDAO {
 			pstmt=con.prepareStatement(sql);
 			pstmt.setString(1, svo.getShopName());
 			pstmt.setString(2, svo.getShopType());
-			pstmt.setLong(3, svo.getShopNo());
+			pstmt.setString(3, svo.getShopAddress());
+			pstmt.setLong(4, svo.getShopNo());
 			pstmt.executeUpdate();
 		}finally {
 			closeAll(pstmt, con);
