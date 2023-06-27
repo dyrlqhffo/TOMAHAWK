@@ -16,8 +16,8 @@ public class updateShopFormController implements Controller {
 			throw new ServletException("POST방식만 가능합니다");
 		if(session==null||session.getAttribute("mvo")==null)
 			return "redirect:index.jsp";
-		long no=Long.parseLong(request.getParameter("shopNo"));
-		request.setAttribute("post",ShopDAO.getInstance().findShopByNo(no));
+		long shopNo=Long.parseLong(request.getParameter("shopNo"));
+		request.setAttribute("shop",ShopDAO.getInstance().findShopByNo(shopNo));
 		return "board/shop-update-form.jsp";
 	}
 

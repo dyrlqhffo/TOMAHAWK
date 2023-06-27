@@ -13,13 +13,15 @@ public class UpdateShopController implements Controller {
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession(false);
-		long no=Long.parseLong(request.getParameter("shopNo"));
+		long shopNo=Long.parseLong(request.getParameter("shopNo"));
 		String shopType = request.getParameter("shopType");
 		String shopName = request.getParameter("shopName");
+		String shopAddress = request.getParameter("shopAddress");
 		ShopVO svo = new ShopVO();
-		svo.setShopNo(no);
+		svo.setShopNo(shopNo);
 		svo.setShopName(shopName);
 		svo.setShopType(shopType);
+		svo.setShopAddress(shopAddress);
 		ShopDAO.getInstance().updateShop(svo);
 		if(request.getMethod().equals("POST")==false) 
 			throw new ServletException("POST방식만 가능합니다");
