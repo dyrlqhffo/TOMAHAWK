@@ -5,15 +5,17 @@ public class ShopVO {
 	private String shopName;
 	private String shopType;
 	private String shopAddress;
+	private MemberVO member;
 	public ShopVO() {
 		super();
 	}
-	public ShopVO(long shopNo, String shopName, String shopType, String shopAddress) {
+	public ShopVO(long shopNo, String shopName, String shopType, String shopAddress,MemberVO member) {
 		super();
 		this.shopNo = shopNo;
 		this.shopName = shopName;
 		this.shopType = shopType;
 		this.shopAddress = shopAddress;
+		this.member = member;
 	}
 	public long getShopNo() {
 		return shopNo;
@@ -39,9 +41,15 @@ public class ShopVO {
 	public void setShopAddress(String shopAddress) {
 		this.shopAddress = shopAddress;
 	}
+	public MemberVO getMember() {
+		return member;
+	}
+	public void setMember(MemberVO member) {
+		this.member = member;
+	}
 	@Override
 	public String toString() {
 		return "ShopVO [shopNo=" + shopNo + ", shopName=" + shopName + ", shopType=" + shopType + ", shopAddress="
-				+ shopAddress + "]";
+				+ shopAddress + ", member=" + member + "]";
 	}
 }
