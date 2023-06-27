@@ -108,6 +108,42 @@
 <script type="text/javascript">
 
 </script>
+
+<hr>
+<hr>
+
+<div>
+	<div class="comment-text">
+		<textarea id="writeComment" name="writeComment" placeholder="댓글을 입력해주세요."></textarea>
+	</div>
+	<div class="commentBtn">
+		<button id="commentBtn">댓글 입력</button>
+	</div>
+</div>
+<script type="text/javascript">
+	$(function() {
+		$("#commentBtn").click(function() {
+			if(session == null) {
+				alert("댓글을 작성하려면 로그인해주세요.");
+				location.href = "${pageContext.request.contextPath }/index.jsp";
+			}
+			$.ajax({
+				type : "POST",
+				url : "WriteComment.do",
+				data : {
+					num :  ,
+					content
+				},
+				success:function(result){		//result (변수명은 무관)
+					// success func 매개변수로 서버가 응답한 데이터가 전달
+					alert(result);
+				}
+			}); // ajax
+		}); // click
+	}); // ready
+</script>
+
+
 </div>
 </body>
 </html>

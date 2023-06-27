@@ -23,7 +23,7 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
-<title>자유 게시판</title>
+<title>검색 조회 결과</title>
 </head>
 <body class="sub_page">
 <div class="hero_area">
@@ -35,7 +35,7 @@
 <div class="container pt-3">
 
 	<hr><br><br>
-<h1>자유게시판</h1>
+<h1>게시판 검색 결과</h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
 	<table class="table table-boarderd table-hover boardlist">
@@ -49,22 +49,25 @@
 					</tr>
 				</thead>
 				<tbody align="center">
-				<c:forEach items="${freeBoardList}" var="board">
+				<c:forEach items="${boards}" var="boards">
+				<!--  <input type="text" value="${boards}">-->
 					<tr>
-						<td>${board.boardNo}</td>
+						<td>${boards.boardNo}</td>
 						<td>
 						<c:choose>
 							<c:when test="${sessionScope.mvo == null}">
-								${board.title}	
+								${boards.title}	
 							</c:when>
 							<c:otherwise>
-								<a href="${pageContext.request.contextPath}/ReadBoard.free?boardNo=${board.boardNo}">${board.title}</a>
+								<a href="${pageContext.request.contextPath}/ReadBoard.free?boardNo=${boards.boardNo}">${boards.title}</a>
+								<a href="${pageContext.request.contextPath}/ReadReviewBoard.do?boardNo=${boards.boardNo}">${boards.title}</a>
+								<a href="${pageContext.request.contextPath}/NoticeDetail.do?boardNo=${boards.boardNo}">${boards.title}</a>
 							</c:otherwise>
 						</c:choose>
 						</td>
-						<td>${board.member.nick}</td>
-						<td>${board.registerDate}</td>
-						<td>${board.hits}</td>
+						<td>${boards.member.nick}</td>
+						<td>${boards.registerDate}</td>
+						<td>${boards.hits}</td>
 					</tr>
 				</c:forEach>
 				</tbody>
