@@ -60,8 +60,6 @@
 							</c:when>
 							<c:otherwise>
 								<a href="${pageContext.request.contextPath}/ReadBoard.free?boardNo=${boards.boardNo}">${boards.title}</a>
-								<a href="${pageContext.request.contextPath}/ReadReviewBoard.do?boardNo=${boards.boardNo}">${boards.title}</a>
-								<a href="${pageContext.request.contextPath}/NoticeDetail.do?boardNo=${boards.boardNo}">${boards.title}</a>
 							</c:otherwise>
 						</c:choose>
 						</td>
