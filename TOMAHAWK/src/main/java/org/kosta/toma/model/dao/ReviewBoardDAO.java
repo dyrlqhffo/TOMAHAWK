@@ -1,4 +1,4 @@
-package org.kosta.toma.model;
+package org.kosta.toma.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.kosta.toma.model.DataSourceManager;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
 

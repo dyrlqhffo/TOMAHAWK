@@ -29,30 +29,40 @@
 	<%@ include file ="../header.jsp"%>
 </div>
 <div class="container pt-3">
+<input type="hidden" id="email" name="email" value="${mvo.email }">
+<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
 <table class="table">
 		<tr><td>식당이름 : ${shop.shopName}</td></tr>
 		<tr><td>식당분류 : ${shop.shopType}</td></tr>
 		<tr><td>식당주소 : ${shop.shopAddress}</td></tr>
 		 <c:if test="${sessionScope.mvo.email == requestScope.shop.member.email }"> 
 		<tr>
-		<td colspan="5" class="text-center">								
+		<td colspan="5" class="text-center">						
 			<button type="button" class="btn btn-success" onclick="deleteShop()">삭제</button>			
 			<button type="button" class="btn btn-success" onclick="updateShop()">수정</button>
-			<c:forEach items="${bookmark}" var="bookmark">
- 			<c:choose>
-				<c:when test="${bookmark.shop.shopNo eq shop.shopNo}">
-					<button type="button" class="btn btn-success" onclick="deleteBookmark()">북마크 해제</button>
-				</c:when>
-<%-- 				<c:when test="${bookmark.shop.shopNo ne shop.shopNo}">
-					<button type="button" class="btn btn-success" onclick="setBookmark()">북마크 설정</button>
-				</c:when> --%>
-				<c:otherwise>
-					<button type="button" class="btn btn-success" onclick="setBookmark()">북마크 설정</button>
-				</c:otherwise>
-			</c:choose>
-			</c:forEach>
+			<input type="hidden" id="email" name="email" value="${mvo.email }">
+			<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
+			<button type="button" class="btn btn-success" onclick="checkBookmark()">북마크</button>
+			<script type="text/javascript">
+				let email = document.getElementById("email");
+				let shopNo = document.getElementById("shopNo");
+				function checkBookmark() {
+					let xhr = new XMLHttpRequest();
+					xhr.onreadystatechange = function() {
+						if(xhr.readyState==4&&xhr.status==200){
+							if(xhr.responseText == "fail"){
+								deleteBookmark();
+							}else{
+								setBookmark();
+							}
+						}
+					}
+					xhr.open("get","${pageContext.request.contextPath}/CheckBookmark.book?email"+email.value+"&shopNo="+shopNo.value);
+					xhr.send();
+				}
+			</script>
 			<form method="post" action="${pageContext.request.contextPath}/DeleteShop.shop" id="deleteShopForm">
-				<input type="hidden" name="shopNo" value="${shop.shopNo}">
+				<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
 			</form>
 			<form method="post" action="${pageContext.request.contextPath}/updateShopForm.shop" id="updateShopForm">
 				<input type="hidden" name="shopNo" value="${shop.shopNo}">
@@ -89,29 +99,6 @@
 	</tr>
 	</c:if>
 </table>
-<div class="comment-txt">
-		<textarea id="commentContent" name="commentContent" placeholder="여러분의 소중한 댓글을 입력해주세요." rows="5" cols="50"></textarea>
-</div>
-<div class="comment-button">
-평점 : <select style="width:50px;">
-			<option>5</option>
-			<option>4</option>
-			<option>3</option>
-			<option>2</option>
-			<option>1</option>
-		</select>
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	<button id="cmtCnt-btn">댓글달기</button>
-</div>
-<script type="text/javascript">
-
-</script>
-
-<hr>
-<hr>
-
 <div>
 	<div class="comment-text">
 		<textarea id="writeComment" name="writeComment" placeholder="댓글을 입력해주세요."></textarea>
@@ -120,7 +107,7 @@
 		<button id="commentBtn">댓글 입력</button>
 	</div>
 </div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 	$(function() {
 		$("#commentBtn").click(function() {
 			if(session == null) {
@@ -141,7 +128,7 @@
 			}); // ajax
 		}); // click
 	}); // ready
-</script>
+</script> -->
 
 
 </div>

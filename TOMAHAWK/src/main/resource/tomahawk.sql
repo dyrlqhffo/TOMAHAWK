@@ -31,12 +31,12 @@ values(toma_board_seq.nextval,'hellojava@naver.com','안녕4','하이',sysdate,s
 <<<<<<< HEAD
 =======
 
-
-
+select * from BOOKMARK
+select count(*) from BOOKMARK where email='dnflcld123@naver.com' and shop_no=23;
 
 select sysdate from dual
 
-
+delete from BOOKMARK where shop_no =23;
 
 >>>>>>> refs/heads/feature/main2
 CREATE TABLE report(
