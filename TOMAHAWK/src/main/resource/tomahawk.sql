@@ -57,6 +57,12 @@ CREATE TABLE shop(
 	CONSTRAINT shop_fk FOREIGN KEY(email) REFERENCES member(email)
 )
 
+SELECT s.shop_no, s.shop_name, b.content, TO_CHAR(reg_date,'YYYY.MM.DD HH24:MI:SS')
+AS reg_date, b.hits, b.board_type, m.email, m.nick FROM shop s
+INNER JOIN member m ON b.email = m.email
+WHERE board_type = 'free' AND shop_name = '도배4';
+
+
 DROP TABLE COMMENT;
 
 SELECT * FROM COMMENT
@@ -75,6 +81,13 @@ CREATE TABLE comments(
 	CONSTRAINT FK_SHOP_TO_COMMENT FOREIGN KEY (shop_no) REFERENCES shop(shop_no)
 )
 
+ALTER TABLE comments
+DROP CONSTRAINT FK_SHOP_TO_COMMENT;
+
+ALTER TABLE comments
+DROP COLUMN shop_no;
+
+
 CREATE TABLE bookmark(
 	bookmark_no NUMBER PRIMARY KEY,
 	shop_no NUMBER NOT NULL,
@@ -86,7 +99,7 @@ CREATE TABLE bookmark(
 CREATE SEQUENCE toma_board_seq NOCACHE;
 CREATE SEQUENCE toma_report_seq NOCACHE;
 CREATE SEQUENCE toma_shop_seq NOCACHE;
-CREATE SEQUENCE toma_comment_seq NOCACHE;
+CREATE SEQUENCE toma_comments_seq NOCACHE;
 CREATE SEQUENCE toma_bookmark_seq NOCACHE;
 
 DROP SEQUENCE toma_board_seq;
@@ -117,9 +130,13 @@ where rnum between 1 and 5
 SELECT * FROM board;
 SELECT * FROM member;
 SELECT * FROM report;
-SELECT * FROM comment_1;
+SELECT * FROM comments;
 SELECT * FROM shop;
 SELECT * FROM bookmark;
+
+ALTER TABLE comments
+MODIFY (comment_edit_date NULL);
+
 
 
 -- findBoardList
@@ -155,6 +172,10 @@ WHERE board_no = 24;
 UPDATE board SET hits = hits + 1 WHERE board_no = 24;
 
 
+SELECT b.board_no, b.title, b.content, TO_CHAR(reg_date,'YYYY.MM.DD HH24:MI:SS')
+AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b
+INNER JOIN member m ON b.email = m.email
+WHERE board_type = 'free' AND title = '도배4';
 
 
 

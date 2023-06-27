@@ -33,19 +33,6 @@
    <%@ include file ="../header.jsp"%>
 </div>
 <div class="container pt-3">
-<a href="${pageContext.request.contextPath}/index.jsp">HOME</a> &nbsp;&nbsp;&nbsp;
-	<c:if test="${sessionScope.mvo != null}">
-		<a id="logoutLink" href="#">로그아웃</a>
-		<form method="post" action="${pageContext.request.contextPath}/Logout.do" id="logoutForm"></form>
-		<script>
-			document.getElementById("logoutLink").addEventListener('click', function(event) {
-				event.preventDefault();
-				if(confirm("로그아웃 하시겠습니까?")){
-					document.getElementById("logoutForm").submit();
-				}
-			});
-		</script>
-	</c:if>
 <hr><br><br>
 <h1>자유게시판 상세조회</h1>
 <hr style="border-top: 3px solid gray"> 
@@ -71,10 +58,10 @@
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
-			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.shop" id="deleteBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.free" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
-			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.shop" id="updateBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.free" id="updateBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
 			<script type="text/javascript">
