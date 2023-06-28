@@ -1,4 +1,4 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.notice;
 
 import java.util.ArrayList;
 
@@ -6,11 +6,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-
+import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.dao.NoticeBoardDAO;
 import org.kosta.toma.model.vo.BoardVO;
 
 public class NoticeBoardListController implements Controller {
+	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession(false);
@@ -18,14 +19,20 @@ public class NoticeBoardListController implements Controller {
 			return "index.jsp";
 		
 		}
-		String type = request.getParameter("type");
-		ArrayList<BoardVO> list = NoticeBoardDAO.getInstance().findBoardList(type);
+		String pageNo= request.getParameter("pageNo");
+		Pagination pagination=null;
+		long totalNoticeCount=NoticeBoardDAO.getInstance().findTotalNoticeCount();
+		if(pageNo == null) {
+			pagination= new Pagination(totalNoticeCount);
+		}else {
+			pagination= new Pagination(totalNoticeCount,Long.parseLong(pageNo));
+		}
+		request.setAttribute("pagination", pagination);
+		ArrayList<BoardVO> list = NoticeBoardDAO.getInstance().findBoardList(pagination);
 		request.setAttribute("list", list);
-		return "board/board-list.jsp";
-		
+		return "board/notice-board-list.jsp";
 		
 		}
-	
 
 }
 

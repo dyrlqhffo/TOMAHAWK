@@ -49,7 +49,7 @@
 		</script>
 	</c:if>
 <hr><br><br>
-<h1>자유게시판 상세조회</h1>
+<h1>공 지 사 항</h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
 
@@ -73,15 +73,15 @@
 				</td>
 			</tr>
 		</tbody>
-		<c:if test="${sessionScope.mvo.email == requestScope.board.member.email}">
+		<c:if test="${sessionScope.mvo.nick == requestScope.board.member.nick}">
 		<tr>
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
-			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.do" id="deleteBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/NoticeDeleteBoard.notice" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
-			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.do" id="updateBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/NoticeUpdateForm.notice?no=${board.boardNo}" id="noticeUpdateForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
 			<script type="text/javascript">
@@ -92,10 +92,13 @@
 				}
 				function updatePost() {
 					if (confirm("글을 수정 하시겠습니까?")) {
-						document.getElementById("updateBoardForm").submit();
+						document.getElementById("noticeUpdateForm").submit();
 				    }
 				}
+				
+			
 			</script>					
+						
 		</td>
 	</tr>
 	

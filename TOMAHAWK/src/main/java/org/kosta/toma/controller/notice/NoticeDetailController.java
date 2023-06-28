@@ -1,4 +1,4 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.notice;
 
 import java.util.ArrayList;
 
@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.notice.Controller;
 import org.kosta.toma.model.dao.BoardDAO;
 import org.kosta.toma.model.dao.NoticeBoardDAO;
 import org.kosta.toma.model.vo.BoardVO;
@@ -24,16 +25,16 @@ public class NoticeDetailController implements Controller {
 		long no=Long.parseLong(request.getParameter("no"));
 		BoardVO vo=NoticeBoardDAO.getInstance().findBoardByNo(no);
 		MemberVO member = (MemberVO)session.getAttribute("mvo");
-		ArrayList<Long> noticeList=(ArrayList<Long>) session.getAttribute("noticeList");
-		boolean existNo=noticeList.contains(no);
+		ArrayList<Long> freeBoard=(ArrayList<Long>) session.getAttribute("freeBoard");
+		boolean existNo=freeBoard.contains(no);
 		if(existNo == false && !vo.getMember().getNick().equalsIgnoreCase(member.getNick())) {
 			System.out.println(existNo+"이미 조회한 게시글이므로 증가x");
 			NoticeBoardDAO.getInstance().updateHits(no);
-			noticeList.add(no);
+			freeBoard.add(no);
 			
 		}			
 		request.setAttribute("board", vo);
-		return "board/board-detail.jsp";
+		return "board/notice-board-detail.jsp";
 			
 	}
 
