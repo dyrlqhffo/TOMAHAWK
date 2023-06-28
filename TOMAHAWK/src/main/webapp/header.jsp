@@ -125,8 +125,8 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg" id="lnb">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
-	  		<img src="${pageContext.request.contextPath }/images/logo.png">
-	  		<span class="logo-text">Tomahawk</span>
+	  		<img src="${pageContext.request.contextPath }/images/logo3.png">
+	  		<span class="logo-text">TOMAHAWK</span>
 	  	</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
@@ -145,7 +145,7 @@
 	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendReview()">리뷰 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="board.jsp">공지사항 <span class="sr-only">(current)</span></a>
+	        		 <a class="nav-link" href="javascript:void(0)" onclick="javascript:sendNotice()">공지사항 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		</c:if>
 	      		<c:choose>
@@ -376,6 +376,14 @@
 			 document.body.appendChild(f);
 			 f.submit();
 		}
+		
+		function sendNotice(){
+          let f = document.createElement('form');
+          f.setAttribute('method', 'post');
+          f.setAttribute('action', '${pageContext.request.contextPath}/NoticeBoardList.notice');
+          document.body.appendChild(f);
+          f.submit();
+      }
 	</script>
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
