@@ -125,8 +125,8 @@
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg" id="lnb">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
-	  		<img src="${pageContext.request.contextPath }/images/logo.png">
-	  		<span class="logo-text">Tomahawk</span>
+	  		<img src="${pageContext.request.contextPath }/images/logo3.png">
+	  		<span class="logo-text">TOMAHAWK</span>
 	  	</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
