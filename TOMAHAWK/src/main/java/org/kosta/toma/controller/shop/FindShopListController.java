@@ -3,6 +3,7 @@ package org.kosta.toma.controller.shop;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.dao.ShopDAO;
 

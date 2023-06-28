@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BookmarkDAO;
 import org.kosta.toma.model.dao.ShopDAO;
 
@@ -21,6 +22,6 @@ public class DeleteBookmarkController implements Controller{
 		String email = (String) session.getAttribute("sessionEmail");
 		System.out.println(no+" "+email );
 		BookmarkDAO.getInstance().DeleteBookmark(email, no);
-		return "redirect:FindShopList.shop";
+		return "redirect:FindShopList.do";
 	}
 }

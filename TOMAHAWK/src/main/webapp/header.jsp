@@ -155,7 +155,7 @@
 			        		<div id="myDropdown" class="dropdown-content">
 							    <a href="${pageContext.request.contextPath }/UpdateMemberForm.do">회원 수정</a>
 							    <a href="${pageContext.request.contextPath }/UpdatePasswordForm.do">비밀번호 수정</a>
-							    <a href="${pageContext.request.contextPath }/BookmarkList.book">북마크</a>
+							    <a href="${pageContext.request.contextPath }/BookmarkList.do">북마크</a>
 							 </div>
 			      		</li>
 	      			</c:when>
@@ -358,21 +358,21 @@
 		function sendBoard(){
 		    let f = document.createElement('form');
 		    f.setAttribute('method', 'post');
-		    f.setAttribute('action', '${pageContext.request.contextPath}/FreeBoardList.free');
+		    f.setAttribute('action', '${pageContext.request.contextPath}/FreeBoardList.do');
 		    document.body.appendChild(f);
 		    f.submit();
 		}
 		function sendShop(){
 		    let f = document.createElement('form');
 		    f.setAttribute('method', 'post');
-		    f.setAttribute('action', '${pageContext.request.contextPath}/FindShopList.shop');
+		    f.setAttribute('action', '${pageContext.request.contextPath}/FindShopList.do');
 		    document.body.appendChild(f);
 		    f.submit();
 		}
 		function sendReview(){
 			 let f = document.createElement('form');
 			 f.setAttribute('method', 'post');
-			 f.setAttribute('action', '${pageContext.request.contextPath}/ReviewBoardList.review');
+			 f.setAttribute('action', '${pageContext.request.contextPath}/ReviewBoardList.do');
 			 document.body.appendChild(f);
 			 f.submit();
 		}
@@ -380,7 +380,7 @@
 		function sendNotice(){
           let f = document.createElement('form');
           f.setAttribute('method', 'post');
-          f.setAttribute('action', '${pageContext.request.contextPath}/NoticeBoardList.notice');
+          f.setAttribute('action', '${pageContext.request.contextPath}/NoticeBoardList.do');
           document.body.appendChild(f);
           f.submit();
       }

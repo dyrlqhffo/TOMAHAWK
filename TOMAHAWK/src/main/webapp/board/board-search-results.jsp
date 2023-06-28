@@ -59,7 +59,7 @@
 								${boards.title}	
 							</c:when>
 							<c:otherwise>
-								<a href="${pageContext.request.contextPath}/ReadBoard.free?boardNo=${boards.boardNo}">${boards.title}</a>
+								<a href="${pageContext.request.contextPath}/ReadBoard.do?boardNo=${boards.boardNo}">${boards.title}</a>
 							</c:otherwise>
 						</c:choose>
 						</td>
@@ -71,26 +71,26 @@
 				</tbody>
 			</table>
 				<c:if test="${sessionScope.mvo != null}">
-				     <form action="${pageContext.request.contextPath}/WriteBoardForm.free" method="post">
+				     <form action="${pageContext.request.contextPath}/WriteBoardForm.do" method="post">
 				     <button type="submit" class="btn btn-primary">글쓰기</button> 
 				     </form>
 				</c:if>
 			<ul class="pagination justify-content-center" style="margin:20px 0">	
 				<c:if test="${pagination.previousPageGroup}">
-					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.do?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
 				</c:if>
 					<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
 						<c:choose>
 							<c:when test="${page == pagination.nowPage}"> 
-								<li class="page-item active"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${page}">${page}</a></li>
+								<li class="page-item active"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.do?pageNo=${page}">${page}</a></li>
 							</c:when>
 							<c:otherwise>
-								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${page}">${page}</a></li>
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.do?pageNo=${page}">${page}</a></li>
 							</c:otherwise>
 						</c:choose> 
 					</c:forEach>
 				<c:if test="${pagination.nextPageGroup}">		
-			  		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.free?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
+			  		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.do?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
 			  	</c:if>     
 			</ul>
 </div>

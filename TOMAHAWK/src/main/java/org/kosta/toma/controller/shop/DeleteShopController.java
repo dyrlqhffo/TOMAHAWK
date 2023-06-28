@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.ShopDAO;
 
 public class DeleteShopController implements Controller{
@@ -18,6 +19,6 @@ public class DeleteShopController implements Controller{
 			return "redirect:index.jsp";
 		long no=Long.parseLong(request.getParameter("shopNo"));
 		ShopDAO.getInstance().deleteShopByNo(no);
-		return "redirect:FindShopList.shop";
+		return "redirect:FindShopList.do";
 	}
 }

@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.NoticeBoardDAO;
 
 public class NoticeDeleteBoardController implements Controller{
@@ -19,7 +20,7 @@ public class NoticeDeleteBoardController implements Controller{
 		long no=Long.parseLong(request.getParameter("boardNo"));
 		NoticeBoardDAO.getInstance().deleteBoard(no);
 		
-		return "redirect:NoticeBoardList.notice";
+		return "redirect:NoticeBoardList.do";
 	}
 
 }

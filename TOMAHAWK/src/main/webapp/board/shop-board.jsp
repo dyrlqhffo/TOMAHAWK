@@ -55,7 +55,7 @@
                   <img src="images/f1.png" alt="">
                 </div>
                 <div class="detail-box">
-                  <h5><a href="FindShopByNo.shop?no=${shop.shopNo}">${shop.shopName}</a></h5>
+                  <h5><a href="FindShopByNo.do?no=${shop.shopNo}">${shop.shopName}</a></h5>
                 </div>
               </div>
             </div>
@@ -65,7 +65,7 @@
      </div>
      <br>
      <c:if test="${mvo.admin >= 1}">
-	     <form action="${pageContext.request.contextPath}/WriteShopForm.shop" id="writeShop">
+	     <form action="${pageContext.request.contextPath}/WriteShopForm.do" id="writeShop">
 	     	<button type="button" class="btn btn-outline btn-primary pull-right" onclick="writeShop()">
 	     		<i class="fa fa-edit fa-fw"></i> 글쓰기
 	     	</button>
@@ -78,20 +78,20 @@
      </script>
 <ul class="pagination justify-content-center"  style="margin:20px 0">
 	<c:if test="${pagination.previousPageGroup}">
-	<li class="page-item"><a class="page-link" href="FindShopList.shop?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
+	<li class="page-item"><a class="page-link" href="FindShopList.do?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
 	</c:if>
 	<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
 		<c:choose>
 			<c:when test="${page==pagination.nowPage}">
-				<li class="page-item active"><a class="page-link" href="FindShopList.shop?pageNo=${page}">${page}</a></li>
+				<li class="page-item active"><a class="page-link" href="FindShopList.do?pageNo=${page}">${page}</a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="page-item"><a class="page-link" href="FindShopList.shop?pageNo=${page}">${page}</a></li>
+				<li class="page-item"><a class="page-link" href="FindShopList.do?pageNo=${page}">${page}</a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:if test="${pagination.nextPageGroup}">
-  	<li class="page-item"><a class="page-link" href="FindShopList.shop?pageNo=${pagination.endPageOfPageGroup+1}">Next</a></li>
+  	<li class="page-item"><a class="page-link" href="FindShopList.do?pageNo=${pagination.endPageOfPageGroup+1}">Next</a></li>
   	</c:if>
 </ul>
 

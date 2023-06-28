@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.ReviewBoardDAO;
 
 
@@ -24,6 +25,6 @@ public class DeleteReviewBoardController implements Controller {
 		long no = Long.parseLong(request.getParameter("no"));
 		ReviewBoardDAO.getInstance().deleteReviewBoard(no);
 		
-		return "redirect:ReviewBoardList.review";
+		return "redirect:ReviewBoardList.do";
 	}
 }

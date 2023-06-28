@@ -78,10 +78,10 @@
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
-			<form method="post" action="${pageContext.request.contextPath}/NoticeDeleteBoard.notice" id="deleteBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/NoticeDeleteBoard.do" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
-			<form method="post" action="${pageContext.request.contextPath}/NoticeUpdateForm.notice?no=${board.boardNo}" id="noticeUpdateForm">
+			<form method="post" action="${pageContext.request.contextPath}/NoticeUpdateForm.do?no=${board.boardNo}" id="noticeUpdateForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
 			<script type="text/javascript">

@@ -28,7 +28,7 @@
 <h1>자유게시판 글쓰기</h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
-<form method="post" action="${pageContext.request.contextPath}/WriteBoard.free">
+<form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
 <fieldset>
         <ul id="shipping">
           <li>
