@@ -35,7 +35,7 @@
 <div class="container pt-3">
 
 	<hr><br><br>
-<h1>자유게시판</h1>
+<h1 align="center"><strong>Free Board</strong></h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
 	<table class="table table-boarderd table-hover boardlist">

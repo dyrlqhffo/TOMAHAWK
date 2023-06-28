@@ -270,8 +270,8 @@ public class BoardDAO {
 	    }
 	    return boardList;
 	}
-/*
-	public ArrayList<ShopVO> searchShops(String boardType, String title) {
+
+	public ArrayList<ShopVO> searchShops(String title) throws SQLException {
 		ArrayList<ShopVO> shopList = new ArrayList<ShopVO>();
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -279,27 +279,22 @@ public class BoardDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("SELECT b.board_no, b.title, b.content, TO_CHAR(reg_date, 'YYYY.MM.DD HH24:MI:SS') ");
-			sql.append("AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b ");
-			sql.append("INNER JOIN member m ON b.email = m.email ");
-			sql.append("WHERE board_type = ? AND shop_name LIKE ?");
+			sql.append("SELECT s.shop_no, s.shop_name, s.shop_type, s.shop_address, m.nick ");
+			sql.append("AS shop_no, shop_name, shop_type, shop_address, nick FROM shop s ");
+			sql.append("INNER JOIN member m ON s.email=m.email WHERE shop_name LIKE ?");
 			pstmt = con.prepareStatement(sql.toString());
-			pstmt.setString(1, boardType);
-	        pstmt.setString(2, "%" + title + "%");  
+			pstmt.setString(1, "%" + title + "%");
 	        rs = pstmt.executeQuery();
 	        while (rs.next()) {
-	            BoardVO board = new BoardVO();
-	            board.setBoardNo(rs.getLong("board_no"));
-	            board.setTitle(rs.getString("title"));
-	            board.setContent(rs.getString("content"));
-	            board.setRegisterDate(rs.getString("reg_date"));
-	            board.setBoardType(rs.getString("board_type"));
+	        	ShopVO shop = new ShopVO();
+	        	shop.setShopNo(rs.getLong("shop_no"));
+	        	shop.setShopName(rs.getString("shop_name"));
+	        	shop.setShopType(rs.getString("shop_type"));
+	        	shop.setShopAddress(rs.getString("shop_address"));
 	            MemberVO member = new MemberVO();
-	            member.setEmail(rs.getString("email"));
 	            member.setNick(rs.getString("nick"));
-	            board.setMember(member);
-	            board.setHits(rs.getLong("hits"));
-	            shopList.add(board);
+	            shop.setMember(member);
+	            shopList.add(shop);
 	        }
 	    } catch (SQLException e) {
 	        e.printStackTrace();
@@ -308,5 +303,5 @@ public class BoardDAO {
 	    }
 	    return shopList;
 	}
-	*/
+
 }

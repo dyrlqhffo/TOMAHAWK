@@ -54,32 +54,46 @@
 			</tr>
 		</tbody>
 		<c:if test="${sessionScope.mvo.email == requestScope.board.member.email}">
-		<tr>
-		<td colspan="5" class="text-center">								
-			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
-			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
-			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.free" id="deleteBoardForm">
-				<input type="hidden" name="boardNo" value="${board.boardNo}">
-			</form>
-			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.free" id="updateBoardForm">
-				<input type="hidden" name="boardNo" value="${board.boardNo}">
-			</form>
-			<script type="text/javascript">
-				function deletePost() {
-					if (confirm("정말로 삭제 하시겠습니까?")) {
-						document.getElementById("deleteBoardForm").submit();
-				    }
-				}
-				function updatePost() {
-					if (confirm("글을 수정 하시겠습니까?")) {
-						document.getElementById("updateBoardForm").submit();
-				    }
-				}
-			</script>					
-		</td>
-	</tr>
+		  <tr>
+			<td colspan="5" class="text-center">								
+				<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
+				<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
+				<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.free" id="deleteBoardForm">
+					<input type="hidden" name="boardNo" value="${board.boardNo}">
+				</form>
+				<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.free" id="updateBoardForm">
+					<input type="hidden" name="boardNo" value="${board.boardNo}">
+				</form>
+				<script type="text/javascript">
+					function deletePost() {
+						if (confirm("정말로 삭제 하시겠습니까?")) {
+							document.getElementById("deleteBoardForm").submit();
+					    }
+					}
+					function updatePost() {
+						if (confirm("글을 수정 하시겠습니까?")) {
+							document.getElementById("updateBoardForm").submit();
+					    }
+					}
+				</script>					
+			</td>
+		</tr>
 	</c:if>
-	</table>
-</div>
+</table>
+			<div align="center">								
+				<img id="starImg" src="${pageContext.request.contextPath}/images/like_default.png" width="100"/>
+				<script type="text/javascript">
+					$(function() {
+						$("#starImg").click(function() {
+							//alert($(this).attr("src"));
+							if($(this).attr("src") == "${pageContext.request.contextPath}/images/like_default.png") {
+								$(this).attr("src", "${pageContext.request.contextPath}/images/heart_pressed.png");
+							} else {
+								$(this).attr("src", "${pageContext.request.contextPath}/images/like_default.png");
+							}
+						});
+					});
+				</script>			
+			</div>
 </body>
 </html>
