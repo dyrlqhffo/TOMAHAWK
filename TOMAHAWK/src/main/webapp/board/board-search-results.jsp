@@ -34,11 +34,42 @@
 </div>
 <div class="container pt-3">
 
-	<hr><br><br>
+<hr><br><br>
 <h1>게시판 검색 결과</h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
-	<table class="table table-boarderd table-hover boardlist">
+	<c:choose>
+    	<c:when test="${param['board-search'] == 'shop'}"> 
+			<table class="table table-boarderd table-hover boardlist">
+				<thead class="thead-light" align="center">
+					<tr style="background-color: #ccffee;">
+						<th>식당 번호</th>
+						<th class="shopName">식당 이름</th>
+						<th>업종 분류</th>
+						<th>식당 주소</th>
+						<th>등록자</th>
+					</tr>
+				</thead>
+				<tbody align="center">
+				<c:forEach items="${shops}" var="shops">
+					<tr>
+						<td>${shops.shopNo}</td>
+						<td><a href="${pageContext.request.contextPath}/FindShopByNo.shop?no=${shops.shopNo}">${shops.shopName}</a></td>
+						<td>${shops.shopType}</td>
+						<td>${shops.shopAddress}</td>
+						<td>${shops.member.nick}</td>
+					</tr>
+				</c:forEach>
+				</tbody>
+			</table>
+			<c:if test="${mvo.admin >= 1}">
+     			<form action="${pageContext.request.contextPath}/WriteShopForm.shop" method="post">
+				     <button type="submit" class="btn btn-primary">글쓰기</button> 
+				</form>
+     		</c:if>
+		</c:when>
+		<c:otherwise>
+			<table class="table table-boarderd table-hover boardlist">
 				<thead class="thead-light" align="center">
 					<tr style="background-color: #ccffee;">
 						<th>글 번호</th>
@@ -50,7 +81,6 @@
 				</thead>
 				<tbody align="center">
 				<c:forEach items="${boards}" var="boards">
-				<!--  <input type="text" value="${boards}">-->
 					<tr>
 						<td>${boards.boardNo}</td>
 						<td>
@@ -93,6 +123,8 @@
 			  		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.do?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
 			  	</c:if>     
 			</ul>
+		</c:otherwise>		
+	</c:choose>			
 </div>
 </body>
 </html>

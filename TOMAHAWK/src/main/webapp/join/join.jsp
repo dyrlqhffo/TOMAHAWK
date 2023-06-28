@@ -8,9 +8,13 @@
         <meta charset="UTF-8">
         <title>register</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath }/join/join.css">
-        
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
+    	<div class="d-flex justify-content-end">
+		    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
+		</div>
+
         <form action = "${pageContext.request.contextPath }/Register.do" method="post" onsubmit="checkForm(event)">
         <!-- header -->
         <div id="header">
@@ -85,7 +89,7 @@
 
                 <!-- 가입하기 -->
 				<div class="btn_area">
-                    <input type="submit" id="btnJoin" value="가입하기">                 
+                    <input type="submit" id="btnJoin" value="가입하기" onclick="joinSuccess(event);">                 
                 </div>
 
             </div> 
@@ -95,5 +99,6 @@
         <!-- wrapper -->
     <script src="${pageContext.request.contextPath }/join/join.js"></script>
     </form>
+    
 </body>
 </html>

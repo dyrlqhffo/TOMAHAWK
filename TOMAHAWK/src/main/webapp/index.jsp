@@ -14,6 +14,7 @@
   <link href="css/style.css" rel="stylesheet" />
   <link href="css/searchbar.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
   <script src="js/bootstrap.js"></script>
@@ -30,6 +31,16 @@
     </div>
 <%@ include file ="header.jsp"%>
 <br><br><br>
+
+    <c:if test="${not empty message}">
+      <script>
+      swal('비로그인 상태!', "로그인 후 사용 가능합니다.",'warning')
+      .then(function(){
+      	location.href="index.jsp";                   
+      })
+      </script>
+    </c:if>
+
 <div class="container">
 <div class="row">
     <div class="col-lg-12 card-margin">
@@ -49,7 +60,7 @@
                                     </select>
                                 </div>
                                 <div class="col-lg-8 col-md-6 col-sm-12 p-0">
-                                    <input type="text" placeholder="Search..." class="board-search" id="search" name="search">
+                                    <input type="text" placeholder="검색어를 입력해주세요..." class="board-search" id="search" name="search">
                                 </div>
                                 <div class="col-lg-1 col-md-3 col-sm-12 p-0">
                                     <button type="submit" class="btn btn-base">
@@ -65,6 +76,20 @@
     </div>
 </div>
 </div>
+<script>
+function checkIfType() {
+    let boardSelection = document.getElementById('board-search').value;
+    if (boardSelection === "") {
+        swal('검색 오류!', "게시판 분류를 선택해주시기 바랍니다.",'warning')
+            .then(function(){
+                location.href="index.jsp";
+        });
+        return false;
+    }
+    return true;
+}
+</script>
+
     <!-- slider section -->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
