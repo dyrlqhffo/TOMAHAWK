@@ -166,7 +166,7 @@
 	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendShop()">식당 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="board.jsp">리뷰 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendReview()">리뷰 게시판 <span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
 	        		<a class="nav-link" href="board.jsp">공지사항 <span class="sr-only">(current)</span></a>
@@ -406,6 +406,22 @@
 		    document.body.appendChild(f);
 		    f.submit();
 		}
+		
+		
+		
+		
+		
+		
+		
+		
+		function sendReview(){
+			 let f = document.createElement('form');
+			 f.setAttribute('method', 'post');
+			 f.setAttribute('action', '${pageContext.request.contextPath}/ReviewBoardList.review');
+			 document.body.appendChild(f);
+			 f.submit();
+		}
+		
 		$(function() {
 		    var lnb = $("#lnb").offset().top;
 		    $(window).scroll(function() {

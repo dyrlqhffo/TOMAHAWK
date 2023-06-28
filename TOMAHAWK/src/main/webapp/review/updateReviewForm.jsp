@@ -19,7 +19,7 @@
 <body>
 <div class="container">
 
-    <form action="${pageContext.request.contextPath}/UpdateReviewBoard.do" id="updateReviewBoard" method="post">
+    <form action="${pageContext.request.contextPath}/UpdateReviewBoard.review" id="updateReviewBoard" method="post">
         <div class="form-group">
             <label for="title">Title</label>
             <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value=${board.title} style="width:70%">

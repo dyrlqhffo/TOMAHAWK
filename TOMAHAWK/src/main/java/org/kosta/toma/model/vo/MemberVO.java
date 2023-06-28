@@ -57,7 +57,7 @@ public class MemberVO {
 	}
 	@Override
 	public String toString() {
-		return "BoardVO [email=" + email + ", nick=" + nick + ", name=" + name + ", password=" + password + ", tel="
+		return "MemberVO [email=" + email + ", nick=" + nick + ", name=" + name + ", password=" + password + ", tel="
 				+ tel + ", admin=" + admin + "]";
 	}
 }

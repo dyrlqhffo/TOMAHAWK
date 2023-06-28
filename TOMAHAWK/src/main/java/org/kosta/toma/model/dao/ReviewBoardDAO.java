@@ -1,4 +1,4 @@
-package org.kosta.toma.model;
+package org.kosta.toma.model.dao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,6 +9,8 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.kosta.toma.model.DataSourceManager;
+import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
 
@@ -33,33 +35,33 @@ public class ReviewBoardDAO {
 		closeAll(pstmt, con);
 	}
 	
-	public List<BoardVO> findReviewBoardList(String review) throws SQLException{
+	public List<BoardVO> findReviewBoardList(Pagination pagination) throws SQLException{
 		List<BoardVO> list = new ArrayList<>();
 		Connection con=null;
 		PreparedStatement ps=null;
 		ResultSet rs=null;
 		
+	
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append("SELECT b.board_no, m.email, m.nick, b.title, b.content, TO_CHAR(reg_date, 'yyyy.mm.dd HH24:MI') AS reg_date, ");
-			sb.append("TO_CHAR(edit_date, 'yyyy.mm.dd HH24:MI') AS edit_date, b.hits, b.board_type ");
-			sb.append("FROM board b INNER JOIN member m ");
-			sb.append("ON m.email = b.email where b.board_type=? ORDER BY b.board_no DESC");
+			sb.append("select rnum, b.board_no, b.title, m.nick, to_char(reg_date, 'yy.mm.dd hh24:mi')as reg_date, b.hits, b.content, b.board_type ");
+			sb.append("from (select row_number() over(order by board_no desc) as rnum, b.board_no, b.title, b.reg_date, b.hits, b.email, b.content, b.board_type ");
+			sb.append("from board b where b.board_type = 'review') b ");
+			sb.append("inner join member m on b.email = m.email where rnum between ? and ?");
 			ps = con.prepareStatement(sb.toString());
-			ps.setString(1, review);
+			ps.setLong(1, pagination.getStartRowNumber());
+			ps.setLong(2, pagination.getEndRowNumber());
 			rs = ps.executeQuery();
 		
 			while(rs.next()) {
 				BoardVO board = new BoardVO();
 				board.setBoardNo(rs.getLong("board_no"));
 				MemberVO member = new MemberVO();
-				member.setEmail(rs.getString("email"));
 				member.setNick(rs.getString("nick"));
 				board.setTitle(rs.getString("title"));
 				board.setContent(rs.getString("content"));
 				board.setRegisterDate(rs.getString("reg_date"));
-				board.setEditDate(rs.getString("edit_date"));
 				board.setHits(rs.getLong("hits"));
 				board.setBoardType(rs.getString("board_type"));
 				board.setMember(member);
@@ -178,6 +180,26 @@ public class ReviewBoardDAO {
 		}finally {
 			closeAll(ps, con);
 		}
+	}
+	public long findTotalReviewBoardCount() throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		ResultSet rs = null;
+		long num = 0;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "select count(*) from board where board_type='review'";
+			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				num = rs.getLong(1);
+			}
+			
+		}finally {
+			closeAll(ps, con);
+		}
+		return num;
 	}
 	
 

@@ -1,11 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
+ <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <title>Insert title here</title>
 
 <style type="text/css">
@@ -43,6 +48,31 @@
 .board-contents tr > td{
 	padding-bottom: 5px;
 }
+
+	#tblAddCommnet, #tblListComment { width: 700px; margin: 15px auto; }
+	
+	#tblAddComment { margin-top: 30px; }
+	#tblAddComment td:nth-child(1) { width: 600px; }
+	#tblAddComment td:nth-child(2) { width: 100px; }
+	
+	#tblListComment td:nth-child(1) { width: 600px; }
+	#tblListComment td:nth-child(2) { width: 100px; }
+	
+	#tblListComment td {
+		position: relative;
+		left: 0;
+		top: 0;
+	}
+	
+	#tblListComment td span {
+		position: absolute;
+		right: 10px;
+		bottom: 5px;
+		color: #AAA;
+		font-size: 11px;
+	}
+
+
 </style>
 </head>
 <body>
@@ -76,9 +106,9 @@
 						    </c:if>
 							<c:if test="${board.member.nick == mvo.nick}">
 							<td><a href="javascript:updateReview()">수정</a> </td>
-							<form action="${pageContext.request.contextPath}/UpdateReviewBoardForm.do?no=${board.boardNo}" method="post" id="updateReview"></form>
+							<form action="${pageContext.request.contextPath}/UpdateReviewBoardForm.review?no=${board.boardNo}" method="post" id="updateReview"></form>
 							<td><a href="javascript:deleteReview()">삭제</a></td>
-							<form action="${pageContext.request.contextPath}/DeleteReviewBoard.do?no=${board.boardNo}" method="post" id="deleteReview"></form>
+							<form action="${pageContext.request.contextPath}/DeleteReviewBoard.review?no=${board.boardNo}" method="post" id="deleteReview"></form>
 							</c:if>
 						</tr>
 						<tr>
@@ -92,16 +122,17 @@
 				</div>
 		</section>
 	</div>
-	<%-- 
+
 				<!-- 댓글등록 -->
 				<div id="board-search">
 					<div class="container">
 						<div class="search-window" style="width: 100%; margin-bottom: 0px;">
 							<form action="">
 								<div class="search-wrap" style="width: 100%; max-width: 990px;">
-									<input id="search" type="search" name=""
-										placeholder="내용을 입력해주세요" value="" style="width: 100%;">
-									<button type="submit" class="btn btn-dark">등록</button>
+									<input type="text" name="comment" id="comment"
+										placeholder="내용을 입력해주세요" style="width: 100%;">
+									<input type="hidden" name="no" id="no" value="${board.boardNo}">
+									<button type="button" class="btn btn-dark" id="writeComment">등록</button>
 								</div>
 							</form>
 						</div>
@@ -109,30 +140,30 @@
 				</div>
 				<!-- 댓글목록 -->
 				<div class="container">
-
 				<div  class="reply-container"><!-- ajax영역 -->
 					<table class="reply">
+					<thead>
 						<tr>	
 							<td>내용</td>
 							<td>작성자</td>
 							<td>작성일자</td>	
 						</tr>
-						<tr>	
-							<td>유익한내용이네요</td>
-							<td>김코딩</td>
-							<td>2023.03.30</td>	
+					</thead>
+					<tbody id="insertNewComment">
+					
+					<c:forEach items="${commentList}" var="comment">
+						<tr>
+							<td>${comment.content}</td>
+							<td>${comment.member.nick}</td>
+							<td>${comment.commentDate}</td>	
 						</tr>
+					</c:forEach>
+					</tbody>
 					</table>
+					
 				</div>
+			</div>
 
-
-
-				</div>
-			</section>
-		</div>
-	</div>
-	
-	--%> 
 	
 <script>
 	function updateReview(){
@@ -146,10 +177,34 @@
 	}
 
 	function reviewList(){
-		location.href="${pageContext.request.contextPath}/ReviewBoardList.do";
+		location.href="${pageContext.request.contextPath}/ReviewBoardList.review";
 	}
+	
+	
+	$(function() {
+		$("#writeComment").click(function() {
+			let comment = $("#comment").val();
+			let no = $("#no").val();
+			
+			$.ajax({
+				type: "post",
+				url: "${pageContext.request.contextPath}/WriteCommentAjax.review",
+				data: {comment: comment, no: no},
+				dataType: "json",
+				success:function(result){
+					if(result.jsonResult == "ok"){
+					let newComment="";
+					newComment += "<tr><td>"+result.jsonComment.content+"</td><td>"+result.jsonComment.member.nick+"</td><td>"+result.jsonComment.commentDate+"</td></tr>";
+					$("#insertNewComment").prepend(newComment);
+					
+					}
+					
+				}//succ
+			})//ajax
+		})//click
+	});//function
 
-
+	
 </script>	
 	
 	
