@@ -6,11 +6,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>Header</title>
 <style type="text/css">@import url("${pageContext.request.contextPath }/login/login_style.css");</style>
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
 <style type="text/css">
 	@font-face {
@@ -121,36 +121,12 @@
 	position: fixed; left: 0; top: 0; width: 100%;
 	}
 </style>
-
 </head>
 <body>
-
-	<c:set var="member" value="${sessionScope.member }"/>
-	
-	<c:if test="${not empty param.flag }">
-		<c:choose>
-			<c:when test="${not param.flag }">
-				<script>
-					alert("로그인 정보가 맞지 않습니다. 다시 입력해 주세요 :)");
-				</script>
-			</c:when>
-			<c:when test="${param.flag }">
-				<script>
-					alert("임시 비밀번호를 전송했습니다 :)");
-				</script>
-			</c:when>	
-		</c:choose>
-	</c:if>
-	<c:if test="${param.a == 1 }">
-		<script>
-			alert("회원 탈퇴가 완료되었습니다.");
-		</script>
-	</c:if>
-	
 	<nav class="navbar navbar-expand-lg navbar-light bg" id="lnb">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
 	  		<img src="${pageContext.request.contextPath }/images/logo.png">
-	  		<span class="logo-text">토마호크 커뮤니티</span>
+	  		<span class="logo-text">Tomahawk</span>
 	  	</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 	    	<span class="navbar-toggler-icon"></span>
@@ -179,6 +155,7 @@
 			        		<div id="myDropdown" class="dropdown-content">
 							    <a href="${pageContext.request.contextPath }/UpdateMemberForm.do">회원 수정</a>
 							    <a href="${pageContext.request.contextPath }/UpdatePasswordForm.do">비밀번호 수정</a>
+							    <a href="${pageContext.request.contextPath }/BookmarkList.book">북마크</a>
 							 </div>
 			      		</li>
 	      			</c:when>
@@ -241,7 +218,6 @@
 														<a href="${pageContext.request.contextPath }/join/join.jsp">회원가입</a>
 													</span>
 												</p>
-										
 											</div>
 										</div>
 									</div>
@@ -249,14 +225,12 @@
 							    </div>
 							  </div>
 							</div>
-							
 					      </li>
-			      		
 		      		</c:otherwise>
 	      		</c:choose>
 	    	</ul>
 	  	</div>
-	  	            <div class="user_option">
+	  	<div class="user_option">
               <a href="" class="user_link">
                 <i class="fa fa-user" aria-hidden="true"></i>
               </a>
@@ -326,52 +300,42 @@
 		                </form>
               		</c:when>
               		<c:otherwise>
-              			<button type="button" class="nav-link order_online" data-toggle="modal" data-target="#exampleModal">
-									  로그인 
-						</button>
+              			<button type="button" class="nav-link order_online" data-toggle="modal" data-target="#exampleModal">로그인</button>
               		</c:otherwise>
               	</c:choose>
             </div>
 	</nav>
-
 	
 	<script>
 		// 이메일 형식 검사
 		$(document).ready(function(){
-			
-	    let id = document.querySelector('#signForm_email');
-	    let error = document.querySelector('.error-message_email');
-	    
-	    id.addEventListener("focusout", checkId);
-	    
-	    function checkId(){
-	    	let idPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/
-
-	        if(!idPattern.test(id.value)){	//정규표현식을 통과하지 못한다면
-	        	error.innerHTML = "올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.";
-	        	error.style.display = "block";
-	        } else{
-	        	error.innerHTML = "";
-	        }
-	    }
+		    let id = document.querySelector('#signForm_email');
+		    let error = document.querySelector('.error-message_email');
+		    id.addEventListener("focusout", checkId);
+		    function checkId(){
+		    	let idPattern = /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/
+		        if(!idPattern.test(id.value)){	//정규표현식을 통과하지 못한다면
+		        	error.innerHTML = "올바른 이메일 형식이 아닙니다. 다시 입력해 주세요.";
+		        	error.style.display = "block";
+		        } else{
+		        	error.innerHTML = "";
+		        }
+	    	}
 		});
 		
 		// 비밀번호 체크
 		$(document).ready(function(){
-			
-	    let pw = document.querySelector('#signForm_pw');
-	    let error = document.querySelector('.error-message_pw');
-	    
-	    pw.addEventListener("focusout", checkPw);
-	    
-	    function checkPw(){
-	        if(pw.value == ""){	//정규표현식을 통과하지 못한다면
-	        	error.innerHTML = "비밀번호를 입력해 주세요.";
-	        	error.style.display = "block";
-	        } else{
-	        	error.innerHTML = "";
-	        }
-	    }
+		    let pw = document.querySelector('#signForm_pw');
+		    let error = document.querySelector('.error-message_pw');
+		    pw.addEventListener("focusout", checkPw);
+		    function checkPw(){
+		        if(pw.value == ""){	//정규표현식을 통과하지 못한다면
+		        	error.innerHTML = "비밀번호를 입력해 주세요.";
+		        	error.style.display = "block";
+		        } else{
+		        	error.innerHTML = "";
+		        }
+	    	}
 		});
 		
 		// 로그인 후 드롭 네비바
@@ -381,7 +345,6 @@
 
 		window.onclick = function(event) {
 		  if (!event.target.matches('.dropdown-toggle')) {
-
 		    let dropdowns = document.getElementsByClassName("dropdown-content");
 		    let i;
 		    for (i = 0; i < dropdowns.length; i++) {
@@ -395,7 +358,7 @@
 		function sendBoard(){
 		    let f = document.createElement('form');
 		    f.setAttribute('method', 'post');
-		    f.setAttribute('action', '${pageContext.request.contextPath}/FreeBoardList.do');
+		    f.setAttribute('action', '${pageContext.request.contextPath}/FreeBoardList.free');
 		    document.body.appendChild(f);
 		    f.submit();
 		}
@@ -407,13 +370,6 @@
 		    f.submit();
 		}
 		
-		
-		
-		
-		
-		
-		
-		
 		function sendReview(){
 			 let f = document.createElement('form');
 			 f.setAttribute('method', 'post');
@@ -421,23 +377,10 @@
 			 document.body.appendChild(f);
 			 f.submit();
 		}
-		
-		$(function() {
-		    var lnb = $("#lnb").offset().top;
-		    $(window).scroll(function() {
-		      var window = $(this).scrollTop();
-
-		      if(lnb <= window) {
-		        $("#lnb").addClass("fixed");
-		      } else {
-		        $("#lnb").removeClass("fixed");
-		      }
-		    })
-		  });
 	</script>
-	
 	<!-- 부트스트랩 -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
 </body>
 </html>
