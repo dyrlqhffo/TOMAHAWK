@@ -8,9 +8,9 @@
 <meta charset="UTF-8">
 <title>Header</title>
 <style type="text/css">@import url("${pageContext.request.contextPath }/login/login_style.css");</style>
-<script src="http://code.jquery.com/jquery.min.js"></script>
+
 <!-- 부트스트랩 -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css" integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
 
 <style type="text/css">
 	@font-face {
@@ -123,26 +123,6 @@
 </style>
 </head>
 <body>
-	<c:set var="member" value="${sessionScope.member }"/>
-	<c:if test="${not empty param.flag }">
-		<c:choose>
-			<c:when test="${not param.flag }">
-				<script>
-					alert("로그인 정보가 맞지 않습니다. 다시 입력해 주세요 :)");
-				</script>
-			</c:when>
-			<c:when test="${param.flag }">
-				<script>
-					alert("임시 비밀번호를 전송했습니다 :)");
-				</script>
-			</c:when>	
-		</c:choose>
-	</c:if>
-	<c:if test="${param.a == 1 }">
-		<script>
-			alert("회원 탈퇴가 완료되었습니다.");
-		</script>
-	</c:if>
 	<nav class="navbar navbar-expand-lg navbar-light bg" id="lnb">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
 	  		<img src="${pageContext.request.contextPath }/images/logo.png">
@@ -389,22 +369,10 @@
 		    document.body.appendChild(f);
 		    f.submit();
 		}
-		$(function() {
-		    var lnb = $("#lnb").offset().top;
-		    $(window).scroll(function() {
-		      var window = $(this).scrollTop();
-
-		      if(lnb <= window) {
-		        $("#lnb").addClass("fixed");
-		      } else {
-		        $("#lnb").removeClass("fixed");
-		      }
-		    })
-		  });
 	</script>
-	
 	<!-- 부트스트랩 -->
-	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-fQybjgWLrvvRgtW6bFlB7jaZrFsaBXjsOMm/tB9LTS58ONXgqbR9W8oWht/amnpF" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="http://code.jquery.com/jquery.min.js"></script>
 </body>
 </html>

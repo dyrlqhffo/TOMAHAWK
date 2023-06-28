@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <!-- <link rel="stylesheet" type="text/css" href="css/bootstrap.css" /> -->
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
@@ -14,7 +14,7 @@
   <link href="css/responsive.css" rel="stylesheet" />
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-  <script src="js/bootstrap.js"></script>
+  <!-- <script src="js/bootstrap.js"></script> -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
@@ -26,7 +26,7 @@
     <div class="bg-box">
       <!-- <img src="images/hero-bg.jpg" alt=""> -->
     </div>
-	<%@ include file ="../header.jsp"%>
+	<c:import url="../header.jsp"/>
 </div>
 <div class="container pt-3">
 <input type="hidden" id="email" name="email" value="${mvo.email }">
@@ -42,24 +42,35 @@
 			<button type="button" class="btn btn-success" onclick="updateShop()">수정</button>
 			<input type="hidden" id="email" name="email" value="${mvo.email }">
 			<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
-			<button type="button" class="btn btn-success" onclick="checkBookmark()">북마크</button>
+			<button type="button" class="btn btn-success" id="BookClick"><span id = "book"></span></button>
+			<span id = "result"></span>
 			<script type="text/javascript">
-				let email = document.getElementById("email");
-				let shopNo = document.getElementById("shopNo");
-				function checkBookmark() {
-					let xhr = new XMLHttpRequest();
-					xhr.onreadystatechange = function() {
-						if(xhr.readyState==4&&xhr.status==200){
-							if(xhr.responseText == "fail"){
-								deleteBookmark();
-							}else{
-								setBookmark();
+				
+				$(function () {
+					let email = document.getElementById("email");
+					let shopNo = document.getElementById("shopNo");
+					$("#BookClick").click(function() {
+						$.ajax({
+							type:"get",
+							url : "${pageContext.request.contextPath}/CheckBookmark.book",
+							data: "email="+email.value+"&shopNo="+shopNo.value,
+							success:function(result){
+								if(result == "ok"){
+									setBookmark();
+								}else if(result == "fail"){
+									deleteBookmark();
+								}
 							}
+						})
+					})
+					$("#book").load("${pageContext.request.contextPath}/CheckBookmark.book?email="+email.value+"&shopNo="+shopNo.value , function (data){
+						if(data=="ok"){
+							$("#book").text("북마크 설정");
+						}else if(data=="fail"){
+							$("#book").text("북마크 해제");
 						}
-					}
-					xhr.open("get","${pageContext.request.contextPath}/CheckBookmark.book?email"+email.value+"&shopNo="+shopNo.value);
-					xhr.send();
-				}
+					})
+				});
 			</script>
 			<form method="post" action="${pageContext.request.contextPath}/DeleteShop.shop" id="deleteShopForm">
 				<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
