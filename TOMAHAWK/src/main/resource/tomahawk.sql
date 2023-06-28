@@ -18,6 +18,8 @@ CREATE TABLE board(
 	CONSTRAINT board_fk FOREIGN KEY(email) REFERENCES member(email)
 )
 select * from BOARD;
+insert into board(board_no,email,title,content,reg_date,board_type)
+values(toma_board_seq.nextval,'hellojava@naver.com','안녕하세요','감사해요 잘있어요 다시 만나요',sysdate,'notice');
 ALTER TABLE board ADD board_type VARCHAR(25);
 insert into BOARD(board_no,email,title,content,reg_date,edit_date,board_type)
 values(toma_board_seq.nextval,'hellojava@naver.com','안녕','안녕하세요 오늘 소개 할 식당은 ~~~~입니다 여기는 맛있어요!',sysdate,sysdate,'review');
@@ -30,6 +32,7 @@ values(toma_board_seq.nextval,'hellojava@naver.com','안녕4','하이',sysdate,s
 
 select * from BOOKMARK
 select count(*) from BOOKMARK where email='dnflcld123@naver.com' and shop_no=23;
+
 
 select sysdate from dual
 
@@ -134,15 +137,28 @@ ALTER TABLE comments
 MODIFY (comment_edit_date NULL);
 
 
-
+select count(*) from board where board_type='notice';
 -- findBoardList
 -- findFreeBoardList
-SELECT rnum, b.board_no, b.title, m.nick, TO_CHAR(b.reg_date, 'YY.MM.DD') AS reg_date, b.hits, b.content, b.board_type  
+SELECT rnum, b.board_no, b.title, m.nick, TO_CHAR(b.reg_date, 'YY.MM.DD') AS reg_date,TO_CHAR(reg_date,'yyyy.MM.DD hh24:mi') as edit_date, b.hits, b.content, b.board_type  
 	FROM (SELECT ROW_NUMBER() OVER(ORDER BY board_no DESC) 
 	AS rnum, b.board_no, b.title, b.reg_date, b.hits, b.email, b.content, b.board_type 
 	FROM board b WHERE b.board_type='free') b 
 INNER JOIN member m ON b.email = m.email 
 WHERE rnum between 1 AND 10;
+
+SELECT rnum, b.board_no, b.title, m.nick, TO_CHAR(b.reg_date, 'YY.MM.DD') AS reg_date,TO_CHAR(reg_date,'yyyy.MM.DD hh24:mi') as edit_date, b.hits, b.content, b.board_type  
+	FROM (SELECT ROW_NUMBER() OVER(ORDER BY board_no DESC) 
+	AS rnum, b.board_no, b.title, b.reg_date, b.hits, b.email, b.content, b.board_type 
+	FROM board b WHERE b.board_type='free') b 
+INNER JOIN member m ON b.email = m.email 
+WHERE rnum between 1 AND 10;
+
+
+
+
+
+
 
 -- findTotalFreeBoardCount
 SELECT COUNT(*) FROM board WHERE board_type = 'free';
@@ -162,7 +178,7 @@ DELETE FROM board WHERE board_no = 25;
 
 -- updateBoard
 UPDATE board SET title = '파이팅', content = '일주일만 파이팅', board_type = 'free', edit_date = sysdate 
-WHERE board_no = 24;
+WHERE board_no = 23;
 
 -- countHits
 UPDATE board SET hits = hits + 1 WHERE board_no = 24;
@@ -173,8 +189,37 @@ AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b
 INNER JOIN member m ON b.email = m.email
 WHERE board_type = 'free' AND title = '도배4';
 
-
+UPDATE board SET title = '파이팅', content = '일주일만 파이팅', board_type = 'free', edit_date = sysdate 
+WHERE board_no = 24;
 
 
 UPDATE member SET admin=2 WHERE email='kjoonie@naver.com';
 UPDATE member SET name='금동준' WHERE email='kjoonie@naver.com';
+
+
+update board set title= '수면8시간 이상 필수', content = '잠은 자고 합시다' , board_type = 'notice', edit_date =sysdate 
+where board_no=23;
+
+delete from board where Board_no=2;
+select from board where board_type=notice;
+select board_type from board;
+select id,address from MEMBER;
+select board(email,title,content,reg_date,edit_date,hits,board_type) from where 
+
+-----------------------------------------------
+select email,title from board where board_type='free';
+select board_type from where board;
+select board_type from where board_type='free';
+
+select board_no from board where board_type='notice';
+select title,content from board where board_type='notice';
+
+select reg_date from board where board_type='notice';
+select*from board;
+
+insert into board;
+
+insert into board(board_no, title , content, reg_date, email, board_type) values(toma_board_seq.nextval, '지각설명회', '고양이가 출근방해', sysdate, 'hellojava@naver.com' ,'notice');
+
+update member set admin =2 where email = 'wogjsdl1244@naver.com';
+select*from member
