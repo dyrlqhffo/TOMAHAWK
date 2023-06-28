@@ -65,8 +65,17 @@
      </div>
      <br>
      <c:if test="${mvo.admin >= 1}">
-     	<a href="${pageContext.request.contextPath }/WriteShopForm.shop">글쓰기</a>
+	     <form action="${pageContext.request.contextPath}/WriteShopForm.shop" id="writeShop">
+	     	<button type="button" class="btn btn-outline btn-primary pull-right" onclick="writeShop()">
+	     		<i class="fa fa-edit fa-fw"></i> 글쓰기
+	     	</button>
+	    </form>
      </c:if>
+     <script type="text/javascript">
+	     function writeShop(){
+	 		document.getElementById('writeShop').submit();
+	 	}
+     </script>
 <ul class="pagination justify-content-center"  style="margin:20px 0">
 	<c:if test="${pagination.previousPageGroup}">
 	<li class="page-item"><a class="page-link" href="FindShopList.shop?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
