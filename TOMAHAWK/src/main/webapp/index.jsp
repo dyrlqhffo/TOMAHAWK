@@ -27,7 +27,7 @@
 
 <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="" width="500"  height="550">
+      <img src="images/bg1.jpg">
     </div>
 <%@ include file ="header.jsp"%>
 <br><br><br>
@@ -46,7 +46,11 @@
     <div class="col-lg-12 card-margin">
         <div class="card search-form">
             <div class="card-body p-0">
+<<<<<<< HEAD
                 <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.free" onsubmit="return checkIfType()">
+=======
+                <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.do">
+>>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
                     <div class="row">
                         <div class="col-12">
                             <div class="row no-gutters">
@@ -100,10 +104,11 @@ function checkIfType() {
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      Fast Food Restaurant
+                      TOMAHAWK COMMUNITY
                     </h1>
                     <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
+                     전세계의 맛집들을 직접 내돈내산을 한 유저들이 실시간 후기들을 보고
+                     실패 할 수 없는 맛집을 경험하고싶다면 우리 토마호크에 가입하세요.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">

@@ -22,7 +22,7 @@
     <form action="${pageContext.request.contextPath}/UpdateReviewBoard.do" id="updateReviewBoard" method="post">
         <div class="form-group">
             <label for="title">Title</label>
-            <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value=${board.title} style="width:70%">
+            <input type="text" class="form-control" placeholder="Enter title" id="title" name="title" value= "${board.title}" style="width:70%">
            	<input type="hidden" name="no" value="${board.boardNo}">
             <select  name="type" id="type" value="${board.boardType}"> 
             	<option value="what">- 선택 - </option>

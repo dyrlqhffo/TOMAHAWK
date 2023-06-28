@@ -34,6 +34,6 @@ public class WriteCommentController implements Controller {
         board.setBoardType(boardType);
         BoardDAO.getInstance().addBoard(board);
         // 글작성 완료 후, 게시물 리스트 화면을 제공한다.
-        return "redirect:FreeBoardList.free";		
+        return "redirect:FreeBoardList.do";		
 	}
 }

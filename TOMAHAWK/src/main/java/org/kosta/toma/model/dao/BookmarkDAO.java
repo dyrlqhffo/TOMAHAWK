@@ -159,4 +159,25 @@ public class BookmarkDAO {
 			closeAll(pstmt, con);
 		}
 	}
+
+	public int checkbookmark(String email, String shopNo) throws SQLException {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		int result = 0;
+		try {
+			con = dataSource.getConnection();
+			String sql = "select count(*) from BOOKMARK where email= ? and shop_no= ? ";
+			pstmt = con.prepareStatement(sql);
+			pstmt.setString(1, email);
+			pstmt.setString(2, shopNo);
+			rs = pstmt.executeQuery();
+			if (rs.next()) {
+				result = rs.getInt(1);
+			}
+		} finally {
+			closeAll(rs, pstmt, con);
+		}
+		return result;
+	}
 }

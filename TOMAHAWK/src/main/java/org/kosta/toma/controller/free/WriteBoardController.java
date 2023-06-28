@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BoardDAO;
 import org.kosta.toma.model.vo.MemberVO;
 import org.kosta.toma.model.vo.BoardVO;
@@ -34,7 +35,7 @@ public class WriteBoardController implements Controller{
         board.setBoardType(boardType);
         BoardDAO.getInstance().addBoard(board);
         // 글작성 완료 후, 게시물 리스트 화면을 제공한다.
-        return "redirect:FreeBoardList.free";		
+        return "redirect:FreeBoardList.do";		
 	}
 
 }

@@ -19,11 +19,6 @@
             </div>
             <div class="row">
                   <div class="col-lg-12">
-                  <form action="${pageContext.request.contextPath}/WriteReviewForm.do" id="writeReviewBoard">
-                      <button type="button" class="btn btn-outline btn-primary pull-right" onclick="writeReview()">
-                          <i class="fa fa-edit fa-fw"></i> 글쓰기
-                      </button>
-                  </form>
                   </div>
               </div>
             <div class="panel panel-default">
@@ -51,10 +46,41 @@
                          </c:forEach>
                         </tbody>
                     </table>
+                    
                 </div>
             </div>
+                   <form action="${pageContext.request.contextPath}/WriteReviewForm.do" id="writeReviewBoard">
+                      <button type="button" class="btn btn-outline btn-primary pull-right" onclick="writeReview()">
+                          <i class="fa fa-edit fa-fw"></i> 글쓰기
+                      </button>
+                  </form>
+            
         </div>
     </div>
+    
+    	<ul class="pagination justify-content-center" style="margin:20px 0">	
+				<c:if test="${pagination.previousPageGroup}">
+					<li class="page-item"><a class="page-link" href="ReviewBoardList.do?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
+				</c:if>
+
+				<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
+					<c:choose>
+						<c:when test="${page == pagination.nowPage}"> 
+							<li class="page-item active"><a class="page-link" href="ReviewBoardList.do?pageNo=${page}">${page}</a></li>
+						</c:when>
+						<c:otherwise>
+							<li class="page-item"><a class="page-link" href="ReviewBoardList.do?pageNo=${page}">${page}</a></li>
+						</c:otherwise>
+					</c:choose> 
+				</c:forEach>
+				
+				<c:if test="${pagination.nextPageGroup}">		
+			  		<li class="page-item"><a class="page-link" href="ReviewBoardList.do?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
+			  	</c:if>     
+			</ul>
+    
+    
+    
 </div>
 
 <script>

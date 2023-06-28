@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.dao.BoardDAO;
 import org.kosta.toma.model.dao.BookmarkDAO;
