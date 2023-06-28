@@ -22,11 +22,13 @@
 </head>
 <body>
 <div class="container pt-3">
-<a href="${pageContext.request.contextPath}/index.jsp">HOME</a><hr><br><br>
+<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
+<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/bookmark.png"></a>
+<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/SEARCH.png"></a><hr><br><br>
 <h1>자유게시판 글 수정하기</h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
-<form method="post" action="${pageContext.request.contextPath}/UpdateBoard.do">
+<form method="post" action="${pageContext.request.contextPath}/UpdateBoard.free">
 	<input type="hidden" name="boardNo" value="${board.boardNo}">
 	
 	<fieldset>
@@ -62,7 +64,7 @@
 					  $('#summernote').summernote({
 						placeholder: '내용을 이곳에 작성해주세요.',
 						tabsize: 2,
-						height: 100
+						height: 500
 					  });
 				    </script> 
           </li>     

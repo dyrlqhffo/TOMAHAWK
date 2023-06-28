@@ -12,6 +12,7 @@ import org.kosta.toma.model.DataSourceManager;
 import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
+import org.kosta.toma.model.vo.ShopVO;
 
 public class BoardDAO {
 	private static BoardDAO instance = new BoardDAO();
@@ -89,7 +90,6 @@ public class BoardDAO {
 			sql.append("AS rnum, b.board_no, b.title, b.reg_date, b.hits, b.email, b.content, b.board_type ");
 			sql.append("FROM board b WHERE b.board_type='free') b ");
 			sql.append("INNER JOIN member m ON b.email = m.email WHERE rnum between ? AND ?");
-			System.out.println(sql.toString());
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setLong(1, pagination.getStartRowNumber());
 			pstmt.setLong(2, pagination.getEndRowNumber());
@@ -233,4 +233,80 @@ public class BoardDAO {
 		}
 	}
 
+	public ArrayList<BoardVO> searchBoards(String boardType, String title) throws SQLException {
+	    ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT b.board_no, b.title, b.content, TO_CHAR(reg_date, 'YYYY.MM.DD HH24:MI:SS') ");
+			sql.append("AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b ");
+			sql.append("INNER JOIN member m ON b.email = m.email ");
+			sql.append("WHERE board_type = ? AND title LIKE ?");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, boardType);
+	        pstmt.setString(2, "%" + title + "%");  
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            BoardVO board = new BoardVO();
+	            board.setBoardNo(rs.getLong("board_no"));
+	            board.setTitle(rs.getString("title"));
+	            board.setContent(rs.getString("content"));
+	            board.setRegisterDate(rs.getString("reg_date"));
+	            board.setBoardType(rs.getString("board_type"));
+	            MemberVO member = new MemberVO();
+	            member.setEmail(rs.getString("email"));
+	            member.setNick(rs.getString("nick"));
+	            board.setMember(member);
+	            board.setHits(rs.getLong("hits"));
+	            boardList.add(board);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeAll(rs, pstmt, con);
+	    }
+	    return boardList;
+	}
+/*
+	public ArrayList<ShopVO> searchShops(String boardType, String title) {
+		ArrayList<ShopVO> shopList = new ArrayList<ShopVO>();
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			con = dataSource.getConnection();
+			StringBuilder sql = new StringBuilder();
+			sql.append("SELECT b.board_no, b.title, b.content, TO_CHAR(reg_date, 'YYYY.MM.DD HH24:MI:SS') ");
+			sql.append("AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b ");
+			sql.append("INNER JOIN member m ON b.email = m.email ");
+			sql.append("WHERE board_type = ? AND shop_name LIKE ?");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, boardType);
+	        pstmt.setString(2, "%" + title + "%");  
+	        rs = pstmt.executeQuery();
+	        while (rs.next()) {
+	            BoardVO board = new BoardVO();
+	            board.setBoardNo(rs.getLong("board_no"));
+	            board.setTitle(rs.getString("title"));
+	            board.setContent(rs.getString("content"));
+	            board.setRegisterDate(rs.getString("reg_date"));
+	            board.setBoardType(rs.getString("board_type"));
+	            MemberVO member = new MemberVO();
+	            member.setEmail(rs.getString("email"));
+	            member.setNick(rs.getString("nick"));
+	            board.setMember(member);
+	            board.setHits(rs.getLong("hits"));
+	            shopList.add(board);
+	        }
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    } finally {
+	        closeAll(rs, pstmt, con);
+	    }
+	    return shopList;
+	}
+	*/
 }

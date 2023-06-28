@@ -10,6 +10,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.kosta.toma.model.DataSourceManager;
+
 import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
@@ -200,7 +201,6 @@ public class ReviewBoardDAO {
 			closeAll(ps, con);
 		}
 		return num;
-	}
-	
 
+	}
 }

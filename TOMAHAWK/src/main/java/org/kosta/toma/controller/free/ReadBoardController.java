@@ -1,4 +1,4 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.free;
 
 import java.util.ArrayList;
 
@@ -7,7 +7,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.toma.model.dao.BoardDAO;
-import org.kosta.toma.model.vo.MemberVO;
 
 public class ReadBoardController implements Controller {
 	@SuppressWarnings("unchecked")

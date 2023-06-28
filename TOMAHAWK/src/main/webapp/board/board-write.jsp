@@ -22,12 +22,13 @@
 </head>
 <body>
 <div class="container pt-3">
-<a href="${pageContext.request.contextPath}/index.jsp">HOME</a><hr><br><br>
+<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
+<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/bookmark.png"></a>
+<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/SEARCH.png"></a><hr><br><br>
 <h1>자유게시판 글쓰기</h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
-<form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
-
+<form method="post" action="${pageContext.request.contextPath}/WriteBoard.free">
 <fieldset>
         <ul id="shipping">
           <li>
@@ -55,18 +56,17 @@
           <br><br>
           <li>
             <label for="content">본문내용</label>
-			<textarea id="summernote" rows="10" class="form-control" name="content" placeholder="본문내용" required="required">${board.content}</textarea>
+				<textarea id="summernote" rows="10" class="form-control" name="content" placeholder="본문내용" required="required">${board.content}</textarea>
 					<script>
 					  $('#summernote').summernote({
 						placeholder: '내용을 이곳에 작성해주세요.',
 						tabsize: 2,
-						height: 100
+						height: 500
 					  });
 				    </script> 
           </li>     
         </ul>  
       </fieldset>
-		
 	</form>
 		<div class="text-center">
   			<button type="button" onclick="addBoard()" class="btn btn-primary">완료</button>

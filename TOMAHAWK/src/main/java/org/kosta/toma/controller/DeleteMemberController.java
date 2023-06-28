@@ -1,12 +1,10 @@
 package org.kosta.toma.controller;
 
-import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.toma.model.dao.MemberDAO;
-import org.kosta.toma.model.vo.MemberVO;
 
 public class DeleteMemberController implements Controller {
 
