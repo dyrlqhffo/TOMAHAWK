@@ -26,7 +26,7 @@
 
 <div class="hero_area">
     <div class="bg-box">
-      <img src="images/bg1.jpg" alt="" width="500"  height="550">
+      <img src="images/bg1.jpg">
     </div>
 <%@ include file ="header.jsp"%>
 <br><br><br>
@@ -35,7 +35,7 @@
     <div class="col-lg-12 card-margin">
         <div class="card search-form">
             <div class="card-body p-0">
-                <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.free">
+                <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.do">
                     <div class="row">
                         <div class="col-12">
                             <div class="row no-gutters">
