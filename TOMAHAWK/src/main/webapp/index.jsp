@@ -12,6 +12,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
   <link href="css/font-awesome.min.css" rel="stylesheet" />
   <link href="css/style.css" rel="stylesheet" />
+  <link href="css/searchbar.css" rel="stylesheet" />
   <link href="css/responsive.css" rel="stylesheet" />
   <script src="js/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
@@ -25,9 +26,45 @@
 
 <div class="hero_area">
     <div class="bg-box">
-      <img src="images/bg1.jpg" alt="" width="500"  height="550">
+      <img src="images/hero-bg.jpg" alt="" width="500"  height="550">
     </div>
 <%@ include file ="header.jsp"%>
+<br><br><br>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 card-margin">
+        <div class="card search-form">
+            <div class="card-body p-0">
+                <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.free">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row no-gutters">
+                                <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+									<select class="board-search" id="board-search" name="board-search">
+                                        <option value="" selected disabled>-게시판 분류-</option>
+                                        <option value="free">자유게시판</option>
+                                        <option value="shop">식당게시판</option>
+                                        <option value="review">리뷰게시판</option>
+                                        <option value="notice">공지사항</option>
+                                    </select>
+                                </div>
+                                <div class="col-lg-8 col-md-6 col-sm-12 p-0">
+                                    <input type="text" placeholder="Search..." class="board-search" id="search" name="search">
+                                </div>
+                                <div class="col-lg-1 col-md-3 col-sm-12 p-0">
+                                    <button type="submit" class="btn btn-base">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
     <!-- slider section -->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
@@ -38,11 +75,10 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      TOMAHAWK COMMUNITY
+                      Fast Food Restaurant
                     </h1>
                     <p>
-                     전세계의 맛집들을 직접 내돈내산을 한 유저들이 실시간 후기들을 보고
-                     실패 할 수 없는 맛집을 경험하고싶다면 우리 토마호크에 가입하세요.
+                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
                     </p>
                     <div class="btn-box">
                       <a href="" class="btn1">
@@ -60,7 +96,7 @@
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
                     <h1>
-                      TomaHawkEye
+                      Fast Food Restaurant
                     </h1>
                     <p>
                       Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.

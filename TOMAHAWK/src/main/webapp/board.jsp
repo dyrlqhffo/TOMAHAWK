@@ -22,9 +22,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="js/custom.js"></script>
 </head>
-
 <body class="sub_page">
-
   <div class="hero_area">
     <div class="bg-box">
       <img src="images/hero-bg.jpg" alt="">
@@ -33,9 +31,8 @@
     <c:import url="header.jsp"/>
     <!-- end header section -->
   </div>
-
+  
   <!-- food section -->
-
   <section class="food_section layout_padding">
     <div class="container">
       <div class="heading_container heading_center">
@@ -43,9 +40,7 @@
          Board
         </h2>
       </div>
-     
-<form method="post" action="${pageContext.request.contextPath}/FreeBoardList.do" id="freeBoardList">
-
+<form method="post" action="${pageContext.request.contextPath}/FreeBoardList.free" id="freeBoardList">
 	      <ul class="filters_menu">
 	        <li class="active" data-filter="*">All</li>
 	        <li data-filter=".free" id="freeBoardList">자유게시판</li>
@@ -53,7 +48,6 @@
 	        <li data-filter=".pasta">식당 게시판</li>
 	        <li data-filter=".notice">공지사항</li>
 	      </ul>
-
       <div class="filters-content">
         <div class="row grid">
         <c:forEach items="${list}" var="board">
@@ -86,31 +80,25 @@
      </div>
      </form>
      <br>
-     
-     <!--  <form action="WriteBoardForm.do" method="post">-->
-     <!--  <button type="button" onclick="location.href=WriteBoardForm.do" class="btn btn-primary" >글쓰기</button> -->
-     <!-- <button class="btn btn-primary" type="button" onclick="location.href=WriteBoardForm.do">글쓰기</button> </form> -->
-    
-     <form action="WriteBoardForm.do" method="post">
-     <button type="button" class="btn btn-primary">글쓰기</button> 
-     </form>
-    
+	     <form action="WriteBoardForm.free" method="post">
+	     <button type="button" class="btn btn-primary">글쓰기</button> 
+	     </form>
     <ul class="pagination justify-content-center" style="margin:20px 0">
 	<c:if test="${pagination.previousPageGroup}">
-	<li class="page-item"><a class="page-link" href="BoardList.do?pageNo=${pagination.startPageOfPageGroup-1}">이전</a></li>
+	<li class="page-item"><a class="page-link" href="BoardList.free?pageNo=${pagination.startPageOfPageGroup-1}">이전</a></li>
 	</c:if>
 	<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
 		<c:choose>
 			<c:when test="${page==pagination.nowPage}">
-				<li class="page-item active"><a class="page-link" href="BoardList.do?pageNo=${page}">${page}</a></li>
+				<li class="page-item active"><a class="page-link" href="BoardList.free?pageNo=${page}">${page}</a></li>
 			</c:when>
 			<c:otherwise>
-				<li class="page-item"><a class="page-link" href="BoardList.do?pageNo=${page}">${page}</a></li>
+				<li class="page-item"><a class="page-link" href="BoardList.free?pageNo=${page}">${page}</a></li>
 			</c:otherwise>
 		</c:choose>
 	</c:forEach>
 	<c:if test="${pagination.nextPageGroup}">
-  	<li class="page-item"><a class="page-link" href="BoardList.do?pageNo=${pagination.endPageOfPageGroup+1}">다음</a></li>
+  	<li class="page-item"><a class="page-link" href="BoardList.free?pageNo=${pagination.endPageOfPageGroup+1}">다음</a></li>
   	</c:if>
 </ul>
 </div>
