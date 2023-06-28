@@ -23,6 +23,7 @@ public class LoginController implements Controller {
 		}else {
 			HttpSession session=request.getSession();
 			session.setAttribute("mvo", mvo);
+			session.setAttribute("sessionEmail", mvo.getEmail());
 			session.setAttribute("freeBoard", new ArrayList<Long>());
 			return "redirect:index.jsp";
 		}

@@ -376,6 +376,7 @@
 			 document.body.appendChild(f);
 			 f.submit();
 		}
+		
 		function sendNotice(){
           let f = document.createElement('form');
           f.setAttribute('method', 'post');

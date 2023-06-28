@@ -1,4 +1,4 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.free;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -22,6 +22,6 @@ public class DeleteBoardController implements Controller{
 		
         long boardNo = Long.parseLong(request.getParameter("boardNo"));
         BoardDAO.getInstance().deleteBoardByNo(boardNo);
-        return "redirect:FreeBoardList.do";
+        return "redirect:FreeBoardList.free";
 	}
 }

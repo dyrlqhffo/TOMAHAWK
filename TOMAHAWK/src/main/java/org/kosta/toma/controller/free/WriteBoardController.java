@@ -1,4 +1,4 @@
-package org.kosta.toma.controller;
+package org.kosta.toma.controller.free;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
@@ -34,7 +34,7 @@ public class WriteBoardController implements Controller{
         board.setBoardType(boardType);
         BoardDAO.getInstance().addBoard(board);
         // 글작성 완료 후, 게시물 리스트 화면을 제공한다.
-        return "redirect:FreeBoardList.do";		
+        return "redirect:FreeBoardList.free";		
 	}
 
 }
