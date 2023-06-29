@@ -28,7 +28,6 @@
 <body class="sub_page">
 <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
     </div>
    <%@ include file ="../header.jsp"%>
 </div>
