@@ -57,6 +57,8 @@ CREATE TABLE shop(
 	CONSTRAINT shop_fk FOREIGN KEY(email) REFERENCES member(email)
 )
 
+alter table shop add (shop_img CLOB null);
+
 SELECT s.shop_no, s.shop_name, b.content, TO_CHAR(reg_date,'YYYY.MM.DD HH24:MI:SS')
 AS reg_date, b.hits, b.board_type, m.email, m.nick FROM shop s
 INNER JOIN member m ON b.email = m.email
@@ -134,8 +136,11 @@ SELECT * FROM comments;
 SELECT * FROM shop;
 SELECT * FROM bookmark;
 
+delete shop where shop_no = 42
+
 ALTER TABLE comments
 MODIFY (comment_edit_date NULL);
+
 
 
 select count(*) from board where board_type='notice';
