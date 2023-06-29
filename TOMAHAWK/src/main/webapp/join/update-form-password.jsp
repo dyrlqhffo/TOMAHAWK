@@ -12,9 +12,13 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath }/join/join.css">
+<link rel="icon" href="images/favicon1.png">
 <title>비밀번호 수정</title>
 </head>
 <body>
+<div class="container pt-3">	
+	<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
+</div>
 <div class="container pt-3">
 	<form method="post" action="${pageContext.request.contextPath }/UpdatePassword.do">
 <!--                 현재 비밀번호

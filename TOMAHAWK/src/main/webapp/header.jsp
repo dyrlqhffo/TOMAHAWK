@@ -1,4 +1,4 @@
-hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>  
 <%@taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>   
@@ -37,7 +37,7 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	}
 	
 	.bg{
-		background-color: transparent;
+		background-color: rgba(255, 255, 255, 0.75);
 		box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
 		-webkit-box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
 	}
@@ -45,7 +45,7 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	.navbar-light .navbar-nav .nav-link{
 		font-family: 'SUIT-Medium';
 		font-size: 1.1rem;
-		color: white;
+		color: black;
 		letter-spacing: 2px;
 		border: none;
     	background-color: transparent;
@@ -55,20 +55,22 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
 		color: white;
 	}
 	.navbar-light .navbar-nav .active>.nav-link{
-		color: white;
+		color: black;
 	}
 	
 	.nav-link{
 		margin-left: 15px;
 		letter-spacing: 2px;
-		color: white;
+		color:  #ffbe33;
 	}
+	
 	.nav-link a{
 		color: white;
 	}
+	
 	.logo-text{
 		font-size: 1.05rem;
-		color: #545454;
+		color: black;
 		font-family: 'SUIT-Bold';
 		letter-spacing: 2px;
 	}
@@ -86,7 +88,7 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
    }
    
    .modal{
-		background-color: rgba( 255, 255, 255, 0.5 );
+		background-color: transparent;
 	}
 	
 	/* dropdown */
@@ -121,11 +123,12 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	position: fixed; left: 0; top: 0; width: 100%;
 	}
 </style>
+<link rel="icon" href="images/favicon1.png">
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg" id="lnb">
 		<a class="navbar-brand" href="${pageContext.request.contextPath }/">
-	  		<img src="${pageContext.request.contextPath }/images/logo3.png">
+	  		<img src="${pageContext.request.contextPath }/images/logo3.png" style="filter: invert(0);">
 	  		<span class="logo-text">TOMAHAWK</span>
 	  	</a>
 	  	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -135,25 +138,25 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	    	<ul class="navbar-nav">
 	      		<c:if test="${sessionScope.mvo != null }">
 	      		<li class="nav-item active"> 
-	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendBoard()">자유 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendBoard()"><strong>자유 게시판</strong><span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
 
-	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendShop()">식당 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendShop()"><strong>식당 게시판</strong><span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendReview()">리뷰 게시판 <span class="sr-only">(current)</span></a>
+	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendReview()"><strong>리뷰 게시판</strong><span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-	        		 <a class="nav-link" href="javascript:void(0)" onclick="javascript:sendNotice()">공지사항 <span class="sr-only">(current)</span></a>
+	        		 <a class="nav-link" href="javascript:void(0)" onclick="javascript:sendNotice()"><strong>공지사항</strong><span class="sr-only">(current)</span></a>
 	      		</li>
 	      		</c:if>
 	      		<c:choose>
 	      			<c:when test="${sessionScope.mvo != null}">
 						<li class="nav-item">
-			        		<button onclick="myFunction()" class="nav-link dropdown-toggle" href="#">${sessionScope.mvo.nick }님 </button>
+			        		<button onclick="myFunction()" class="nav-link dropdown-toggle" href="#"><strong>${sessionScope.mvo.nick}님</strong> </button>
 			        		<div id="myDropdown" class="dropdown-content">
-							    <a href="${pageContext.request.contextPath }/UpdateMemberForm.do">회원 수정</a>
+							    <a href="${pageContext.request.contextPath }/UpdateMemberForm.do">회원정보 조회/수정</a>
 							    <a href="${pageContext.request.contextPath }/UpdatePasswordForm.do">비밀번호 수정</a>
 							    <a href="${pageContext.request.contextPath }/BookmarkList.do">북마크</a>
 							 </div>
@@ -181,7 +184,7 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
 												<!-- 로그인 윗부분 -->
 												<div class="signForm_top">
 													<div class="signIn_header">
-														<img src="${pageContext.request.contextPath }/images/logo.png">
+														<img src="${pageContext.request.contextPath }/images/logo1.png">
 													</div>
 												</div>
 												
@@ -231,68 +234,11 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
 	    	</ul>
 	  	</div>
 	  	<div class="user_option">
-              <a href="" class="user_link">
-                <i class="fa fa-user" aria-hidden="true"></i>
-              </a>
-              <a class="cart_link" href="#">
-                <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 456.029 456.029" style="enable-background:new 0 0 456.029 456.029;" xml:space="preserve">
-                  <g>
-                    <g>
-                      <path d="M345.6,338.862c-29.184,0-53.248,23.552-53.248,53.248c0,29.184,23.552,53.248,53.248,53.248
-                   c29.184,0,53.248-23.552,53.248-53.248C398.336,362.926,374.784,338.862,345.6,338.862z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M439.296,84.91c-1.024,0-2.56-0.512-4.096-0.512H112.64l-5.12-34.304C104.448,27.566,84.992,10.67,61.952,10.67H20.48
-                   C9.216,10.67,0,19.886,0,31.15c0,11.264,9.216,20.48,20.48,20.48h41.472c2.56,0,4.608,2.048,5.12,4.608l31.744,216.064
-                   c4.096,27.136,27.648,47.616,55.296,47.616h212.992c26.624,0,49.664-18.944,55.296-45.056l33.28-166.4
-                   C457.728,97.71,450.56,86.958,439.296,84.91z" />
-                    </g>
-                  </g>
-                  <g>
-                    <g>
-                      <path d="M215.04,389.55c-1.024-28.16-24.576-50.688-52.736-50.688c-29.696,1.536-52.224,26.112-51.2,55.296
-                   c1.024,28.16,24.064,50.688,52.224,50.688h1.024C193.536,443.31,216.576,418.734,215.04,389.55z" />
-                    </g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                  <g>
-                  </g>
-                </svg>
-              </a>
-              <form class="form-inline">
-                <button class="btn  my-2 my-sm-0 nav_search-btn" type="submit">
-                  <i class="fa fa-search" aria-hidden="true"></i>
-                </button>
-               </form>
+              <a href="${pageContext.request.contextPath}/UpdateMemberForm.do"><img src="${pageContext.request.contextPath}/images/user1.png"></a>
+              <a href="${pageContext.request.contextPath}/BookmarkList.do"><img src="${pageContext.request.contextPath}/images/bookmark1.png"></a>
+              <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/searchcon2.png"></a>
+               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+               
                <c:choose>
 					<c:when test="${sessionScope.mvo != null }">
 						<form action="Logout.do" method="post">
@@ -303,7 +249,7 @@ hldnjsr<%@ page language="java" contentType="text/html; charset=UTF-8"
               			<button type="button" class="nav-link order_online" data-toggle="modal" data-target="#exampleModal">로그인</button>
               		</c:otherwise>
               	</c:choose>
-            </div>
+        </div>
 	</nav>
 	
 	<script>

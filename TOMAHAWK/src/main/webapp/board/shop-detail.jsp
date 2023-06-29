@@ -19,6 +19,7 @@
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="js/custom.js"></script>
+  <link rel="icon" href="images/favicon1.png">
 <title>title</title>
 </head>
 <body class="sub_page">

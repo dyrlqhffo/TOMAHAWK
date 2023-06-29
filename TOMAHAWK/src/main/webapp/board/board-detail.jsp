@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자유게시판 상세조회</title>
+  <link rel="icon" href="images/favicon1.png">
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
   <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
@@ -22,21 +24,21 @@
   <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="js/custom.js"></script>
-<title>자유게시판 상세조회</title>
 </head>
 <body class="sub_page">
-<div class="hero_area">
+  <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
     </div>
-   <%@ include file ="../header.jsp"%>
-</div>
+    <c:import url="../header.jsp"/>
+  </div>
 <div class="container pt-3">
 <hr><br><br>
-<h1>자유게시판 상세조회</h1>
+<h1 align="center"><strong>Free Board</strong></h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
+
 <table class="table table-boarderd">
 		<thead class="thead-light">
 			<tr>
@@ -57,24 +59,51 @@
 		<tr>
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
-			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
+			<button type="button" class="btn btn-outline-danger" onclick="deletePost(event)">삭제</button>			
 			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.do" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
 			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.do" id="updateBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
+		
 			<script type="text/javascript">
-				function deletePost() {
-					if (confirm("정말로 삭제 하시겠습니까?")) {
-						document.getElementById("deleteBoardForm").submit();
-				    }
+				function deletePost(event) {
+				    event.preventDefault();
+				    swal({
+				        title: "게시글 삭제!",
+				        text: "정말로 삭제하시겠습니까?",
+				        icon: "warning",
+				        buttons: true,
+				        dangerMode: true,
+				    })
+				    .then((willDelete) => {
+				        if (willDelete) {
+				            document.getElementById("deleteBoardForm").submit();
+				            swal("게시글이 삭제되었습니다!", {
+				                icon: "success",
+				            });
+				        } else {
+				            swal("삭제가 취소되었습니다!");
+				        }
+				    });
 				}
+				
 				function updatePost() {
-					if (confirm("글을 수정 하시겠습니까?")) {
-						document.getElementById("updateBoardForm").submit();
-				    }
+				    swal({
+				        title: "게시글 수정!",
+				        text: "게시글을 수정하시겠습니까?",
+				        icon: "warning",
+				        buttons: true,
+				        dangerMode: true,
+				    })
+				    .then((willUpdate) => {
+				        if (willUpdate) {
+				            document.getElementById("updateBoardForm").submit();
+				        } 
+				    });
 				}
+				
 			</script>					
 		</td>
 	</tr>
@@ -85,7 +114,6 @@
 				<script type="text/javascript">
 					$(function() {
 						$("#starImg").click(function() {
-							//alert($(this).attr("src"));
 							if($(this).attr("src") == "${pageContext.request.contextPath}/images/like_default.png") {
 								$(this).attr("src", "${pageContext.request.contextPath}/images/heart_pressed.png");
 							} else {
@@ -95,5 +123,10 @@
 					});
 				</script>			
 			</div>
+		</div>
+		<br><br><br><br><br>
+  <!-- footer section -->
+  <c:import url="../footer.jsp"/>
+  <!-- footer section -->
 </body>
 </html>

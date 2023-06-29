@@ -46,6 +46,8 @@ h2 {
   -webkit-box-align: start;
       -ms-flex-align: start;
           align-items: flex-start;
+   padding-top: 0px; 
+   margin-left: 0px;
 }
 
 .heading_container h2 {
@@ -154,7 +156,7 @@ a:focus {
 .navbar-brand span {
   font-weight: bold;
   font-size: 32px;
-  color: #ffffff;
+  color: black;
 }
 
 .custom_nav-container {
@@ -1004,4 +1006,9 @@ a:focus {
 .footer_section .footer-info p a {
   color: inherit;
 }
+
+pre {
+  min-height: 250px;
+}
+
 /*# sourceMappingURL=style.css.map */
