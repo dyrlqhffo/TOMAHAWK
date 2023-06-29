@@ -4,16 +4,17 @@
 <% response.setContentType("text/html; charset=UTF-8"); %>
 <!DOCTYPE html>
 <html lang="lo">
-    <head>
-        <meta charset="UTF-8">
-        <title>정보 수정</title>
-        <link rel="stylesheet" href="${pageContext.request.contextPath }/join/join.css">
-        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    </head>
-    <body>
-    
-		<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
-
+<head>
+   <meta charset="UTF-8">
+   <title>정보 수정</title>
+   <link rel="stylesheet" href="${pageContext.request.contextPath }/join/join.css">
+   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+   <link rel="icon" href="images/favicon1.png">
+</head>
+<body>
+	<div class="container pt-3">	
+		<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
+	</div>
         <!-- wrapper -->
         <div id="wrapper">
 
@@ -22,7 +23,7 @@
         <form action = "${pageContext.request.contextPath }/Update.do" method="post">
         <!-- header -->
         <div id="header">
-            <img src="${pageContext.request.contextPath }/images/logo.png" >
+            <img src="${pageContext.request.contextPath }/images/logo1.png" >
         </div>
                 <!-- 이메일 -->
                 <div>
@@ -75,6 +76,8 @@
 	                    <input type="button" id="btnDelete" value="탈퇴하기" onclick="confirmDeleteMember(event)">
 	                </div>
      			</form>
+     			
+     			<!-- 취소하기 -->
 	                <div class="btn_area">
 	                    <input type="submit" id="btnCancel" value="취소하기" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">
 	                </div>

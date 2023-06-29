@@ -5,13 +5,14 @@ public class ShopVO {
 	private String shopName;
 	private String shopType;
 	private String shopAddress;
+	private String shopImg;
 	private MemberVO member;
 
 	public ShopVO() {
 		super();
 	}
 
-	public ShopVO(long shopNo, String shopName, String shopType, String shopAddress, MemberVO member) {
+	public ShopVO(long shopNo, String shopName, String shopType, String shopAddress,String shopImg, MemberVO member) {
 		super();
 		this.shopNo = shopNo;
 		this.shopName = shopName;
@@ -50,6 +51,14 @@ public class ShopVO {
 
 	public void setShopAddress(String shopAddress) {
 		this.shopAddress = shopAddress;
+	}
+
+	public String getShopImg() {
+		return shopImg;
+	}
+
+	public void setShopImg(String shopImg) {
+		this.shopImg = shopImg;
 	}
 
 	public MemberVO getMember() {

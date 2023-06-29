@@ -9,10 +9,11 @@
         <title>register</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath }/join/join.css">
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <link rel="icon" href="images/favicon1.png">
     </head>
     <body>
     	<div class="d-flex justify-content-end">
-		    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
+			<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
 		</div>
 
         <form action = "${pageContext.request.contextPath }/Register.do" method="post" onsubmit="checkForm(event)">
@@ -91,7 +92,9 @@
 				<div class="btn_area">
                     <input type="submit" id="btnJoin" value="가입하기" onclick="joinSuccess(event);">                 
                 </div>
-
+                <div class="btn_area">
+	                    <input type="submit" id="btnCancel" value="취소하기" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">
+	            </div>
             </div> 
             <!-- content-->
 

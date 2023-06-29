@@ -1,19 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-<title>Footer</title>
-</head>
-<body>
-<div class="container pt-3">
 <footer class="footer_section">
     <div class="container">
       <div class="row">
@@ -23,22 +10,25 @@
               Contact Us
             </h4>
             <div class="contact_link_box">
-              <a href="">
+              <a href="https://www.kosta.or.kr/home">
                 <i class="fa fa-map-marker" aria-hidden="true"></i>
                 <span>
-                  Location
+                  한국소프트웨어기술진흥협회
+                </span><br>
+                <span>
+        		  경기도 성남시 분당구 성남대로 34 하나프라자
                 </span>
-              </a>
-              <a href="">
+              </a><br>
+              <a href="https://www.kosta.or.kr/home">
                 <i class="fa fa-phone" aria-hidden="true"></i>
                 <span>
-                  Call +01 1234567890
+                  Call 031-606-9311
                 </span>
-              </a>
-              <a href="">
+              </a><br>
+              <a href="https://www.kosta.or.kr/home">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
                 <span>
-                  demo@gmail.com
+                  Email : kosta@kosta@or.kr
                 </span>
               </a>
             </div>
@@ -47,10 +37,10 @@
         <div class="col-md-4 footer-col">
           <div class="footer_detail">
             <a href="" class="footer-logo">
-              Feane
+              TomaHawk
             </a>
             <p>
-              Necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with
+            	<img src="${pageContext.request.contextPath}/images/logo1.png" style="filter: invert(1);">
             </p>
             <div class="footer_social">
               <a href="">
@@ -73,13 +63,19 @@
         </div>
         <div class="col-md-4 footer-col">
           <h4>
-            Opening Hours
+            Team Members
           </h4>
           <p>
-            Everyday
+            강재헌
           </p>
           <p>
-            10.00 Am -10.00 Pm
+            금동준
+          </p>
+          <p>
+            문승우
+          </p>
+          <p>
+            엄용식
           </p>
         </div>
       </div>
@@ -93,6 +89,3 @@
       </div>
     </div>
   </footer>
-</div>
-</body>
-</html>

@@ -24,7 +24,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
   
-<title>title</title>
+<title>공지사항</title>
 </head>
 <body class="sub_page">
 <div class="hero_area">

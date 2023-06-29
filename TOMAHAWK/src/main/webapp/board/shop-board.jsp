@@ -21,6 +21,7 @@
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="js/custom.js"></script>
+  <link rel="icon" href="images/favicon1.png">
 </head>
 <body class="sub_page">
   <div class="hero_area">
@@ -48,14 +49,20 @@
       <div class="filters-content">
         <div class="row grid">
         <c:forEach items="${shoplist}" var="shop">
-          <div class="col-sm-6 col-lg-4 all">
+          <div class="col-sm-6 col-lg-4 all" onclick='location.href="FindShopByNo.do?no=${shop.shopNo}"'>
             <div class="box">
               <div>
                 <div class="img-box">
-                  <img src="images/f1.png" alt="">
-                </div>
+                <c:choose>
+                <c:when test="${shop.shopImg == null}">
+                	<img src="images/f1.png" alt="">
+                </c:when>
+                <c:otherwise>
+                	${shop.shopImg}
+                </c:otherwise>
+                </c:choose></div>
                 <div class="detail-box">
-                  <h5><a href="FindShopByNo.do?no=${shop.shopNo}">${shop.shopName}</a></h5>
+                  <h5>${shop.shopName}</h5>
                 </div>
               </div>
             </div>

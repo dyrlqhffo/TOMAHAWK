@@ -8,6 +8,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+<link href="css/style.css" rel="stylesheet" />
+<link href="css/responsive.css" rel="stylesheet" />
 <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.4/dist/jquery.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
@@ -27,26 +29,28 @@
     padding-bottom: 100px; /* Adjust as needed */
 }
 </style>
+<link rel="icon" href="images/favicon1.png">
 <title>자유게시판 글작성</title>
 </head>
 <body>
 <br>
-<form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">
 	<div class="d-flex justify-content-end">
-    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
-    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/bookmark.png"></a>
-    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/SEARCH.png"></a>
-	</div>
+	<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/UpdateMemberForm.do"><img src="${pageContext.request.contextPath}/images/user1.png"></a>&nbsp;&nbsp;&nbsp;
+    <a href="${pageContext.request.contextPath}/BookmarkList.do"><img src="${pageContext.request.contextPath}/images/bookmark1.png"></a>&nbsp;&nbsp;&nbsp;
+    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/searchcon2.png"></a>
+	</div><br>
               <div class="card">
                 <div class="card-body">
+                <form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
                   <h1 class="card-title"><span style='font-size:100px;'>&#128221;</span>자유게시판 글쓰기</h1>
                   <hr style="border-top: 3px solid gray"> 
                   <div class="alert alert-warning" role="alert">
                     아래의 입력란을 채워주세요.
                   </div><br>
-                  <form class="forms-sample" method="post" action="${pageContext.request.contextPath}/WriteBoard.free">
+                  <form class="forms-sample" method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
                     <div class="form-group row">
                       <label for="title" class="col-sm-3 col-form-label"><strong>&#128204;글 제목</strong></label>
                       <div class="col-sm-9">
@@ -87,8 +91,8 @@
                       </div>
                     </div>
 					<div class="text-center">
-			  			<button type="button" onclick="addBoard()" class="btn btn-primary">완료</button>
-						<button type="button" onclick="location.href='${pageContext.request.contextPath}/board.jsp'" class="btn btn-outline-secondary">취소</button>			
+			  			<button type="button" onclick="addBoard(event)" class="btn btn-primary">완료</button>
+						<button type="button" onclick="javascript:history.back()" class="btn btn-outline-secondary">취소</button>				
 					</div>
                   </form>
                 </div>
@@ -97,16 +101,42 @@
 </fieldset>
 
 <script type="text/javascript">
-	function addBoard() {
-	    if(confirm("게시물을 업로드 하시겠습니까?")){
-	        document.forms[0].submit();
-	    }
-	}
-
 	$(document).ready(function() {
 	    $('select').niceSelect();
 	    //$('.nice-select .list').niceScroll();
 	  });
+	
+	function addBoard(event) {
+	    event.preventDefault();
+	    var boardType = document.getElementById("boardType").value;
+	    if(boardType == "") {
+	        swal({
+	            title: "게시판 분류!",
+	            text: "게시판 분류를 선택해주세요!",
+	            icon: "warning",
+	        });
+	        return;
+	    }
+	    swal({
+	        title: "작성 완료!",
+	        text: "게시글을 올리시겠습니까?",
+	        icon: "info",
+	        buttons: true,
+	        dangerMode: false,
+	    })
+	    .then((willUpdate) => {
+	        if (willUpdate) {
+	            document.forms[0].submit();
+	            swal("글이 성공적으로 업로드되었습니다!", {
+	                icon: "success",
+	            });
+	        } else {
+	            swal("게시글 업로드가 취소되었습니다!");
+	        }
+	    });
+	}
+
 </script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </body>
 </html>

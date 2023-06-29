@@ -46,9 +46,9 @@ public class ShopDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("SELECT shop_no,shop_name,shop_type,shop_address ");
+			sql.append("SELECT shop_no,shop_name,shop_type,shop_address,shop_img ");
 			sql.append(
-					"FROM (SELECT row_number() over(ORDER BY shop_no DESC) as rnum,shop_no,shop_name,shop_type,shop_address FROM shop) ");
+					"FROM (SELECT row_number() over(ORDER BY shop_no DESC) as rnum,shop_no,shop_name,shop_type,shop_address,shop_img FROM shop) ");
 			sql.append("where rnum between ? and ?");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setLong(1, pagination.getStartRowNumber());
@@ -61,6 +61,7 @@ public class ShopDAO {
 				svo.setShopName(rs.getString(2));
 				svo.setShopType(rs.getString(3));
 				svo.setShopAddress(rs.getString(4));
+				svo.setShopImg(rs.getString(5));
 				list.add(svo);
 			}
 		} finally {
@@ -96,7 +97,7 @@ public class ShopDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("SELECT s.shop_no,s.shop_name,s.shop_type,s.shop_address,m.nick,m.email ");
+			sql.append("SELECT s.shop_no,s.shop_name,s.shop_type,s.shop_address,s.shop_img,m.nick,m.email ");
 			sql.append("FROM  shop s ");
 			sql.append("INNER JOIN member m ON s.email=m.email ");
 			sql.append("WHERE shop_no=?");
@@ -109,9 +110,10 @@ public class ShopDAO {
 				svo.setShopName(rs.getString(2));
 				svo.setShopType(rs.getString(3));
 				svo.setShopAddress(rs.getString(4));
+				svo.setShopImg(rs.getString(5));
 				MemberVO mvo = new MemberVO();
-				mvo.setNick(rs.getString(5));
-				mvo.setEmail(rs.getString(6));
+				mvo.setNick(rs.getString(6));
+				mvo.setEmail(rs.getString(7));
 				svo.setMember(mvo);
 			}
 		} finally {
@@ -126,13 +128,14 @@ public class ShopDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sql = new StringBuilder();
-			sql.append("insert into shop(shop_no,shop_name,shop_type,shop_address,email) ");
-			sql.append("values(toma_shop_seq.nextval,?,?,?,?) ");
+			sql.append("insert into shop(shop_no,shop_name,shop_type,shop_address,email,shop_img) ");
+			sql.append("values(toma_shop_seq.nextval,?,?,?,?,?) ");
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, svo.getShopName());
 			pstmt.setString(2, svo.getShopType());
 			pstmt.setString(3, svo.getShopAddress());
 			pstmt.setString(4, svo.getMember().getEmail());
+			pstmt.setString(5, svo.getShopImg());
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
@@ -158,12 +161,13 @@ public class ShopDAO {
 		PreparedStatement pstmt = null;
 		try {
 			con = dataSource.getConnection();
-			String sql = "UPDATE shop SET shop_name=?,shop_type=?,shop_address=? WHERE shop_no=?";
+			String sql = "UPDATE shop SET shop_name=?,shop_type=?,shop_address=?,shop_img=? WHERE shop_no=?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setString(1, svo.getShopName());
 			pstmt.setString(2, svo.getShopType());
 			pstmt.setString(3, svo.getShopAddress());
 			pstmt.setLong(4, svo.getShopNo());
+			pstmt.setString(5, svo.getShopImg());
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);

@@ -13,7 +13,7 @@
   <script src="${pageContext.request.contextPath}/js/summernote/summernote-lite.js"></script>
   <script src="${pageContext.request.contextPath}/js/summernote/summernote-ko-KR.js"></script>
   <link rel="stylesheet" href="${pageContext.request.contextPath}/css/summernote/summernote-lite.css">
-  
+  <link rel="icon" href="images/favicon1.png">
 <title>Insert title here</title>
 </head>
 <body>

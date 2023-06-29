@@ -2,9 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <c:set var="pageTitle" value="비밀번호 찾기" />
-
 <script src="http://code.jquery.com/jquery.min.js"></script>
 <link href="find_pw.css" rel="stylesheet" />
+<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
 <div class="login_content">
 	<div class="signIn_form">
 		<div class="signForm_top">

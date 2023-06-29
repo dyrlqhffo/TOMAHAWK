@@ -22,9 +22,9 @@
   <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
   <script src="js/custom.js"></script>
+  <link rel="icon" href="images/favicon1.png">
 </head>
 <body>
-
 <div class="hero_area">
     <div class="bg-box">
       <img src="images/bg1.jpg">
@@ -90,7 +90,6 @@ function checkIfType() {
 }
 </script>
 
-    <!-- slider section -->
     <section class="slider_section ">
       <div id="customCarousel1" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
@@ -102,74 +101,47 @@ function checkIfType() {
                     <h1>
                       TOMAHAWK COMMUNITY
                     </h1>
-                    <p>
-                     전세계의 맛집들을 직접 내돈내산을 한 유저들이 실시간 후기들을 보고
-                     실패 할 수 없는 맛집을 경험하고싶다면 우리 토마호크에 가입하세요.
-                    </p>
+                    <div style="border-radius:10px; background-color: rgba(255, 255, 255, 0.75); color:black; padding:10px;">
+					  <p>
+					  전세계의 맛집들을 직접 내돈내산을 한 유저들이 실시간 후기들을 보고
+					  실패 할 수 없는 맛집을 경험하고 싶다면 우리 토마호크에 가입하세요.
+					  </p>
+					</div>
                     <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
-                      </a>
+                      <a href="${pageContext.request.contextPath}/join/join.jsp" class="btn1">회원가입</a>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="carousel-item ">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 col-lg-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      Fast Food Restaurant
-                    </h1>
-                    <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <div class="container ">
-              <div class="row">
-                <div class="col-md-7 col-lg-6 ">
-                  <div class="detail-box">
-                    <h1>
-                      TomaHawk Board
-                    </h1>
-                    <p>
-                      Doloremque, itaque aperiam facilis rerum, commodi, temporibus sapiente ad mollitia laborum quam quisquam esse error unde. Tempora ex doloremque, labore, sunt repellat dolore, iste magni quos nihil ducimus libero ipsam.
-                    </p>
-                    <div class="btn-box">
-                      <a href="" class="btn1">
-                        Order Now
-                      </a>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="container">
-          <ol class="carousel-indicators">
-            <li data-target="#customCarousel1" data-slide-to="0" class="active"></li>
-            <li data-target="#customCarousel1" data-slide-to="1"></li>
-            <li data-target="#customCarousel1" data-slide-to="2"></li>
-          </ol>
         </div>
       </div>
     </section>
-    <!-- end slider section -->
   </div>
-
+ 
+      <div class="heading_container heading_center">
+		<c:choose>
+			<c:when test="${sessionScope.mvo == null}">
+	  				<a href="${pageContext.request.contextPath}/index.jsp" onclick="notMemberAlert(event);"><img src="${pageContext.request.contextPath}/images/midBanner.png" align="middle"></a>
+			</c:when>
+			<c:otherwise>
+	  				<a href="${pageContext.request.contextPath}/FindShopList.do"><img src="${pageContext.request.contextPath}/images/midBanner.png" align="middle"></a>
+			</c:otherwise>
+		</c:choose>
+	</div>
+  
+  <!-- footer section -->
+  <c:import url="footer.jsp"/>
+  <!-- footer section -->
+ <script type="text/javascript">
+ function notMemberAlert(event) {
+		event.preventDefault();
+		swal('비로그인 상태!', "기능을 이용하려면 로그인해주시기 바랍니다.", 'warning')
+			.then(function() {
+				location.href = "index.jsp";
+			});
+	}
+ </script>
 </body>
 </html>
