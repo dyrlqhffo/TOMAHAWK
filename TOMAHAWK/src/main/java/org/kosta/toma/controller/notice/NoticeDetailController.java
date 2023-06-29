@@ -27,7 +27,7 @@ public class NoticeDetailController implements Controller {
 		ArrayList<Long> freeBoard=(ArrayList<Long>) session.getAttribute("freeBoard");
 		boolean existNo=freeBoard.contains(no);
 		if(existNo == false && !vo.getMember().getNick().equalsIgnoreCase(member.getNick())) {
-			System.out.println(existNo+"이미 조회한 게시글이므로 증가x");
+			//System.out.println(existNo+"이미 조회한 게시글이므로 증가x");
 			NoticeBoardDAO.getInstance().updateHits(no);
 			freeBoard.add(no);
 			

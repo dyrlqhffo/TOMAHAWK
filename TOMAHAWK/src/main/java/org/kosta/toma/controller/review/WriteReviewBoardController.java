@@ -18,7 +18,6 @@ public class WriteReviewBoardController implements Controller{
 			return "redirect:error.jsp";
 		}
 		MemberVO member = (MemberVO)session.getAttribute("mvo");
-		System.out.println(member);
 		String title = request.getParameter("title");
 		String type = request.getParameter("type");
 		String content = request.getParameter("content");

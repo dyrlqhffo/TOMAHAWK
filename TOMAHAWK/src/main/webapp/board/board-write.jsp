@@ -29,15 +29,9 @@
 </style>
 <title>자유게시판 글작성</title>
 </head>
-<<<<<<< HEAD
-<body>
-<br>
-
-=======
 <body>
 <br>
 <form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
->>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">
 	<div class="d-flex justify-content-end">

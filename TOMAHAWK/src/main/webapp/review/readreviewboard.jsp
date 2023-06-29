@@ -71,10 +71,10 @@
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
 			<button type="button" class="btn btn-outline-primary" id="reviewList" onclick="reviewList()">목록</button>	
-			<form action="${pageContext.request.contextPath}/DeleteReviewBoard.do?no=${board.boardNo}" method="post" id="deleteReview">
+			<form action="${pageContext.request.contextPath}/DeleteReviewBoard.do?no=${board.boardNo}" method="post" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
-			<form action="${pageContext.request.contextPath}/UpdateReviewBoardForm.do?no=${board.boardNo}" method="post" id="updateReview">
+			<form action="${pageContext.request.contextPath}/UpdateReviewBoardForm.do?no=${board.boardNo}" method="post" id="updateBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
 			<script type="text/javascript">

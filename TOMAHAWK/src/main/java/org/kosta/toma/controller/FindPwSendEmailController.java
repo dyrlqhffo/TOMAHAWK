@@ -58,7 +58,7 @@ public class FindPwSendEmailController implements Controller {
 			}
 		}
 		String AuthenticationKey = temp.toString();
-		System.out.println(AuthenticationKey);
+		//System.out.println(AuthenticationKey);
 		mvo.setPassword(AuthenticationKey);
 		MemberDAO.getInstance().updatePw(email, AuthenticationKey);
 		Session session = Session.getDefaultInstance(props, new javax.mail.Authenticator() {
@@ -77,7 +77,7 @@ public class FindPwSendEmailController implements Controller {
 			// 메일 내용
 			msg.setText("임시비밀 번호는 " + temp + " 입니다. \n임시비밀번호로 로그인 후 꼭 비밀번호를 바꿔주세요.");
 			Transport.send(msg);
-			System.out.println("이메일 전송");
+			//System.out.println("이메일 전송");
 			PrintWriter out = response.getWriter();
 		} catch (Exception e) {
 			e.printStackTrace();
