@@ -79,7 +79,7 @@ img{
 	color: #545454;
 	margin-top: 0.4rem;
 	font-family: 'SUIT-Light';
-	color: #00AFFF;
+	color: rgb(0, 0, 0);
 }
 
 .inputText{
@@ -117,14 +117,14 @@ input{
 	padding: 1rem 2.8rem;
 	border: none;
 	cursor: pointer;
-	background-color: #FF9500;
+	background-color: #ffbe33;
 	font-family: 'SUIT-Bold';
 }
 
 .login_submit_text{
 	display: inline-block;
 	font-size: 20px;
-	color: #2C952C;
+	color: white;
 }
 
 /* signForm_bottom */

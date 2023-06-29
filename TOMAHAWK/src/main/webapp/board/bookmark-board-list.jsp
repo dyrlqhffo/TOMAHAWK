@@ -51,7 +51,7 @@
 					<tr>
 						<td>${bookmark.bookmarkNo}</td>
 						<td>
-								<a href="FindShopByNo.shop?no=${bookmark.shop.shopNo}">${bookmark.shop.shopName}</a>
+								<a href="FindShopByNo.do?no=${bookmark.shop.shopNo}">${bookmark.shop.shopName}</a>
 						</td>
 					</tr>
 				</c:forEach>
@@ -65,7 +65,7 @@
 				<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
 					<c:choose>
 						<c:when test="${page == pagination.nowPage}"> 
-							<li class="page-item active"><a class="page-link" href="BookmarkList.book?pageNo=${page}">${page}</a></li>
+							<li class="page-item active"><a class="page-link" href="BookmarkList.do?pageNo=${page}">${page}</a></li>
 						</c:when>
 						<c:otherwise>
 							<li class="page-item"><a class="page-link" href="BookmarkList.do?pageNo=${page}">${page}</a></li>

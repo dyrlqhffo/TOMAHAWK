@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BoardDAO;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
@@ -34,7 +35,7 @@ public class UpdateBoardController implements Controller {
         board.setMember(member);
         board.setBoardType(boardType);
         BoardDAO.getInstance().updateBoard(board);
-        return "redirect:FreeBoardList.free";
+        return "redirect:FreeBoardList.do";
 	}
 }
 

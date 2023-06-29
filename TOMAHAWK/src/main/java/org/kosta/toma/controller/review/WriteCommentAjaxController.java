@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BoardDAO;
 import org.kosta.toma.model.dao.ReviewCommentDAO;
 import org.kosta.toma.model.vo.BoardVO;
@@ -47,7 +48,7 @@ public class WriteCommentAjaxController implements Controller{
 		}
 		request.setAttribute("responsebody", json);
 		
-		return "AjaxViewSecond";
+		return "AjaxView";
 
 		}
 	}

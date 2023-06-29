@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.ShopDAO;
 import org.kosta.toma.model.vo.MemberVO;
 import org.kosta.toma.model.vo.ShopVO;
@@ -27,8 +28,8 @@ public class WriteShopController implements Controller{
 		if(request.getMethod().equals("POST")==false) 
 			throw new ServletException("POST방식만 가능합니다");
 		if(session==null||session.getAttribute("mvo")==null)
-			return "redirect:FindShopList.shop";
-		return "redirect:FindShopList.shop";
+			return "redirect:FindShopList.do";
+		return "redirect:FindShopList.do";
 	}
 
 }

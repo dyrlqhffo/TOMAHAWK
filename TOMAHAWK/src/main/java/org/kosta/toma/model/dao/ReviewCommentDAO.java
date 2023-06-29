@@ -139,13 +139,15 @@ public class ReviewCommentDAO {
 		
 		try {
 			con = dataSource.getConnection();
-			String sql = "delete from comments where comment_No=?";
+			String sql = "delete from comments where comment_no=?";
 			ps = con.prepareStatement(sql);
 			ps.setLong(1, commentNo);
 			ps.executeUpdate();
+			
 		}finally {
 			closeAll(ps, con);
 		}
+		
 	}
 	
 	

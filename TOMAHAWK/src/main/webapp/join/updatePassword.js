@@ -72,3 +72,26 @@ function sendit() {
 	f.action = "${pageContext.request.contextPath }/main.jsp"
     f.submit();
 }
+
+function confirmUpdatePassword(event) {
+    event.preventDefault();
+    swal({
+        title: "비밀번호 수정!",
+        text: "정말로 수정하시겠습니까?",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+    })
+    .then((willUpdate) => {
+        if (willUpdate) {
+            swal("비밀번호 수정이 완료되었습니다!", {
+                icon: "success",
+            })
+            .then(() => {
+                document.querySelector("form[action$='Update.do']").submit();
+            });
+        } else {
+            swal("수정이 취소되었습니다!");
+        }
+    });
+}

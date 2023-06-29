@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.json.JSONObject;
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.ReviewCommentDAO;
 
 public class DeleteCommentAjaxController implements Controller {
@@ -30,6 +31,6 @@ public class DeleteCommentAjaxController implements Controller {
 		
 		request.setAttribute("responsebody", json);
 		
-		return "AjaxViewSecond";
+		return "AjaxView";
 	}
 }

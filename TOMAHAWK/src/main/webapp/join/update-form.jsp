@@ -8,9 +8,11 @@
         <meta charset="UTF-8">
         <title>정보 수정</title>
         <link rel="stylesheet" href="${pageContext.request.contextPath }/join/join.css">
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     </head>
     <body>
-
+    
+		<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
 
         <!-- wrapper -->
         <div id="wrapper">
@@ -59,26 +61,27 @@
                     </span>
                     <span class="error_next_box"></span>    
                 </div>
-                
-
+				<br><br>
                 <!-- 수정하기 -->
 				<div class="btn_area">
-                    <input type="submit" id="btnJoin" value="수정하기">                 
+                    <input type="submit" id="btnJoin" value="수정하기" onclick="confirmUpdateMemberInfo(event)">
                 </div>
                 </form>
-                <form action="${pageContext.request.contextPath }/DeleteMember.do" method="post">
-            	<script src="${pageContext.request.contextPath }/join/join.js"></script>
-					<div class="btndel_area">
+                
+                <!-- 탈퇴하기 -->
+                <form id="deleteMember" action="${pageContext.request.contextPath }/DeleteMember.do" method="post">
+					<div class="btn_area">
 						<input type="hidden" name="email" id="email" value="${sessionScope.mvo.email }">
-	                    <input type="submit" id="btnDelete" value="탈퇴하기">
+	                    <input type="button" id="btnDelete" value="탈퇴하기" onclick="confirmDeleteMember(event)">
 	                </div>
      			</form>
-                </div> 
-            <!-- content-->
+	                <div class="btn_area">
+	                    <input type="submit" id="btnCancel" value="취소하기" onclick="location.href='${pageContext.request.contextPath}/index.jsp'">
+	                </div>
+	         </div>
+                
+            <!-- content<div class="btndel_area"> </div> -->
         </div> 
-				
-    			<!-- 탈퇴하기 -->
-    			
-            
+            	<script src="${pageContext.request.contextPath }/join/join.js"></script>
 </body>
 </html>

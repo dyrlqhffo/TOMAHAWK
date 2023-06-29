@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.toma.controller.AjaxViewServlet;
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BookmarkDAO;
 
 
@@ -24,7 +25,7 @@ public class CheckBookmarkController implements Controller {
 			result = "ok";
 		}
 		request.setAttribute("responsebody", result);
-		return "AjaxView1";
+		return "AjaxView";
 	}
 
 }

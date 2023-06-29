@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.ReviewBoardDAO;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
@@ -30,7 +31,7 @@ public class UpdateReviewBoardController implements Controller{
 		BoardVO board = new BoardVO(no, member,title, content, null, null, 0, type);
 		ReviewBoardDAO.getInstance().updateReviewBoard(board);
 		
-		return "ReadReviewBoard.review";
+		return "ReadReviewBoard.do";
 	}
 
 }

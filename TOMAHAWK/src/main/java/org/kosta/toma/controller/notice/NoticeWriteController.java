@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.NoticeBoardDAO;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
@@ -25,7 +26,7 @@ public class NoticeWriteController implements Controller {
 	  BoardVO vo= new BoardVO(0,member,title,content,null,null,0,null);
 	  NoticeBoardDAO.getInstance().WriteBoard(vo);
 	  
-	return "redirect:NoticeBoardList.notice";
+	return "redirect:NoticeBoardList.do";
 	  
 }
 }

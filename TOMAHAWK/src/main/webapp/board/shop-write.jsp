@@ -29,7 +29,7 @@
 	<c:import url="../header.jsp"/>
 </div>
 <div class="container pt-3">
-<form method="post" action="WriteShop.shop">
+<form method="post" action="WriteShop.do">
 		<table class="table">
 			<tr>
 				<td>

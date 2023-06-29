@@ -1,6 +1,5 @@
 /* 레이아웃 틀 */
 
-
 html {
     height: 100%;
 }
@@ -11,6 +10,11 @@ body {
     background: #f5f6f7;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
+
+fieldset {
+    margin-bottom: 50px; /* Adjust as needed */
+}
+
 #logo {
     width: 240px;
     height: 44px;
@@ -83,7 +87,6 @@ input {
     padding-right: 40px;
 }
 
-
 .pswdImg {
     width: 18px;
     height: 20px;
@@ -94,8 +97,6 @@ input {
     margin-top: -10px;
     cursor: pointer;
 }
-
-
 
 select {
     width: 100%;
@@ -110,7 +111,6 @@ select {
     cursor: default;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-
 
 .error_next_box {
     margin-top: 9px;
@@ -130,18 +130,16 @@ select {
 
 
 .btn_area {
-    margin: 30px 0 91px;
+    margin: 30px 0 10px;
 }
-.btndel_area {
-    margin: 30px 0 91px;
-}
+
 #btnJoin {
     width: 100%;
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
     color: #fff;
-    background-color: #00FF7F;
+    background-color: #ffbe33;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
@@ -149,13 +147,29 @@ select {
     src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraBold.woff2') format('woff2');
     font-style: normal;
 }
+
 #btnDelete {
     width: 100%;
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: #fff;
+    color: white;
     background-color: red;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+    font-family: 'SUIT-ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-ExtraBold.woff2') format('woff2');
+    font-style: normal;
+}
+
+#btnCancel {
+    width: 100%;
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #c0c0c0;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;

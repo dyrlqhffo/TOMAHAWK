@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BookmarkDAO;
 import org.kosta.toma.model.dao.MemberDAO;
 import org.kosta.toma.model.vo.BookmarkVO;
@@ -30,7 +31,7 @@ public class SetBookmarkController implements Controller {
 		 * if(session==null||session.getAttribute("mvo")==null) return
 		 * "redirect:FindShopList.shop";
 		 */
-		return "redirect:FindShopList.shop?no="+no;
+		return "redirect:FindShopList.do?no="+no;
 	}
 
 }

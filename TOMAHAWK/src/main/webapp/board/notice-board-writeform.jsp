@@ -17,7 +17,7 @@
 <div class="container pt-3">
 <h1>공지사항 글쓰기</h1>
 		
-<form method="post" action="${pageContext.request.contextPath}/NoticeWrite.notice">
+<form method="post" action="${pageContext.request.contextPath}/NoticeWrite.do">
 	<input type="hidden" name="boardNo">
 
 	<fieldset>

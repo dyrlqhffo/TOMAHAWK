@@ -17,7 +17,7 @@
 <div class="container pt-3">
 <h1>공지사항 수정</h1>
 		
-<form method="post" action="${pageContext.request.contextPath}/NoticeUpdate.notice">
+<form method="post" action="${pageContext.request.contextPath}/NoticeUpdate.do">
 	<input type="hidden" name="boardNo" value="${board.boardNo}">
 
 	<fieldset>
