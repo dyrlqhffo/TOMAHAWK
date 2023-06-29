@@ -57,6 +57,8 @@ CREATE TABLE shop(
 	CONSTRAINT shop_fk FOREIGN KEY(email) REFERENCES member(email)
 )
 
+alter table shop add (shop_img CLOB null);
+
 SELECT s.shop_no, s.shop_name, b.content, TO_CHAR(reg_date,'YYYY.MM.DD HH24:MI:SS')
 AS reg_date, b.hits, b.board_type, m.email, m.nick FROM shop s
 INNER JOIN member m ON b.email = m.email
@@ -134,8 +136,11 @@ SELECT * FROM comments;
 SELECT * FROM shop;
 SELECT * FROM bookmark;
 
+delete shop where shop_no = 42
+
 ALTER TABLE comments
 MODIFY (comment_edit_date NULL);
+
 
 
 select count(*) from board where board_type='notice';
@@ -190,9 +195,23 @@ AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b
 INNER JOIN member m ON b.email = m.email
 WHERE board_type = 'free' AND title = '도배4';
 
+<<<<<<< HEAD
+SELECT s.shop_no, s.shop_name, s.shop_type, s.shop_address, m.nick
+FROM (SELECT row_number() over(ORDER BY shop_no DESC) AS rnum, shop_no, shop_name, shop_type, shop_address, email FROM shop) s
+INNER JOIN member m ON s.email=m.email
+WHERE shop_name = '역전우동';
+
+SELECT s.shop_no, s.shop_name, s.shop_type, s.shop_address, m.nick 
+AS shop_no, shop_name, shop_type, shop_address, nick FROM shop s 
+INNER JOIN member m ON s.email=m.email WHERE shop_name = '역전우동';
+
+=======
 UPDATE board SET title = '파이팅', content = '일주일만 파이팅', board_type = 'free', edit_date = sysdate 
 WHERE board_no = 24;
+>>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
 
+
+WHERE board_type = 'shop' AND shop_name = '역전우동';
 
 UPDATE member SET admin=2 WHERE email='kjoonie@naver.com';
 UPDATE member SET name='금동준' WHERE email='kjoonie@naver.com';

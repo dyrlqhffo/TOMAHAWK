@@ -18,6 +18,7 @@ public class ShopVO {
 		this.shopName = shopName;
 		this.shopType = shopType;
 		this.shopAddress = shopAddress;
+		this.shopImg = shopImg;
 		this.member = member;
 	}
 
