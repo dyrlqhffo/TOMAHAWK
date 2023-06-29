@@ -34,6 +34,7 @@
 </head>
 <body>
 <br>
+<form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">
 	<div class="d-flex justify-content-end">

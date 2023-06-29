@@ -18,7 +18,7 @@ public class ReadBoardController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         HttpSession session = request.getSession();
         if(session == null || session.getAttribute("mvo") == null) {
-            System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다**");
+            //System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다**");
             return "redirect:index.jsp";
         }
 
@@ -30,9 +30,9 @@ public class ReadBoardController implements Controller {
         
         boolean existNo = board.contains(boardNo);
         if(existNo) {
-            System.out.println(existNo+"읽은 글");
+            //System.out.println(existNo+"읽은 글");
         }else {
-            System.out.println(existNo+"조회수 증가");
+            //System.out.println(existNo+"조회수 증가");
             //조회수 증가
             BoardDAO.getInstance().countHits(boardNo);
             board.add(boardNo);
