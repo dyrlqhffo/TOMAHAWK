@@ -5,10 +5,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.json.JSONObject;
+import org.kosta.toma.controller.AjaxViewServlet;
 import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BookmarkDAO;
-import org.kosta.toma.model.dao.ShopDAO;
 
+@SuppressWarnings("unused")
 public class DeleteBookmarkController implements Controller{
 	
 	@Override
@@ -22,6 +24,10 @@ public class DeleteBookmarkController implements Controller{
 		String email = (String) session.getAttribute("sessionEmail");
 		System.out.println(no+" "+email );
 		BookmarkDAO.getInstance().DeleteBookmark(email, no);
-		return "redirect:FindShopList.do";
+		JSONObject json = new JSONObject();
+		json.put("jsonResult", "ok");
+		request.setAttribute("responsebody", json);
+		
+		return "AjaxView";
 	}
 }
