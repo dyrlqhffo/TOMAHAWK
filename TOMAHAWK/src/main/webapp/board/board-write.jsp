@@ -44,6 +44,7 @@
 	</div><br>
               <div class="card">
                 <div class="card-body">
+                <form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
                   <h1 class="card-title"><span style='font-size:100px;'>&#128221;</span>자유게시판 글쓰기</h1>
                   <hr style="border-top: 3px solid gray"> 
                   <div class="alert alert-warning" role="alert">

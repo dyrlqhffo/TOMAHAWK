@@ -19,11 +19,13 @@ public class WriteShopController implements Controller{
 		String shopName = request.getParameter("shopName");
 		String shopType = request.getParameter("shopType");
 		String shopAddress = request.getParameter("shopAddress");
+		String shopImg = request.getParameter("shopImg");
 		MemberVO mvo = (MemberVO)session.getAttribute("mvo");
 		svo.setMember(mvo);
 		svo.setShopName(shopName);
 		svo.setShopType(shopType);
 		svo.setShopAddress(shopAddress);
+		svo.setShopImg(shopImg);
 		ShopDAO.getInstance().writeShop(svo);
 		if(request.getMethod().equals("POST")==false) 
 			throw new ServletException("POST방식만 가능합니다");

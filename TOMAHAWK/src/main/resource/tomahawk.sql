@@ -33,6 +33,7 @@ values(toma_board_seq.nextval,'hellojava@naver.com','안녕4','하이',sysdate,s
 select * from BOOKMARK
 select count(*) from BOOKMARK where email='dnflcld123@naver.com' and shop_no=23;
 
+select * from member;
 
 select sysdate from dual
 
@@ -55,6 +56,8 @@ CREATE TABLE shop(
 	email VARCHAR2(25) NOT NULL,
 	CONSTRAINT shop_fk FOREIGN KEY(email) REFERENCES member(email)
 )
+
+alter table shop add (shop_img CLOB null);
 
 SELECT s.shop_no, s.shop_name, b.content, TO_CHAR(reg_date,'YYYY.MM.DD HH24:MI:SS')
 AS reg_date, b.hits, b.board_type, m.email, m.nick FROM shop s
@@ -133,8 +136,11 @@ SELECT * FROM comments;
 SELECT * FROM shop;
 SELECT * FROM bookmark;
 
+delete shop where shop_no = 42
+
 ALTER TABLE comments
 MODIFY (comment_edit_date NULL);
+
 
 
 select count(*) from board where board_type='notice';

@@ -18,11 +18,13 @@ public class UpdateShopController implements Controller {
 		String shopType = request.getParameter("shopType");
 		String shopName = request.getParameter("shopName");
 		String shopAddress = request.getParameter("shopAddress");
+		String shopImg = request.getParameter("shopImg");
 		ShopVO svo = new ShopVO();
 		svo.setShopNo(shopNo);
 		svo.setShopName(shopName);
 		svo.setShopType(shopType);
 		svo.setShopAddress(shopAddress);
+		svo.setShopImg(shopImg);
 		ShopDAO.getInstance().updateShop(svo);
 		if(request.getMethod().equals("POST")==false) 
 			throw new ServletException("POST방식만 가능합니다");

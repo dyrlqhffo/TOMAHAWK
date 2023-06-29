@@ -124,9 +124,110 @@
 				</script>			
 			</div>
 		</div>
-		<br><br><br><br><br>
+		<br><br>
+
+<div class="card" id="comments">
+  <div class="card-body">
+    <!-- 댓글 작성 창 -->
+    <a href="#comment"></a>
+    <form>
+      <div class="form-group">
+        <label>댓글 작성</label>
+        <textarea class="form-control" id="comment" rows="3"></textarea>
+      </div>
+      <input type="hidden" name="no" id="no" value="${board.boardNo}">
+      <button type="button" class="btn btn-primary" id="writeComment-btn">등록</button>
+    </form>
+  
+  <!-- 댓글 목록 -->
+ <ul class="list-unstyled" id="insertNewComment">
+  <c:forEach items="${commentList}" var="comment">
+    <li class="media mt-4 commentLi">
+    <img src="images/profile.jpg" class="mr-3" alt="avatar">
+      <div class="media-body">
+        <h5 class="mt-0 mb-1">${comment.member.nick}</h5>
+        <p>${comment.content}</p>
+      </div>
+    <p>${comment.commentDate}</p> &nbsp;&nbsp;
+    <c:if test="${mvo.email == comment.member.email}">
+     <button type="button" class="">수정</button>&nbsp;
+     <button type="button" class="deleteCommentBtn" data-no="${comment.commentNo}">삭제</button>&nbsp;
+     </c:if>
+    </li>
+  </c:forEach>
+</ul>
+</div>
+</div>
+	
+<script>
+   $(function() {
+	   
+	   $("#comment").keypress(function(event) {
+		   if (event.which === 13) { // 엔터 키 코드 확인
+		      event.preventDefault(); // 기본 동작 방지 (폼 제출 등)
+		      $("#writeComment-btn").click(); // 댓글 등록 버튼 클릭
+		   }
+		});
+	   
+      $("#writeComment-btn").click(function() {
+         let comment = $("#comment").val();
+         let no = $("#no").val();
+         if(comment.trim()==""){
+        	 alert("댓글을 입력해주세요.");
+        	 $("#comment").focus();
+        	 return false;
+         }
+         
+    
+         //<button type="button" class="btn btn-success">수정</button>&nbsp;
+         // <button type="button" class="deleteCommentBtn">삭제</button>
+         
+         $.ajax({
+            type: "post",
+            url: "${pageContext.request.contextPath}/WriteCommentAjax.do",
+            data: {comment: comment, no: no},
+            dataType: "json",
+            success:function(result){
+               if(result.jsonResult == "ok"){
+            	  let newComment="";
+                  newComment += "<li class='media mt-4'><img src='images/profile.jpg' class='mr-3' alt='avatar'><div class='media-body'>"+
+                   "<h5 class='mt-0 mb-1'>"+result.jsonComment.member.nick+"</h5><p>"+result.jsonComment.content+"</p></div><p>"+
+                   result.jsonComment.commentDate+"</p>&nbsp;&nbsp; <button type='button' class=''>"+"수정"+"</button>&nbsp;"+
+                   "<button type='button' class='deleteCommentBtn'>"+"삭제"+"</button>&nbsp;<input type='hidden' class='review-comment-no' value="+result.jsonComment.commentNo+"></li>";
+                 	$("#insertNewComment").append(newComment);
+                  	$("#comment").val("");
+               
+               }
+            } //succ
+         });//ajax
+      });//click
+	                    
+      $(".commentLi").on("click", ".deleteCommentBtn", function() {
+    	  let commentList = $(this);
+    	  let delCommentToNo = $(this).data("no");
+    	  let del = confirm("삭제하시겠습니까");
+    	  if (!del) {
+    	    return false;
+    	  }
+
+    	  $.ajax({
+    	    type: "post",
+    	    url: "${pageContext.request.contextPath}/DeleteCommentAjax.do",
+    	    data: { delCommentToNo: delCommentToNo },
+    	    dataType: "json",
+    	    success: function(result) {
+    	      if (result.jsonResult == "ok") {
+    	        // 삭제 성공 시 처리할 내용
+    	        //delCommentToNo.closest("li").remove(); // 삭제된 댓글의 li 요소를 제거
+    	    	  commentList.parent().remove();
+    	      }
+    	    }
+    	  }); //ajax
+    	}); //click
+   });//function
+</script>   	
   <!-- footer section -->
   <c:import url="../footer.jsp"/>
-  <!-- footer section -->
+  <!-- footer section -->		
 </body>
 </html>

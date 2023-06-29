@@ -34,7 +34,6 @@ public class WriteCommentAjaxController implements Controller{
 		MemberVO member = (MemberVO)session.getAttribute("mvo");//회원
 		BoardVO board = BoardDAO.getInstance().findBoardByNo(no); //번호로 게시판 찾음.
 
-
 		ReviewCommentVO rcomment = new ReviewCommentVO(member, board, comment); //댓글 객체로 만들어줌.
 		int num = ReviewCommentDAO.getInstance().writeComment(rcomment); //
 		ReviewCommentVO reviewcomment  = ReviewCommentDAO.getInstance().findReviewByNo(no);
