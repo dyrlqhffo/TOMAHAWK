@@ -106,9 +106,9 @@
                       </c:if>
                      <c:if test="${board.member.nick == mvo.nick}">
                      <td><a href="javascript:updateReview()">수정</a> </td>
-                     <form action="${pageContext.request.contextPath}/UpdateReviewBoardForm.review?no=${board.boardNo}" method="post" id="updateReview"></form>
+                     <form action="${pageContext.request.contextPath}/UpdateReviewBoardForm.do?no=${board.boardNo}" method="post" id="updateReview"></form>
                      <td><a href="javascript:deleteReview()">삭제</a></td>
-                     <form action="${pageContext.request.contextPath}/DeleteReviewBoard.review?no=${board.boardNo}" method="post" id="deleteReview"></form>
+                     <form action="${pageContext.request.contextPath}/DeleteReviewBoard.do?no=${board.boardNo}" method="post" id="deleteReview"></form>
                      </c:if>
                   </tr>
                   <tr>
@@ -185,7 +185,7 @@
    }
 
    function reviewList(){
-      location.href="${pageContext.request.contextPath}/ReviewBoardList.review";
+      location.href="${pageContext.request.contextPath}/ReviewBoardList.do";
    }
    
    
@@ -197,7 +197,7 @@
          
          $.ajax({
             type: "post",
-            url: "${pageContext.request.contextPath}/WriteCommentAjax.review",
+            url: "${pageContext.request.contextPath}/WriteCommentAjax.do",
             data: {comment: comment, no: no},
             dataType: "json",
             success:function(result){
@@ -217,12 +217,11 @@
     	  	let commentNo = $(this).closest("tr").find("#reviewCommentNo").val();
 			let del = confirm("삭제하시겠습니까")
 			if(!del) return false;	
-
 			
 			$.ajax({
 				type: "post",
-				url: "${pageContext.request.contextPath}/DeleteCommentAjax.review",
-				data: {reviewCommentNo: commentNo},
+				url: "${pageContext.request.contextPath}/WriteCommentAjax.do",
+				data: {comment: comment, no: no},
 				dataType: "json",
 				success:function(result){
 					if(result.jsonResult == "ok"){
