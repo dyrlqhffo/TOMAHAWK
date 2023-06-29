@@ -1,86 +1,97 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>    
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<title>리뷰게시판</title>
+<meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/css/nice-select.min.css" integrity="sha512-CruCP+TD3yXzlvvijET8wV5WxxEh5H8P4cmz0RFbKK6FlZ2sYl3AEsKlLPHbniXKSrDdFewhbmBK5skbdsASbQ==" crossorigin="anonymous" />
+  <link href="css/font-awesome.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <link href="css/responsive.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <script src="js/jquery-3.4.1.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+  <script src="https://unpkg.com/isotope-layout@3.0.4/dist/isotope.pkgd.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-nice-select/1.1.0/js/jquery.nice-select.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/custom.js"></script>
+<title>리뷰 게시판</title>
 </head>
-<body>
-<div class="page-wrapper" align="center">
-    <div class="container-fluid">
-        <div class="col-lg-12"><!--게시판 넓이 -->
-            <div class="col-lg-12">
-                <h1 class="page-header">리뷰게시판</h1>
-            </div>
-            <div class="row">
-                  <div class="col-lg-12">
-                  </div>
-              </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">리뷰게시판 </div>
-                <div class="panel-body">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>제목</th>
-                                <th>작성자</th>
-                                <th>작성일</th>
-                                <th>조회수</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                         <c:forEach items="${list}" var="list">
-                            <tr>
-                                <td>
-                                <a href="${pageContext.request.contextPath}/ReadReviewBoard.do?no=${list.boardNo}">${list.title}</a>
-                                </td>
-                                <td>${list.member.nick}</td>
-                                <td>${list.registerDate}</td>
-                                <td>${list.hits}</td>
-                            </tr>
-                         </c:forEach>
-                        </tbody>
-                    </table>
-                    
-                </div>
-            </div>
-                   <form action="${pageContext.request.contextPath}/WriteReviewForm.do" id="writeReviewBoard">
-                      <button type="button" class="btn btn-outline btn-primary pull-right" onclick="writeReview()">
-                          <i class="fa fa-edit fa-fw"></i> 글쓰기
-                      </button>
-                  </form>
-            
-        </div>
+<body class="sub_page">
+<div class="hero_area">
+    <div class="bg-box">
+      <img src="images/hero-bg.jpg" alt="">
     </div>
-    
-    	<ul class="pagination justify-content-center" style="margin:20px 0">	
-				<c:if test="${pagination.previousPageGroup}">
-					<li class="page-item"><a class="page-link" href="ReviewBoardList.do?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
-				</c:if>
+   <%@ include file ="../header.jsp"%>
+</div>
+<div class="container pt-3">
 
-				<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
-					<c:choose>
-						<c:when test="${page == pagination.nowPage}"> 
-							<li class="page-item active"><a class="page-link" href="ReviewBoardList.do?pageNo=${page}">${page}</a></li>
-						</c:when>
-						<c:otherwise>
-							<li class="page-item"><a class="page-link" href="ReviewBoardList.do?pageNo=${page}">${page}</a></li>
-						</c:otherwise>
-					</c:choose> 
+	<hr><br><br>
+<h1 align="center"><strong>Review Board</strong></h1>
+<hr style="border-top: 3px solid gray"> 
+<br>
+	<table class="table table-boarderd table-hover boardlist">
+				<thead class="thead-light" align="center">
+					<tr style="background-color: #ccffee;">
+						<th>글 번호</th>
+						<th class="title">제목</th>
+						<th>작성자</th>
+						<th>작성일</th>
+						<th>조회수</th>
+					</tr>
+				</thead>
+				<tbody align="center">
+				<c:forEach items="${list}" var="list">
+					<tr>
+						<td>${list.boardNo}</td>
+						<td>
+						<c:choose>
+							<c:when test="${sessionScope.mvo == null}">
+								${list.title}	
+							</c:when>
+							<c:otherwise>
+								<a href="${pageContext.request.contextPath}/ReadReviewBoard.do?no=${list.boardNo}">${list.title}</a>
+							</c:otherwise>
+						</c:choose>
+						</td>
+						<td>${list.member.nick}</td>
+						<td>${list.registerDate}</td>
+						<td>${list.hits}</td>
+					</tr>
 				</c:forEach>
-				
+				</tbody>
+			</table>
+				<c:if test="${sessionScope.mvo != null}">
+				     <form action="${pageContext.request.contextPath}/WriteReviewForm.do" id="writeReviewBoard">
+				     <button type="button" class="btn btn-primary"  onclick="writeReview()">글쓰기</button> 
+				     </form>
+				</c:if>
+			<ul class="pagination justify-content-center" style="margin:20px 0">	
+				<c:if test="${pagination.previousPageGroup}">
+					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ReviewBoardList.do?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
+				</c:if>
+					<c:forEach begin="${pagination.startPageOfPageGroup}" end="${pagination.endPageOfPageGroup}" var="page">
+						<c:choose>
+							<c:when test="${page == pagination.nowPage}"> 
+								<li class="page-item active"><a class="page-link" href="${pageContext.request.contextPath}/ReviewBoardList.do?pageNo=${page}">${page}</a></li>
+							</c:when>
+							<c:otherwise>
+								<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ReviewBoardList.do?pageNo=${page}">${page}</a></li>
+							</c:otherwise>
+						</c:choose> 
+					</c:forEach>
 				<c:if test="${pagination.nextPageGroup}">		
-			  		<li class="page-item"><a class="page-link" href="ReviewBoardList.do?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
+			  		<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/ReviewBoardList.do?pageNo=${pagination.endPageOfPageGroup + 1}">다음</a></li>
 			  	</c:if>     
 			</ul>
-    
-    
-    
 </div>
 
 <script>
@@ -89,7 +100,6 @@
 	}
 
 </script>
-
 
 </body>
 </html>

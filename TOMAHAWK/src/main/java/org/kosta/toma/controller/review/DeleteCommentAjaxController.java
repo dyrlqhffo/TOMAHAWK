@@ -23,7 +23,7 @@ public class DeleteCommentAjaxController implements Controller {
 			throw new ServletException("POST 방식만 서비스 됩니다.");
 		}
 		
-		long commentNo = Long.parseLong(request.getParameter("reviewCommentNo"));
+		long commentNo = Long.parseLong(request.getParameter("delCommentToNo"));
 		System.out.println("commentNo = " + commentNo);
 		ReviewCommentDAO.getInstance().deleteComment(commentNo);
 		JSONObject json = new JSONObject();
