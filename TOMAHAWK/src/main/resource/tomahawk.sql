@@ -33,6 +33,7 @@ values(toma_board_seq.nextval,'hellojava@naver.com','안녕4','하이',sysdate,s
 select * from BOOKMARK
 select count(*) from BOOKMARK where email='dnflcld123@naver.com' and shop_no=23;
 
+select * from member;
 
 select sysdate from dual
 
