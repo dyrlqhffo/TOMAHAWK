@@ -133,6 +133,22 @@ public class ReviewCommentDAO {
 		
 		return list;
 	}
+	public void deleteComment(long commentNo) throws SQLException {
+		Connection con=null;
+		PreparedStatement ps=null;
+		
+		try {
+			con = dataSource.getConnection();
+			String sql = "delete from comments where comment_no=?";
+			ps = con.prepareStatement(sql);
+			ps.setLong(1, commentNo);
+			ps.executeUpdate();
+			
+		}finally {
+			closeAll(ps, con);
+		}
+		
+	}
 	
 	
 }
