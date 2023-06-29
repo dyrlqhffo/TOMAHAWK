@@ -31,7 +31,7 @@
 </head>
 <body>
 <br>
-<form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
+
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">
 	<div class="d-flex justify-content-end">
@@ -41,12 +41,13 @@
 	</div>
               <div class="card">
                 <div class="card-body">
+                <form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
                   <h1 class="card-title"><span style='font-size:100px;'>&#128221;</span>자유게시판 글쓰기</h1>
                   <hr style="border-top: 3px solid gray"> 
                   <div class="alert alert-warning" role="alert">
                     아래의 입력란을 채워주세요.
                   </div><br>
-                  <form class="forms-sample" method="post" action="${pageContext.request.contextPath}/WriteBoard.free">
+
                     <div class="form-group row">
                       <label for="title" class="col-sm-3 col-form-label"><strong>&#128204;글 제목</strong></label>
                       <div class="col-sm-9">
