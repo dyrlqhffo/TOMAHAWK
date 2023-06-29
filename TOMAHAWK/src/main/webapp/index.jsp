@@ -46,11 +46,7 @@
     <div class="col-lg-12 card-margin">
         <div class="card search-form">
             <div class="card-body p-0">
-<<<<<<< HEAD
-                <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.free" onsubmit="return checkIfType()">
-=======
-                <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.do">
->>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
+                <form id="search-form" method="get" action="${pageContext.request.contextPath}/SearchBoard.do" onsubmit="return checkIfType()">
                     <div class="row">
                         <div class="col-12">
                             <div class="row no-gutters">
