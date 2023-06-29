@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.ReviewBoardDAO;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
@@ -24,6 +25,6 @@ public class WriteReviewBoardController implements Controller{
 		BoardVO board = new BoardVO(0,member,title,content,null,null,0,type);
 		
 		ReviewBoardDAO.getInstance().writeReviewBoard(board);
-		return "redirect:ReviewBoardList.review";
+		return "redirect:ReviewBoardList.do";
 	}
 }

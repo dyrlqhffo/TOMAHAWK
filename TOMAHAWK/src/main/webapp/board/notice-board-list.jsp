@@ -36,7 +36,7 @@
 		
 	
 		<c:if test="${mvo.admin==2}">
-		<form action="NoticeWriteBoardForm.notice" method="get">
+		<form action="NoticeWriteBoardForm.do" method="get">
 		<button type="submit" class="btn btn-primary">글쓰기</button>
 		</form>
 		</c:if>
@@ -61,7 +61,7 @@
 						${board.title}
 						</c:when>
 						<c:otherwise>
-						<a href="${pageContext.request.contextPath}/NoticeDetail.notice?no=${board.boardNo}">${board.title}</a>
+						<a href="${pageContext.request.contextPath}/NoticeDetail.do?no=${board.boardNo}">${board.title}</a>
 						</c:otherwise>
 					</c:choose>					
 					</td>
@@ -79,21 +79,21 @@
 -->
 <ul class="pagination justify-content-center" style="margin:20px 0">	
 	<c:if test="${pagination.previousPageGroup}">
-	<li class="page-item"><a class="page-link" href="NoticeBoardList.notice?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
+	<li class="page-item"><a class="page-link" href="NoticeBoardList.do?pageNo=${pagination.startPageOfPageGroup-1}">Previous</a></li>
 	</c:if>
 	<c:forEach begin="${pagination.startPageOfPageGroup}" 
 	end="${pagination.endPageOfPageGroup}" var="page">
 	<c:choose>
 		<c:when test="${pagination.nowPage==page}">
-		<li class="page-item active"><a class="page-link" href="NoticeBoardList.notice?pageNo=${page}">${page}</a></li>
+		<li class="page-item active"><a class="page-link" href="NoticeBoardList.do?pageNo=${page}">${page}</a></li>
 		</c:when>
 		<c:otherwise>
-		<li class="page-item"><a class="page-link" href="NoticeBoardList.notice?pageNo=${page}">${page}</a></li>	
+		<li class="page-item"><a class="page-link" href="NoticeBoardList.do?pageNo=${page}">${page}</a></li>	
 		</c:otherwise>
 	</c:choose>	
 	</c:forEach>		
 	<c:if test="${pagination.nextPageGroup}">
-  	<li class="page-item"><a class="page-link" href="NoticeBoardList.notice?pageNo=${pagination.endPageOfPageGroup+1}">Next</a></li>   
+  	<li class="page-item"><a class="page-link" href="NoticeBoardList.do?pageNo=${pagination.endPageOfPageGroup+1}">Next</a></li>   
   	</c:if>  
 </ul>
     

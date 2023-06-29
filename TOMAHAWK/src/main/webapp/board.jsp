@@ -40,7 +40,7 @@
          Board
         </h2>
       </div>
-<form method="post" action="${pageContext.request.contextPath}/FreeBoardList.free" id="freeBoardList">
+<form method="post" action="${pageContext.request.contextPath}/FreeBoardList.do" id="freeBoardList">
 	      <ul class="filters_menu">
 	        <li class="active" data-filter="*">All</li>
 	        <li data-filter=".free" id="freeBoardList">자유게시판</li>

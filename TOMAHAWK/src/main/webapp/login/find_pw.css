@@ -1,0 +1,132 @@
+@charset "UTF-8";
+@font-face {
+	font-family: 'SUIT-Light';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Light.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SUIT-Bold';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Bold.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SUIT-Medium';
+	src:
+		url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_suit@1.0/SUIT-Medium.woff2')
+		format('woff2');
+	font-weight: normal;
+	font-style: normal;
+}
+
+h4 {
+	font-family: 'SUIT-Light';
+	margin-bottom: 8%;
+	width: 400px;
+}
+
+.login_content {
+	display: block;
+	min-height: 83vh;
+	position: relative;
+	margin: 0 auto;
+	width: 100%;
+	/* 	box-sizing: inherit; */
+	display: flex;
+	justify-contents: center;
+	align-items: center;
+}
+
+.signIn {
+	position: relative;
+	box-sizing: inherit;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.signIn_form {
+	padding: 4rem 12.3rem 6.1rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	max-width: 108.2rem;
+	margin: 0 auto;
+	text-align: center;
+	border-radius: 1.5rem;
+	box-sizing: inherit;
+}
+
+/* signIn_header */
+.signIn_header {
+	margin-bottom: 2.4rem;
+	box-sizing: inherit;
+}
+
+img {
+	vertical-align: middle;
+}
+
+/* signForm_middle */
+.signForm_middle {
+	margin: -30px;
+}
+
+.titleText {
+	text-align: left;
+	color: #545454;
+	margin-top: 0.4rem;
+	font-family: 'SUIT-Light';
+	color: #00AFFF;
+}
+
+.inputEmail {
+	position: relative;
+	font-family: 'SUIT-Light';
+	margin-bottom: 25px;
+}
+
+input {
+	font-size: 0.9rem;
+	padding: 0.5rem;
+	appearance: none;
+	border: none;
+	border-bottom: 0.1rem solid #BEDEFF;
+	box-shadow: none;
+	width: 75%;
+	height: 2rem;
+	color: #545454;
+	writing-mode: horizontal-tb;
+	outline: none;
+}
+
+input:focus {
+	border-bottom: 3px solid RGB(190, 222, 255);
+}
+
+#button_for_email {
+/* 	width: 30%; */
+	border-radius: 0.7rem;
+	position: relative;
+	border: none;
+	cursor: pointer;
+	padding: 1.2rem 0.5rem;
+	padding-bottom: 33px;
+	margin-top: 25px;
+	background-color: #C8FAC8;
+	font-family: 'SUIT-Bold';
+}
+
+.error_next_box {
+	margin-top: 9px;
+	font-size: 12px;
+	color: red;
+	text-align: left;
+	padding-left: 50px;
+}

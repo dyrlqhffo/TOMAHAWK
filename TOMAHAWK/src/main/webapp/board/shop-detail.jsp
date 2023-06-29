@@ -35,24 +35,24 @@
 		<tr><td>식당이름 : ${shop.shopName}</td></tr>
 		<tr><td>식당분류 : ${shop.shopType}</td></tr>
 		<tr><td>식당주소 : ${shop.shopAddress}</td></tr>
-		 <c:if test="${sessionScope.mvo.email == requestScope.shop.member.email }"> 
-		<tr>
-		<td colspan="5" class="text-center">						
-			<button type="button" class="btn btn-success" onclick="deleteShop()">삭제</button>			
-			<button type="button" class="btn btn-success" onclick="updateShop()">수정</button>
-			<input type="hidden" id="email" name="email" value="${mvo.email }">
-			<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
-			<button type="button" class="btn btn-success" id="BookClick"><span id = "book"></span></button>
-			<span id = "result"></span>
-			<script type="text/javascript">
-				
+		<tr><td>
+		<button type="button" class="btn btn-success" id="BookClick"><span id = "book"></span></button>
+		
+		<form method="post" action="${pageContext.request.contextPath}/SetBookmark.do" id="SetBookmarkForm">
+				<input type="hidden" name="shopNo" value="${shop.shopNo}" value="${shop.shopNo}">
+			</form>
+			<form method="post" action="${pageContext.request.contextPath}/DeleteBookmark.do" id="deleteBookmarkForm">
+				<input type="hidden" name="shopNo" value="${shop.shopNo}">
+			</form>
+
+		<script type="text/javascript">
 				$(function () {
 					let email = document.getElementById("email");
 					let shopNo = document.getElementById("shopNo");
 					$("#BookClick").click(function() {
 						$.ajax({
 							type:"get",
-							url : "${pageContext.request.contextPath}/CheckBookmark.book",
+							url : "${pageContext.request.contextPath}/CheckBookmark.do",
 							data: "email="+email.value+"&shopNo="+shopNo.value,
 							success:function(result){
 								if(result == "ok"){
@@ -63,7 +63,7 @@
 							}
 						})
 					})
-					$("#book").load("${pageContext.request.contextPath}/CheckBookmark.book?email="+email.value+"&shopNo="+shopNo.value , function (data){
+					$("#book").load("${pageContext.request.contextPath}/CheckBookmark.do?email="+email.value+"&shopNo="+shopNo.value , function (data){
 						if(data=="ok"){
 							$("#book").text("북마크 설정");
 						}else if(data=="fail"){
@@ -71,19 +71,37 @@
 						}
 					})
 				});
+				function setBookmark() {
+					if (confirm("북마크 설정하시겠습니까?")) {
+						document.getElementById("SetBookmarkForm").submit();
+				    }
+				}
+				function deleteBookmark() {
+					if (confirm("북마크 해제하시겠습니까?")) {
+						document.getElementById("deleteBookmarkForm").submit();
+				    }
+				}
 			</script>
-			<form method="post" action="${pageContext.request.contextPath}/DeleteShop.shop" id="deleteShopForm">
+			
+		
+		
+		</td></tr>
+		
+		 <c:if test="${sessionScope.mvo.email == requestScope.shop.member.email }"> 
+		<tr>
+		<td colspan="5" class="text-center">						
+			<button type="button" class="btn btn-success" onclick="deleteShop()">삭제</button>			
+			<button type="button" class="btn btn-success" onclick="updateShop()">수정</button>
+			<input type="hidden" id="email" name="email" value="${mvo.email }">
+			<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
+			
+			<form method="post" action="${pageContext.request.contextPath}/DeleteShop.do" id="deleteShopForm">
 				<input type="hidden" name="shopNo" id="shopNo" value="${shop.shopNo}">
 			</form>
-			<form method="post" action="${pageContext.request.contextPath}/updateShopForm.shop" id="updateShopForm">
+			<form method="post" action="${pageContext.request.contextPath}/updateShopForm.do" id="updateShopForm">
 				<input type="hidden" name="shopNo" value="${shop.shopNo}">
 			</form>
-			<form method="post" action="${pageContext.request.contextPath}/SetBookmark.book" id="SetBookmarkForm">
-				<input type="hidden" name="shopNo" value="${shop.shopNo}">
-			</form>
-			<form method="post" action="${pageContext.request.contextPath}/DeleteBookmark.book" id="deleteBookmarkForm">
-				<input type="hidden" name="shopNo" value="${shop.shopNo}">
-			</form>
+
 			<script type="text/javascript">
 				function deleteShop() {
 					if (confirm("삭제 하겠습니까?")) {

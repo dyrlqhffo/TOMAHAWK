@@ -58,10 +58,10 @@
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost()">삭제</button>			
-			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.free" id="deleteBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.do" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
-			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.free" id="updateBoardForm">
+			<form method="post" action="${pageContext.request.contextPath}/UpdateBoardForm.do" id="updateBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
 			<script type="text/javascript">
@@ -79,7 +79,21 @@
 		</td>
 	</tr>
 	</c:if>
-	</table>
-</div>
+</table>
+			<div align="center">								
+				<img id="starImg" src="${pageContext.request.contextPath}/images/like_default.png" width="100"/>
+				<script type="text/javascript">
+					$(function() {
+						$("#starImg").click(function() {
+							//alert($(this).attr("src"));
+							if($(this).attr("src") == "${pageContext.request.contextPath}/images/like_default.png") {
+								$(this).attr("src", "${pageContext.request.contextPath}/images/heart_pressed.png");
+							} else {
+								$(this).attr("src", "${pageContext.request.contextPath}/images/like_default.png");
+							}
+						});
+					});
+				</script>			
+			</div>
 </body>
 </html>
