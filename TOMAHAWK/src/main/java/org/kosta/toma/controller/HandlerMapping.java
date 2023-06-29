@@ -27,7 +27,6 @@ public class HandlerMapping {
 		 * System.out.println("command:"+command);
 		 * System.out.println(packageInfo+"."+command+"Controller");
 		 */
-
 		String webAppPath="C:\\kosta260\\was\\web-tomcat\\webapps\\TOMAHAWK\\WEB-INF\\classes\\org\\kosta\\toma\\controller";
 		File webAppPathDir=new File(webAppPath);
 		File fileList[]=webAppPathDir.listFiles();

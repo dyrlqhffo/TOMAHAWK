@@ -28,7 +28,7 @@ public class NoticeUpdateController implements Controller{
 		NoticeBoardDAO.getInstance().Update(vo);
 		
 	
-		return "NoticeBoardList.notice";
+		return "NoticeBoardList.do";
 	}
 }
 

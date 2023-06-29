@@ -113,16 +113,7 @@
 						document.getElementById("updateShopForm").submit();
 				    }
 				}
-				function setBookmark() {
-					if (confirm("북마크 설정하시겠습니까?")) {
-						document.getElementById("SetBookmarkForm").submit();
-				    }
-				}
-				function deleteBookmark() {
-					if (confirm("북마크 해제하시겠습니까?")) {
-						document.getElementById("deleteBookmarkForm").submit();
-				    }
-				}
+
 			</script>					
 		</td>
 	</tr>

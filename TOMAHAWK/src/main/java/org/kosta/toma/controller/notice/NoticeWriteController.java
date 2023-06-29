@@ -26,7 +26,7 @@ public class NoticeWriteController implements Controller {
 	  BoardVO vo= new BoardVO(0,member,title,content,null,null,0,null);
 	  NoticeBoardDAO.getInstance().WriteBoard(vo);
 	  
-	return "redirect:NoticeBoardList.notice";
+	return "redirect:NoticeBoardList.do";
 	  
 }
 }

@@ -25,6 +25,6 @@ public class DeleteReviewBoardController implements Controller {
 		long no = Long.parseLong(request.getParameter("no"));
 		ReviewBoardDAO.getInstance().deleteReviewBoard(no);
 		
-		return "redirect:ReviewBoardList.review";
+		return "redirect:ReviewBoardList.do";
 	}
 }

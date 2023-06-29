@@ -35,7 +35,7 @@ public class UpdateBoardController implements Controller {
         board.setMember(member);
         board.setBoardType(boardType);
         BoardDAO.getInstance().updateBoard(board);
-        return "redirect:FreeBoardList.free";
+        return "redirect:FreeBoardList.do";
 	}
 }
 
