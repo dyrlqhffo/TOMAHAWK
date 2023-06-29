@@ -26,6 +26,18 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="js/custom.js"></script>
+  <style>
+  .media {
+    display: flex;
+    align-items: center;
+  }
+
+  .media img {
+    width: 50px; /* 원하는 크기로 조절 */
+    height: auto; /* 가로 너비에 맞추어 비율 유지 */
+    margin-right: 10px; /* 사진과 텍스트 사이의 간격을 조절 (원하는 값으로 변경) */
+  }
+</style>
 </head>
 <body class="sub_page">
   <div class="hero_area">
