@@ -120,25 +120,28 @@ function checkIfType() {
     </section>
   </div>
  
- <div class="container">
       <div class="heading_container heading_center">
 		<c:choose>
 			<c:when test="${sessionScope.mvo == null}">
-				<div class="container pt-3">
-	  				<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/midBanner.png"></a>
-				</div>
+	  				<a href="${pageContext.request.contextPath}/index.jsp" onclick="notMemberAlert(event);"><img src="${pageContext.request.contextPath}/images/midBanner.png" align="middle"></a>
 			</c:when>
 			<c:otherwise>
-				<div class="container pt-3" align="center">
-	  				<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/midBanner.png"></a>
-				</div>
+	  				<a href="${pageContext.request.contextPath}/FindShopList.do"><img src="${pageContext.request.contextPath}/images/midBanner.png" align="middle"></a>
 			</c:otherwise>
 		</c:choose>
 	</div>
-</div>
   
   <!-- footer section -->
   <c:import url="footer.jsp"/>
   <!-- footer section -->
+ <script type="text/javascript">
+ function notMemberAlert(event) {
+		event.preventDefault();
+		swal('비로그인 상태!', "기능을 이용하려면 로그인해주시기 바랍니다.", 'warning')
+			.then(function() {
+				location.href = "index.jsp";
+			});
+	}
+ </script>
 </body>
 </html>
