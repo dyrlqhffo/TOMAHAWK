@@ -39,12 +39,11 @@
 </style>
 </head>
 <body class="sub_page">
-<div class="hero_area">
+  <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
     </div>
-   <%@ include file ="../header.jsp"%>
-</div>
+    <c:import url="../header.jsp"/>
+  </div>
 <div class="container pt-3">
 <hr><br><br>
 <h1>리뷰게시판 상세조회</h1>

@@ -51,6 +51,7 @@
                         <div class="col-12">
                             <div class="row no-gutters">
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
+                                	<!-- [검색할 게시판의 종류를 선택하는 드롭다운 (select) 메뉴.] -->
 									<select class="board-search" id="board-search" name="board-search">
                                         <option value="" selected disabled>-게시판 분류-</option>
                                         <option value="free">자유게시판</option>
@@ -77,16 +78,18 @@
 </div>
 </div>
 <script>
+
+//---[폼이 제출되기 전에 게시판 유형이 선택되었는지 확인하는 함수]---//
 function checkIfType() {
-    let boardSelection = document.getElementById('board-search').value;
-    if (boardSelection === "") {
+    let boardSelection = document.getElementById('board-search').value;		// 드롭다운 메뉴에서 선택한 옵션의 값을 변수에 저장
+    if (boardSelection === "") {		// 값이 빈 문자열인 경우, alert 함수로 경고 메시지를 표시
         swal('검색 오류!', "게시판 분류를 선택해주시기 바랍니다.",'warning')
             .then(function(){
-                location.href="index.jsp";
+                location.href="index.jsp";		// 경고 메시지가 표시되면 사용자가 이를 확인한 후, index.jsp로 되돌아가도록 경로 설정
         });
-        return false;
+        return false;	// 게시판 분류가 선택되지 않았을 경우 폼의 제출을 막는 역할.
     }
-    return true;
+    return true;			// 게시판 유형이 정상적으로 선택된 경우, 함수는 폼 제출을 진행하도록 허용.
 }
 </script>
 

@@ -38,7 +38,7 @@ public class ReadBoardController implements Controller {
             board.add(boardNo);
         }
         //게시물 조회
-        request.setAttribute("board", BoardDAO.getInstance().findBoardByNo(boardNo));
+        request.setAttribute("board", BoardDAO.getInstance().findBoardByNo(boardNo));		
         request.setAttribute("commentList", list);
         return "board/board-detail.jsp";
 	}

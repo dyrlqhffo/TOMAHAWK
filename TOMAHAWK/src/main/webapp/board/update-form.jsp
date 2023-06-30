@@ -60,6 +60,7 @@
 					        <option value="free">자유게시판</option>
 					        <option value="review">리뷰게시판</option>
 					        <option value="shop">식당게시판</option>
+					        <!-- 사용자가 관리자등급(2)인 경우, 공지사항 선택 가능 -->
 					        <c:if test="${sessionScope.mvo.admin==2}">
 					        	<option value="notice">공지사항</option>
 					        </c:if>
@@ -92,7 +93,6 @@
 
 function updateBoard(event) {
     event.preventDefault();
-    
     var boardType = document.getElementById("boardType").value;
     if(boardType == "") {
         swal({
@@ -102,7 +102,6 @@ function updateBoard(event) {
         });
         return;
     }
-    
     swal({
         title: "게시글 수정!",
         text: "정말로 수정하시겠습니까?",
@@ -121,12 +120,6 @@ function updateBoard(event) {
         }
     });
 }
-
-	/* function updateBoard() {
-	    if(confirm("게시물을 수정 하시겠습니까?")){
-	        document.forms[0].submit();
-	    }
-	} */
 	
 	$(document).ready(function() {
 	    $('select').niceSelect();

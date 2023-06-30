@@ -60,6 +60,7 @@
 	$('.note-color').remove();
 
 	})
+	
 	function updateReviewBoard(){
 		document.getElementById('updateReviewBoard').submit();
 	}	

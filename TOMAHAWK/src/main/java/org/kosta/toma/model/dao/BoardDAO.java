@@ -39,6 +39,7 @@ public class BoardDAO {
 		closeAll(pstmt, con);
 	}
 
+	//---[ 게시판 목록 조회 메서드 ]---//
 	public ArrayList<BoardVO> findBoardList(Pagination pagination) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -77,6 +78,7 @@ public class BoardDAO {
 		return boardList;
 	}
 
+	//---[ 자유게시판 목록 조회 메서드 ]---//
 	public ArrayList<BoardVO> findFreeBoardList(Pagination pagination) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -113,6 +115,7 @@ public class BoardDAO {
 		return freeBoardList;
 	}
 	
+	//---[ 자유게시판 게시글 수 조회 메서드 ]---//
 	public long findTotalFreeBoardCount() throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -134,6 +137,7 @@ public class BoardDAO {
 		return totalFreeBoardCount;
 	}
 
+	//---[ 게시글 번호를 통한 게시물 상세조회 메서드 ]---//
 	public BoardVO findBoardByNo(long boardNo) throws SQLException {
 		BoardVO board = null;
 		Connection con = null;
@@ -168,6 +172,7 @@ public class BoardDAO {
 		return board;
 	}
 
+	//---[ 게시글 신규 작성 메서드 ]---//
 	public void addBoard(BoardVO board) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -187,6 +192,7 @@ public class BoardDAO {
 		}
 	}
 
+	//---[ 게시글 삭제 메서드 ]---//
 	public void deleteBoardByNo(long boardNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -201,6 +207,7 @@ public class BoardDAO {
 		}
 	}
 
+	//---[ 게시글 수정 메서드 ]---//
 	public void updateBoard(BoardVO board) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -218,6 +225,7 @@ public class BoardDAO {
 		}
 	}
 
+	//---[ 게시글 조회수 계산 메서드 ]---//
 	public void countHits(long boardNo) throws SQLException {
 		Connection con = null;
 		PreparedStatement pstmt = null;
@@ -233,6 +241,7 @@ public class BoardDAO {
 		}
 	}
 
+	//---[ 검색바 : 게시판별 & 키워드별 게시물 조회 메서드 ]---//
 	public ArrayList<BoardVO> searchBoards(String boardType, String title) throws SQLException {
 	    ArrayList<BoardVO> boardList = new ArrayList<BoardVO>();
 		Connection con = null;
@@ -244,10 +253,10 @@ public class BoardDAO {
 			sql.append("SELECT b.board_no, b.title, b.content, TO_CHAR(reg_date, 'YYYY.MM.DD HH24:MI:SS') ");
 			sql.append("AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b ");
 			sql.append("INNER JOIN member m ON b.email = m.email ");
-			sql.append("WHERE board_type = ? AND title LIKE ?");
-			pstmt = con.prepareStatement(sql.toString());
-			pstmt.setString(1, boardType);
-	        pstmt.setString(2, "%" + title + "%");  
+			sql.append("WHERE board_type = ? AND title LIKE ?");		//---> 게시판별 & 키워드별 검색
+			pstmt = con.prepareStatement(sql.toString());						//
+			pstmt.setString(1, boardType);												//
+	        pstmt.setString(2, "%" + title + "%");  									//
 	        rs = pstmt.executeQuery();
 	        while (rs.next()) {
 	            BoardVO board = new BoardVO();
@@ -271,6 +280,7 @@ public class BoardDAO {
 	    return boardList;
 	}
 
+	//---[ 검색바 : 식당 조회 메서드 ]---//
 	public ArrayList<ShopVO> searchShops(String title) throws SQLException {
 		ArrayList<ShopVO> shopList = new ArrayList<ShopVO>();
 		Connection con = null;
