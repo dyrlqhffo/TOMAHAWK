@@ -22,5 +22,4 @@ public class BoardListController implements Controller {
 		request.setAttribute("list",BoardDAO.getInstance().findBoardList(pagination));
 		return "board.jsp";
 	}
-
 }

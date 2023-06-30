@@ -148,7 +148,6 @@
 		attr("src", "images/heart_pressed.png")		->		set
 		attr("src")	->		get (현재 이미지 경로) 
 		-->
->>>>>>> refs/heads/feature/refactoring2
 
 <div class="card" id="comments">
   <div class="card-body">
