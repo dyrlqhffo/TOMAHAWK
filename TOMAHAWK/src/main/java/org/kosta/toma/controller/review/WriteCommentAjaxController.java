@@ -37,7 +37,6 @@ public class WriteCommentAjaxController implements Controller{
 		ReviewCommentVO rcomment = new ReviewCommentVO(member, board, comment); //댓글 객체로 만들어줌.
 		int num = ReviewCommentDAO.getInstance().writeComment(rcomment); //
 		ReviewCommentVO reviewcomment  = ReviewCommentDAO.getInstance().findReviewByNo(no);
-		System.out.println("reviewcomment = "+reviewcomment);
 		JSONObject json = new JSONObject();
 		if(num == 1) {
 			json.put("jsonResult", "ok");

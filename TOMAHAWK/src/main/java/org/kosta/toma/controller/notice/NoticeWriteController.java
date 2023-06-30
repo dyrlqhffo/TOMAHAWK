@@ -15,7 +15,7 @@ public class NoticeWriteController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 	    HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("mvo") == null) {
-            System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다.**");
+            //System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다.**");
             return "redirect:index.jsp";
 	}
 	  String title =request.getParameter("title");

@@ -19,7 +19,7 @@ public class DeleteReviewBoardController implements Controller {
 		}
 		HttpSession session = request.getSession();
 		if (session == null || session.getAttribute("mvo") == null) {		
-			System.out.println("---비인증 상태이므로 서비스 제공이 불가합니다---");
+			//System.out.println("---비인증 상태이므로 서비스 제공이 불가합니다---");
 			return "redirect:error.jsp";
 		}
 		long no = Long.parseLong(request.getParameter("no"));

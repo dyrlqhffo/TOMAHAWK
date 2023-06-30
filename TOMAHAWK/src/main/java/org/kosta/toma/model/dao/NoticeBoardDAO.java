@@ -175,7 +175,6 @@ public class NoticeBoardDAO {
 			con=dataSource.getConnection();
 			String sql="select count(*) from board where board_type= 'notice'";
 			pstmt=con.prepareStatement(sql);
-			System.out.println(sql);
 			rs= pstmt.executeQuery();
 			if(rs.next()) {
 				totalNoticeCount=rs.getLong(1);

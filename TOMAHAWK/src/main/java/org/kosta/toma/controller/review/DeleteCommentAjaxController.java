@@ -24,7 +24,6 @@ public class DeleteCommentAjaxController implements Controller {
 		}
 		
 		long commentNo = Long.parseLong(request.getParameter("delCommentToNo"));
-		System.out.println("commentNo = " + commentNo);
 		ReviewCommentDAO.getInstance().deleteComment(commentNo);
 		JSONObject json = new JSONObject();
 		json.put("jsonResult", "ok");

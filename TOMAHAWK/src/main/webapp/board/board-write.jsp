@@ -31,15 +31,9 @@
 </style>
 <link rel="icon" href="images/favicon1.png">
 <title>자유게시판 글작성</title>
-<<<<<<< HEAD
 </head>
 <body>
 <br>
-=======
-</head>
-<body>
-<br>
->>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">
 	<div class="d-flex justify-content-end">
@@ -55,13 +49,8 @@
                   <hr style="border-top: 3px solid gray"> 
                   <div class="alert alert-warning" role="alert">
                     아래의 입력란을 채워주세요.
-<<<<<<< HEAD
                   </div><br>
                   <form class="forms-sample" method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
-=======
-                  </div><br>
-                  <form class="forms-sample" method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
->>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
                     <div class="form-group row">
                       <label for="title" class="col-sm-3 col-form-label"><strong>&#128204;글 제목</strong></label>
                       <div class="col-sm-9">

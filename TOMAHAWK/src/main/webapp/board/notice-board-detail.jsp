@@ -27,12 +27,11 @@
   <link rel="icon" href="images/favicon1.png">
 </head>
 <body class="sub_page">
-<div class="hero_area">
+  <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
     </div>
-   <%@ include file ="../header.jsp"%>
-</div>
+    <c:import url="../header.jsp"/>
+  </div>
 
 <div class="container pt-3">
 <a href="${pageContext.request.contextPath}/index.jsp">HOME</a> &nbsp;&nbsp;&nbsp;
