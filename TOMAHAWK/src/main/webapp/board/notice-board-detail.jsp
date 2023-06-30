@@ -126,7 +126,7 @@
       <input type="hidden" name="no" id="no" value="${board.boardNo}">
       <button type="button" class="btn btn-primary" id="writeComment-btn">등록</button>
     </form>
-  
+ 
   <!-- 댓글 목록 -->
  <ul class="list-unstyled" id="insertNewComment">
   <c:forEach items="${commentList}" var="comment">
