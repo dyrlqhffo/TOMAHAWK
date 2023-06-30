@@ -8,7 +8,6 @@ import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.dao.BoardDAO;
 
 public class FreeBoardListController implements Controller {
-
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pageNo = request.getParameter("pageNo");

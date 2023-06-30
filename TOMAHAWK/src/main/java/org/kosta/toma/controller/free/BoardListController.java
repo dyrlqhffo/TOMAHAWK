@@ -8,7 +8,6 @@ import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.dao.BoardDAO;
 
 public class BoardListController implements Controller {
-
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		String pageNo = request.getParameter("pageNo");
@@ -23,5 +22,4 @@ public class BoardListController implements Controller {
 		request.setAttribute("list",BoardDAO.getInstance().findBoardList(pagination));
 		return "board.jsp";
 	}
-
 }

@@ -27,16 +27,16 @@
   <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
   <script src="js/custom.js"></script>
   <style>
-  .media {
-    display: flex;
-    align-items: center;
-  }
-
-  .media img {
-    width: 50px; /* 원하는 크기로 조절 */
-    height: auto; /* 가로 너비에 맞추어 비율 유지 */
-    margin-right: 10px; /* 사진과 텍스트 사이의 간격을 조절 (원하는 값으로 변경) */
-  }
+	  .media {
+	    display: flex;
+	    align-items: center;
+	  }
+	
+	  .media img {
+	    width: 50px; /* 원하는 크기로 조절 */
+	    height: auto; /* 가로 너비에 맞추어 비율 유지 */
+	    margin-right: 10px; /* 사진과 텍스트 사이의 간격을 조절 (원하는 값으로 변경) */
+	  }
 </style>
 </head>
 <body class="sub_page">
@@ -45,12 +45,14 @@
     </div>
     <c:import url="../header.jsp"/>
   </div>
+  
 <div class="container pt-3">
 <hr><br><br>
 <h1 align="center"><strong>Free Board</strong></h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
 
+<!-- 게시물 상세 조회 결과를 보여주는 표 -->
 <table class="table table-boarderd">
 		<thead class="thead-light">
 			<tr>
@@ -67,11 +69,13 @@
 				</td>
 			</tr>
 		</tbody>
+		<!-- 현재 조회중인 회원과 게시물 작성 회원이 일치하는 경우, 수정 및 삭제가 가능하도록 -->
 		<c:if test="${sessionScope.mvo.email == requestScope.board.member.email}">
 		<tr>
 		<td colspan="5" class="text-center">								
 			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
-			<button type="button" class="btn btn-outline-danger" onclick="deletePost(event)">삭제</button>			
+			<button type="button" class="btn btn-outline-danger" onclick="deletePost(event)">삭제</button>		
+			<button type="button" class="btn btn-outline-secondary" id="reviewList" onclick="javascript:history.back()">목록</button>	
 			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.do" id="deleteBoardForm">
 				<input type="hidden" name="boardNo" value="${board.boardNo}">
 			</form>
@@ -115,17 +119,18 @@
 				        } 
 				    });
 				}
-				
 			</script>					
 		</td>
 	</tr>
 	</c:if>
 </table>
+
+			<!-- 좋아요 버튼(미완성: 클릭시 이미지 변경만 가능) -->
 			<div align="center">								
-				<img id="starImg" src="${pageContext.request.contextPath}/images/like_default.png" width="100"/>
+				<img id="heartImg" src="${pageContext.request.contextPath}/images/like_default.png" width="100"/>
 				<script type="text/javascript">
 					$(function() {
-						$("#starImg").click(function() {
+						$("#heartImg").click(function() {
 							if($(this).attr("src") == "${pageContext.request.contextPath}/images/like_default.png") {
 								$(this).attr("src", "${pageContext.request.contextPath}/images/heart_pressed.png");
 							} else {
@@ -137,6 +142,12 @@
 			</div>
 		</div>
 		<br><br>
+		<!-- 
+		위의 heartImg id 이미지를 클릭하면 images/like_default.png 와
+		images/heart_pressed.png 이미지를 번갈아 가면서 보여주도록 한다.
+		attr("src", "images/heart_pressed.png")		->		set
+		attr("src")	->		get (현재 이미지 경로) 
+		-->
 
 <div class="card" id="comments">
   <div class="card-body">
@@ -190,7 +201,6 @@
         	 return false;
          }
          
-    
          //<button type="button" class="btn btn-success">수정</button>&nbsp;
          // <button type="button" class="deleteCommentBtn">삭제</button>
          
