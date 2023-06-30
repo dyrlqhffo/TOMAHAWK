@@ -121,11 +121,9 @@ public class BoardDAO {
 			con = dataSource.getConnection();
 			String sql = "SELECT COUNT(*) FROM board WHERE board_type = 'free'";
 			pstmt = con.prepareStatement(sql);
-			System.out.println(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				totalFreeBoardCount = rs.getLong(1);
-				System.out.println(totalFreeBoardCount);
 			}
 		} finally {
 			closeAll(rs, pstmt, con);
@@ -225,7 +223,6 @@ public class BoardDAO {
 			String sql = "UPDATE board SET hits = hits + 1 WHERE board_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, boardNo);
-			System.out.println(sql);
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);

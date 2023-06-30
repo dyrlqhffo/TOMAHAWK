@@ -89,7 +89,6 @@ public class CommentkdjDAO {
 			sql.append("AS rnum, b.board_no, b.title, b.reg_date, b.hits, b.email, b.content, b.board_type ");
 			sql.append("FROM board b WHERE b.board_type='free') b ");
 			sql.append("INNER JOIN member m ON b.email = m.email WHERE rnum between ? AND ?");
-			System.out.println(sql.toString());
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setLong(1, pagination.getStartRowNumber());
 			pstmt.setLong(2, pagination.getEndRowNumber());
@@ -122,7 +121,6 @@ public class CommentkdjDAO {
 			con = dataSource.getConnection();
 			String sql = "SELECT COUNT(*) FROM board WHERE board_type = 'free'";
 			pstmt = con.prepareStatement(sql);
-			System.out.println(sql);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				totalFreeBoardCount = rs.getLong(1);
@@ -226,7 +224,6 @@ public class CommentkdjDAO {
 			String sql = "UPDATE board SET hits = hits + 1 WHERE board_no = ?";
 			pstmt = con.prepareStatement(sql);
 			pstmt.setLong(1, boardNo);
-			System.out.println(sql);
 			pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
