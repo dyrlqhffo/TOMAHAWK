@@ -140,7 +140,7 @@
 					});
 				</script>			
 			</div>
-		</div>
+	
 		<br><br>
 		<!-- 
 		위의 heartImg id 이미지를 클릭하면 images/like_default.png 와
@@ -181,6 +181,7 @@
 </ul>
 </div>
 </div>
+</div>
 	
 <script>
    $(function() {
@@ -217,6 +218,7 @@
                    result.jsonComment.commentDate+"</p>&nbsp;&nbsp; <button type='button' class=''>"+"수정"+"</button>&nbsp;"+
                    "<button type='button' class='deleteCommentBtn'>"+"삭제"+"</button>&nbsp;<input type='hidden' class='review-comment-no' value="+result.jsonComment.commentNo+"></li>";
                  	$("#insertNewComment").append(newComment);
+                 	location.reload();
                   	$("#comment").val("");
                
                }

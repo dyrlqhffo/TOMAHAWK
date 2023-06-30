@@ -34,7 +34,6 @@
 </head>
 <body>
 <br>
-
 <!-- 자유게시판 글 작성 양식 -->
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">

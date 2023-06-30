@@ -37,4 +37,4 @@ public class UpdateBoardController implements Controller {
         return "redirect:FreeBoardList.do";
 	}
 }
-
+

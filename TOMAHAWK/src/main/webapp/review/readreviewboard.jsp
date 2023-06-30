@@ -80,12 +80,12 @@
 			<script type="text/javascript">
 				function deletePost() {
 					if (confirm("정말로 삭제 하시겠습니까?")) {
-						document.getElementById("deleteBoardForm").submit();
+						document.getElementById("deleteReview").submit();
 				    }
 				}
 				function updatePost() {
 					if (confirm("글을 수정 하시겠습니까?")) {
-						document.getElementById("updateBoardForm").submit();
+						document.getElementById("updateReview").submit();
 				    }
 				}
 			</script>					
@@ -194,6 +194,7 @@
                    "<button type='button' class='deleteCommentBtn'>"+"삭제"+"</button>&nbsp;<input type='hidden' class='review-comment-no' value="+result.jsonComment.commentNo+"></li>";
                  	$("#insertNewComment").append(newComment);
                   	$("#comment").val("");
+                  	location.reload();
                   	
                
                }
@@ -226,6 +227,8 @@
     	}); //click
    });//function
 </script>   		
-			
+  <!-- footer section -->
+  <c:import url="../footer.jsp"/>
+  <!-- footer section -->
 </body>
 </html>
