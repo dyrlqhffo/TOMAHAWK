@@ -20,7 +20,7 @@ public class UpdateReviewBoardController implements Controller{
 		
 		HttpSession session = request.getSession(false);
 		if(session == null || session.getAttribute("mvo") == null) {
-			System.out.println("**비인증 상태이므로 서비스 할 수 없습니다.**");
+			//System.out.println("**비인증 상태이므로 서비스 할 수 없습니다.**");
 			return "redirect:error.jsp";
 		}
 		MemberVO member =(MemberVO)session.getAttribute("mvo");

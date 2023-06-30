@@ -12,7 +12,7 @@ public class DeleteMemberController implements Controller {
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		HttpSession session = request.getSession(false);
 		if(session == null || session.getAttribute("mvo") == null) {
-			System.out.println("---[로그인 상태가 아니므로 회원 탈퇴가 불가합니다.]---");
+			//System.out.println("---[로그인 상태가 아니므로 회원 탈퇴가 불가합니다.]---");
 			return "redirect:index.jsp";		
 		}
 		

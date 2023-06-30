@@ -16,6 +16,11 @@ public class BookmarkVO {
 		this.shop = shop;
 	}
 
+	public BookmarkVO(MemberVO member, ShopVO shop) {
+		this.member = member;
+		this.shop = shop;
+	}
+
 	public long getBookmarkNo() {
 		return bookmarkNo;
 	}

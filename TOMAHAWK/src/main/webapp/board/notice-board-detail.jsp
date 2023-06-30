@@ -23,16 +23,15 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
+<title>공지사항</title>
   <link rel="icon" href="images/favicon1.png">
-<title>title</title>
 </head>
 <body class="sub_page">
-<div class="hero_area">
+  <div class="hero_area">
     <div class="bg-box">
-      <img src="images/hero-bg.jpg" alt="">
     </div>
-   <%@ include file ="../header.jsp"%>
-</div>
+    <c:import url="../header.jsp"/>
+  </div>
 
 <div class="container pt-3">
 <a href="${pageContext.request.contextPath}/index.jsp">HOME</a> &nbsp;&nbsp;&nbsp;

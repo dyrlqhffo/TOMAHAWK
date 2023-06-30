@@ -330,6 +330,69 @@
           document.body.appendChild(f);
           f.submit();
       }
+		
+		
+		$(function() { //로그인시 계정 체크
+			
+			 $("#signForm_email").keypress(function(event) {
+				   if (event.which === 13) { // 엔터 키 코드 확인
+				      event.preventDefault(); // 기본 동작 방지 (폼 제출 등)
+				      $("#signForm_login").click(); // 댓글 등록 버튼 클릭
+				   }
+				});	
+			
+			 $("#signForm_pw").keypress(function(event) {
+				   if (event.which === 13) { // 엔터 키 코드 확인
+				      event.preventDefault(); // 기본 동작 방지 (폼 제출 등)
+				      $("#signForm_login").click(); // 댓글 등록 버튼 클릭
+				   }
+				});
+			
+			
+			$("#signForm_login").click(function(event) {
+				event.preventDefault();
+				let email = $("#signForm_email").val();
+				let pwd = $("#signForm_pw").val();
+				
+				if(email.trim() ==""){
+					alert("이메일을 입력해주세요.");
+					email.focus();
+					return;
+					
+				}else if(pwd.trim() == ""){
+					alert("비밀번호를 입력해주세요.");
+					pwd.focus();
+					return;
+				}
+				
+				
+				$.ajax({
+					type: "get",
+					url: "${pageContext.request.contextPath}/LoginCheckAjax.do",
+					data: {email: email, password: pwd},
+					dataType: "json",
+					success:function(result){
+						if(result.jsonId == "no"){
+							alert("계정이 존재하지 않습니다.");
+							return;
+						}
+						
+						if(result.jsonResult == "ok"){
+							$("#loginForm").submit();
+						}else{
+							alert("비밀번호가 일치하지 않습니다.");
+							return;
+						}
+						
+					} //succ
+					
+				}); //ajax
+				
+			}); //click
+		}); //function
+		
+		
+		
 	</script>
 	<!-- 부트스트랩 -->
 	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
