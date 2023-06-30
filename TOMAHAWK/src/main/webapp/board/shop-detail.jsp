@@ -36,13 +36,8 @@
 		<tr>
 			<td>식당이름 : ${shop.shopName}</td>
 			<td>
+				<input type="hidden" name="shopNo" value="${shop.shopNo}">
 				<button type="button" class="btn btn-success" id="BookClick"><span id = "book"></span></button>
-				<form method="post" action="${pageContext.request.contextPath}/SetBookmark.do" id="SetBookmarkForm">
-					<input type="hidden" name="shopNo" value="${shop.shopNo}" value="${shop.shopNo}">
-				</form>
-				<form method="post" action="${pageContext.request.contextPath}/DeleteBookmark.do" id="deleteBookmarkForm">
-					<input type="hidden" name="shopNo" value="${shop.shopNo}">
-				</form>
 			</td>
 		</tr>
 		<tr><td>식당분류 : ${shop.shopType}</td></tr>
@@ -96,37 +91,44 @@ $(function () {
 			type:"get",
 			url : "${pageContext.request.contextPath}/CheckBookmark.do",
 			data: "email="+email.value+"&shopNo="+shopNo.value,
+			async : false,
 			success:function(result){
 				if(result == "ok"){
-					setBookmark();
+					$.ajax({
+						type : "post",
+						url : "${pageContext.request.contextPath}/SetBookmark.do",
+						data : "shopNo="+shopNo.value,
+						success : function(result1) {
+							alert("북마크가 설정되었습니다.");
+							$("#book").text("북마크 해제");
+							$("#BookClick").attr("class","btn btn-danger");
+						}
+					})
 				}else if(result == "fail"){
-					deleteBookmark();
+					$.ajax({
+						type : "post",
+						url : "${pageContext.request.contextPath}/DeleteBookmark.do",
+						data : "shopNo="+shopNo.value,
+						success : function(result2) {
+							alert("북마크가 해제되었습니다.");
+							$("#book").text("북마크 설정");
+							$("#BookClick").attr("class","btn btn-success");
+						}
+					})
 				}
 			}
 		})
 	})
-	$("#book").load("${pageContext.request.contextPath}/CheckBookmark.do?email="+email.value+"&shopNo="+shopNo.value , function (data){
-		if(data=="ok"){
-			$("#book").text("북마크 설정");
-		}else if(data=="fail"){
-			$("#book").text("북마크 해제");
-			$("#BookClick").attr("class","btn btn-danger");
-		}
-	})
+$("#book").load("${pageContext.request.contextPath}/CheckBookmark.do?email="+email.value+"&shopNo="+shopNo.value , function (data){
+	if(data=="ok"){
+		$("#book").text("북마크 설정");
+	}else if(data=="fail"){
+		$("#book").text("북마크 해제");
+		$("#BookClick").attr("class","btn btn-danger");
+	}
+})
 });
-function setBookmark() {
-	if (confirm("북마크 설정하시겠습니까?")) {
-		document.getElementById("SetBookmarkForm").submit();
-    }
-}
-function deleteBookmark() {
-	if (confirm("북마크 해제하시겠습니까?")) {
-		document.getElementById("deleteBookmarkForm").submit();
-    }
-}
 </script>
-
-
 </div>
 </body>
 </html>

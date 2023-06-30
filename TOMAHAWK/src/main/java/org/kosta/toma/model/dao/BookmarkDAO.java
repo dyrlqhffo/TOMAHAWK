@@ -129,21 +129,23 @@ public class BookmarkDAO {
 		return BookmarkCount;
 	}
 
-	public void setBookmark(BookmarkVO bookmark, long no) throws SQLException {
+	public int setBookmark(BookmarkVO bookmark) throws SQLException {
 		Connection con=null;
 		PreparedStatement pstmt=null;
+		int num = 0;
 		try {
 			con=dataSource.getConnection();
 			StringBuilder sql=new StringBuilder();
 			sql.append("insert into bookmark(bookmark_no,shop_no,email) ");
 			sql.append("values(toma_bookmark_seq.nextval,?,?) ");
 			pstmt=con.prepareStatement(sql.toString());
-			pstmt.setLong(1, no);
+			pstmt.setLong(1, bookmark.getShop().getShopNo());
 			pstmt.setString(2, bookmark.getMember().getEmail());
-			pstmt.executeUpdate();
+			num = pstmt.executeUpdate();
 		} finally {
 			closeAll(pstmt, con);
 		}
+		return num;
 	}
 	public void DeleteBookmark(String email, long no) throws SQLException {
 		Connection con=null;
