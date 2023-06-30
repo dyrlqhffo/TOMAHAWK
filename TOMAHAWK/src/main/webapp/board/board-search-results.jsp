@@ -38,8 +38,11 @@
 <h1 align="center"><strong>Free Board</strong></h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
+
+<!-- 검색바를 통해 검색한 결과를 보여주는 리스트 -->
 	<c:choose>
     	<c:when test="${param['board-search'] == 'shop'}"> 
+		<!--  검색 분류가 식당인 경우 -->
 			<table class="table table-boarderd table-hover boardlist">
 				<thead class="thead-light" align="center">
 					<tr style="background-color: #ccffee;">
@@ -54,7 +57,7 @@
 				<c:forEach items="${shops}" var="shops">
 					<tr>
 						<td>${shops.shopNo}</td>
-						<td><a href="${pageContext.request.contextPath}/FindShopByNo.shop?no=${shops.shopNo}">${shops.shopName}</a></td>
+						<td><a href="${pageContext.request.contextPath}/FindShopByNo.do?no=${shops.shopNo}">${shops.shopName}</a></td>
 						<td>${shops.shopType}</td>
 						<td>${shops.shopAddress}</td>
 						<td>${shops.member.nick}</td>
@@ -63,12 +66,14 @@
 				</tbody>
 			</table>
 			<c:if test="${mvo.admin >= 1}">
-     			<form action="${pageContext.request.contextPath}/WriteShopForm.shop" method="post">
+     			<form action="${pageContext.request.contextPath}/WriteShopForm.do" method="post">
 				     <button type="submit" class="btn btn-primary">글쓰기</button> 
 				</form>
      		</c:if>
 		</c:when>
+		
 		<c:otherwise>
+		<!--  검색 분류가 게시판(자유, 리뷰, 공지)인 경우 -->
 			<table class="table table-boarderd table-hover boardlist">
 				<thead class="thead-light" align="center">
 					<tr style="background-color: #ccffee;">
@@ -86,9 +91,12 @@
 						<td>
 						<c:choose>
 							<c:when test="${sessionScope.mvo == null}">
+							<!-- 로그인 상태가 아닌 경우 -->
 								${boards.title}	
 							</c:when>
+							
 							<c:otherwise>
+							<!-- 로그인 상태인 경우, 상세 조회 가능 -->
 								<a href="${pageContext.request.contextPath}/ReadBoard.do?boardNo=${boards.boardNo}">${boards.title}</a>
 							</c:otherwise>
 						</c:choose>
@@ -100,11 +108,14 @@
 				</c:forEach>
 				</tbody>
 			</table>
+			
+				<!-- 로그인 상태인 경우, 글쓰기 가능 -->
 				<c:if test="${sessionScope.mvo != null}">
 				     <form action="${pageContext.request.contextPath}/WriteBoardForm.do" method="post">
 				     <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-edit fa-fw"></i>글쓰기</button> 
 				     </form>
 				</c:if>
+				
 			<ul class="pagination justify-content-center" style="margin:20px 0">	
 				<c:if test="${pagination.previousPageGroup}">
 					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.do?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>

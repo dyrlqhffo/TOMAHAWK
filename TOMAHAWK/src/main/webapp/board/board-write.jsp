@@ -24,10 +24,10 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 <style type="text/css">
- body {
-    background: #f5f6f7;
-    padding-bottom: 100px; /* Adjust as needed */
-}
+	 body {
+	    background: #f5f6f7;
+	    padding-bottom: 100px; /* Adjust as needed */
+	 }
 </style>
 <link rel="icon" href="images/favicon1.png">
 <title>자유게시판 글작성</title>
@@ -35,12 +35,17 @@
 </head>
 <body>
 <br>
+<<<<<<< HEAD
 =======
 </head>
 <body>
 <br>
 <form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
 >>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
+=======
+
+<!-- 자유게시판 글 작성 양식 -->
+>>>>>>> refs/heads/feature/refactoring2
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">
 	<div class="d-flex justify-content-end">
@@ -51,7 +56,6 @@
 	</div><br>
               <div class="card">
                 <div class="card-body">
-                <form method="post" action="${pageContext.request.contextPath}/WriteBoard.do">
                   <h1 class="card-title"><span style='font-size:100px;'>&#128221;</span>자유게시판 글쓰기</h1>
                   <hr style="border-top: 3px solid gray"> 
                   <div class="alert alert-warning" role="alert">
@@ -78,6 +82,7 @@
 					        <option value="free">자유게시판</option>
 					        <option value="review">리뷰게시판</option>
 					        <option value="shop">식당게시판</option>
+					        <!-- 사용자가 관리자 등급인 경우, 공지사항 선택 가능 -->
 					        <c:if test="${sessionScope.mvo.admin==2}">
 					        	<option value="notice">공지사항</option>
 					        </c:if>

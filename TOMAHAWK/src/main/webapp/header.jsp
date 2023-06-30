@@ -136,12 +136,12 @@
 	  	</button>
 	  	<div class="collapse navbar-collapse" id="navbarNavDropdown">
 	    	<ul class="navbar-nav">
+	    		<!-- 사용자가 로그인 상태인 경우 -->
 	      		<c:if test="${sessionScope.mvo != null }">
 	      		<li class="nav-item active"> 
 	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendBoard()"><strong>자유 게시판</strong><span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
-
 	        		<a class="nav-link" href="javascript:void(0)" onclick="javascript:sendShop()"><strong>식당 게시판</strong><span class="sr-only">(current)</span></a>
 	      		</li>
 	      		<li class="nav-item active">
@@ -151,8 +151,10 @@
 	        		 <a class="nav-link" href="javascript:void(0)" onclick="javascript:sendNotice()"><strong>공지사항</strong><span class="sr-only">(current)</span></a>
 	      		</li>
 	      		</c:if>
+	      		
 	      		<c:choose>
 	      			<c:when test="${sessionScope.mvo != null}">
+	      			<!-- 사용자가 로그인 상태인 경우 -->
 						<li class="nav-item">
 			        		<button onclick="myFunction()" class="nav-link dropdown-toggle" href="#"><strong>${sessionScope.mvo.nick}님</strong> </button>
 			        		<div id="myDropdown" class="dropdown-content">
@@ -162,7 +164,9 @@
 							 </div>
 			      		</li>
 	      			</c:when>
+	      			
 	      			<c:otherwise>
+	      			<!-- 사용자가 로그인 상태가 아닌 경우 -->
 			      		<li class="nav-item">
 							<!-- 로그인 모달창 -->
 							<!-- Modal -->
@@ -241,11 +245,13 @@
                
                <c:choose>
 					<c:when test="${sessionScope.mvo != null }">
+               		<!-- 사용자가 로그인 상태인 경우, 로그아웃 버튼 표시 -->
 						<form action="Logout.do" method="post">
 		                <button type="submit" class="nav-link order_online">로그아웃</button>
 		                </form>
               		</c:when>
               		<c:otherwise>
+               		<!-- 사용자가 로그인 상태가 아닌 경우, 로그인 버튼 표시 -->
               			<button type="button" class="nav-link order_online" data-toggle="modal" data-target="#exampleModal">로그인</button>
               		</c:otherwise>
               	</c:choose>

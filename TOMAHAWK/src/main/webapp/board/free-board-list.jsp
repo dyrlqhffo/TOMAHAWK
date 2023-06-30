@@ -54,9 +54,12 @@
 						<td>
 						<c:choose>
 							<c:when test="${sessionScope.mvo == null}">
+							<!-- 로그인 상태가 아닌 경우 -->
 								${board.title}	
 							</c:when>
+							
 							<c:otherwise>
+							<!-- 로그인 상태인 경우, 상세 조회 가능 -->
 								<a href="${pageContext.request.contextPath}/ReadBoard.do?boardNo=${board.boardNo}">${board.title}</a>
 							</c:otherwise>
 						</c:choose>
@@ -68,11 +71,14 @@
 				</c:forEach>
 				</tbody>
 			</table>
+			
+				<!-- 로그인 상태인 경우 -->
 				<c:if test="${sessionScope.mvo != null}">
 				     <form action="${pageContext.request.contextPath}/WriteBoardForm.do" method="post">
 				     <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-edit fa-fw"></i>글쓰기</button> 
 				     </form>
 				</c:if>
+				
 			<ul class="pagination justify-content-center">	
 				<c:if test="${pagination.previousPageGroup}">
 					<li class="page-item"><a class="page-link" href="${pageContext.request.contextPath}/FreeBoardList.do?pageNo=${pagination.startPageOfPageGroup - 1}">이전</a></li>
