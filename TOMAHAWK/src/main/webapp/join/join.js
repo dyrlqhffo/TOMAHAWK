@@ -49,6 +49,7 @@ function checkForm(event) {
 	}
 }
 
+
 id.addEventListener("focusout", checkId);
 nick.addEventListener("focusout", checkNick);
 pw1.addEventListener("focusout", checkPw);
@@ -184,14 +185,6 @@ function checkPhoneNum() {
 	}
 }
 
-function joinSuccess(event) {
-	event.preventDefault();
-	swal('가입 완료!', "회원가입을 축하합니다.", 'success')
-		.then(function() {
-			location.href = "../index.jsp";
-		});
-}
-
 function confirmDeleteMember(event) {
 	event.preventDefault();
 	swal({
@@ -233,3 +226,5 @@ function confirmUpdateMemberInfo(event) {
         }
     });
 }
+
+

@@ -124,6 +124,7 @@ $("#book").load("${pageContext.request.contextPath}/CheckBookmark.do?email="+ema
 		$("#book").text("북마크 설정");
 	}else if(data=="fail"){
 		$("#book").text("북마크 해제");
+		$("#BookClick").attr("class","btn btn-danger");
 	}
 })
 });
