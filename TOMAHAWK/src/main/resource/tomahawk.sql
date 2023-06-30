@@ -6,8 +6,10 @@ CREATE TABLE member(
 	tel CHAR(11) NOT NULL,
 	admin NUMBER DEFAULT 0
 )
-
+select*from member
 CREATE TABLE board(
+
+s
 	board_no NUMBER PRIMARY KEY,
 	email VARCHAR2(25) NOT NULL,
 	title VARCHAR2(300) NOT NULL,
@@ -17,27 +19,6 @@ CREATE TABLE board(
 	hits number DEFAULT 0,
 	CONSTRAINT board_fk FOREIGN KEY(email) REFERENCES member(email)
 )
-select * from BOARD;
-insert into board(board_no,email,title,content,reg_date,board_type)
-values(toma_board_seq.nextval,'hellojava@naver.com','안녕하세요','감사해요 잘있어요 다시 만나요',sysdate,'notice');
-ALTER TABLE board ADD board_type VARCHAR(25);
-insert into BOARD(board_no,email,title,content,reg_date,edit_date,board_type)
-values(toma_board_seq.nextval,'hellojava@naver.com','안녕','안녕하세요 오늘 소개 할 식당은 ~~~~입니다 여기는 맛있어요!',sysdate,sysdate,'review');
-insert into BOARD(board_no,email,title,content,reg_date,edit_date,board_type)
-values(toma_board_seq.nextval,'hellojava@naver.com','안녕2','하이',sysdate,sysdate,'free');
-insert into BOARD(board_no,email,title,content,reg_date,edit_date)
-values(toma_board_seq.nextval,'hellojava@naver.com','안녕3','하이',sysdate,sysdate);
-insert into BOARD(board_no,email,title,content,reg_date,edit_date)
-values(toma_board_seq.nextval,'hellojava@naver.com','안녕4','하이',sysdate,sysdate);
-
-select * from BOOKMARK
-select count(*) from BOOKMARK where email='dnflcld123@naver.com' and shop_no=23;
-
-select * from member;
-
-select sysdate from dual
-
-delete from BOOKMARK where shop_no =23;
 
 CREATE TABLE report(
 	report_no NUMBER PRIMARY KEY,
@@ -59,16 +40,6 @@ CREATE TABLE shop(
 
 alter table shop add (shop_img CLOB null);
 
-SELECT s.shop_no, s.shop_name, b.content, TO_CHAR(reg_date,'YYYY.MM.DD HH24:MI:SS')
-AS reg_date, b.hits, b.board_type, m.email, m.nick FROM shop s
-INNER JOIN member m ON b.email = m.email
-WHERE board_type = 'free' AND shop_name = '도배4';
-
-
-DROP TABLE COMMENT;
-
-SELECT * FROM COMMENT
-
 CREATE TABLE comments(
 	comment_no NUMBER PRIMARY KEY,
 	email VARCHAR2(25) NOT NULL,
@@ -82,13 +53,6 @@ CREATE TABLE comments(
 	CONSTRAINT FK_BOARD_TO_COMMENT FOREIGN KEY(board_no) REFERENCES board(board_no),
 	CONSTRAINT FK_SHOP_TO_COMMENT FOREIGN KEY (shop_no) REFERENCES shop(shop_no)
 )
-
-ALTER TABLE comments
-DROP CONSTRAINT FK_SHOP_TO_COMMENT;
-
-ALTER TABLE comments
-DROP COLUMN shop_no;
-
 
 CREATE TABLE bookmark(
 	bookmark_no NUMBER PRIMARY KEY,
@@ -195,17 +159,7 @@ AS reg_date, b.hits, b.board_type, m.email, m.nick FROM  board b
 INNER JOIN member m ON b.email = m.email
 WHERE board_type = 'free' AND title = '도배4';
 
-<<<<<<< HEAD
-SELECT s.shop_no, s.shop_name, s.shop_type, s.shop_address, m.nick
-FROM (SELECT row_number() over(ORDER BY shop_no DESC) AS rnum, shop_no, shop_name, shop_type, shop_address, email FROM shop) s
-INNER JOIN member m ON s.email=m.email
-WHERE shop_name = '역전우동';
 
-SELECT s.shop_no, s.shop_name, s.shop_type, s.shop_address, m.nick 
-AS shop_no, shop_name, shop_type, shop_address, nick FROM shop s 
-INNER JOIN member m ON s.email=m.email WHERE shop_name = '역전우동';
-
-=======
 UPDATE board SET title = '파이팅', content = '일주일만 파이팅', board_type = 'free', edit_date = sysdate 
 WHERE board_no = 24;
 >>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
@@ -242,4 +196,9 @@ insert into board;
 insert into board(board_no, title , content, reg_date, email, board_type) values(toma_board_seq.nextval, '지각설명회', '고양이가 출근방해', sysdate, 'hellojava@naver.com' ,'notice');
 
 update member set admin =2 where email = 'wogjsdl1244@naver.com';
-select*from member
+<<<<<<< HEAD
+select*from member;
+=======
+
+select*from bookmark
+>>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git

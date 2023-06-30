@@ -9,7 +9,6 @@ import org.json.JSONObject;
 import org.kosta.toma.controller.AjaxViewServlet;
 import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BookmarkDAO;
-import org.kosta.toma.model.dao.ShopDAO;
 
 @SuppressWarnings("unused")
 public class DeleteBookmarkController implements Controller{

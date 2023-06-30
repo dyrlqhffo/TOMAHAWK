@@ -23,8 +23,13 @@
   <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/custom.js"></script>
+<<<<<<< HEAD
 <title>공지사항</title>
   <link rel="icon" href="images/favicon1.png">
+=======
+<title>공지사항</title>
+  <link rel="icon" href="images/favicon1.png">
+>>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
 </head>
 <body class="sub_page">
   <div class="hero_area">
