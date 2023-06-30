@@ -21,15 +21,6 @@
 </div>
 <div class="container pt-3">
 	<form method="post" action="${pageContext.request.contextPath }/UpdatePassword.do">
-<!--                 현재 비밀번호
-                <div>
-                    <h3 class="join_title"><label for="nowpswd">현재 비밀번호</label></h3>
-                    <span class="box int_pass">
-                        <input type="password" id="nowpswd" name="nowPassword" class="int" maxlength="20" placeholder="비밀번호를 입력해주세요."required="required">
-                        <span id="alertTxt">X</span>
-                    </span>
-                    <span class="error_next_box"></span>
-                </div> -->
                 
                 <!-- 비밀번호 -->
                 <input type="hidden" name="email" value="${ sessionScope.mvo.email}">

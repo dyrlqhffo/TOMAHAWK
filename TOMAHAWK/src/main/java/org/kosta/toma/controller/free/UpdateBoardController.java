@@ -18,7 +18,7 @@ public class UpdateBoardController implements Controller {
             throw new ServletException("POST방식만 가능합니다");
         HttpSession session = request.getSession();
         if(session == null || session.getAttribute("mvo") == null) {
-            System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다**");
+            // System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다**");
             return "redirect:index.jsp";
         }
 
@@ -39,18 +39,3 @@ public class UpdateBoardController implements Controller {
 	}
 }
 
-
-
-
-
-/*
-		long boardNo=Long.parseLong(request.getParameter("boardNo"));
-        String title = request.getParameter("title");
-        String content = request.getParameter("content");
-        
-        BoardVO board = new BoardVO();
-        board.setBoardNo(boardNo);
-        board.setTitle(title);
-        board.setContent(content);
-        BoardDAO.getInstance().updateBoard(board);
-*/

@@ -85,8 +85,6 @@
 	function updateNotice() {
 		if(confirm("게시물을 수정 하시겠습니까?")){
 			document.forms[0].submit();
-			
-			
 		}
 		$(document).ready(function() {
 			$('select'),niceSelect();

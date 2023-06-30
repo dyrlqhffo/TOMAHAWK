@@ -227,5 +227,8 @@
     	}); //click
    });//function
 </script>   		
+  <!-- footer section -->
+  <c:import url="../footer.jsp"/>
+  <!-- footer section -->
 </body>
 </html>

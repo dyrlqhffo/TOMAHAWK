@@ -17,7 +17,7 @@
 			<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
 		</div>
 
-        <form action = "${pageContext.request.contextPath}/Register.do" method="post" onsubmit="checkForm(event)">
+        <form action = "${pageContext.request.contextPath }/Register.do" method="post" onsubmit="checkForm(event)">
         <!-- header -->
         <div id="header">
             <img src="${pageContext.request.contextPath }/images/logo.png" >
