@@ -17,7 +17,14 @@ public class RegisterController implements Controller{
 		String name = request.getParameter("name");
 		String nick = request.getParameter("nick");
 		String tel = request.getParameter("phone_num");
+		System.out.println(email);
+		System.out.println(password);
+		System.out.println(name);
+		System.out.println(nick);
+		System.out.println(tel);
+		System.out.println(email);
 		MemberVO vo = new MemberVO(email,nick,name,password, tel,0);
+		System.out.println(vo);
 		MemberDAO.getInstance().register(vo);
 		}catch (SQLIntegrityConstraintViolationException e) {
 			return "redirect:member/register-fail.jsp";
