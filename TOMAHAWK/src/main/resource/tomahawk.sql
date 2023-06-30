@@ -202,3 +202,20 @@ select*from member;
 
 select*from bookmark
 >>>>>>> branch 'main' of https://github.com/dyrlqhffo/TOMAHAWK.git
+
+
+SELECT A.TABLE_NAME AS 'member',
+       A.COLUMN_NAME AS "컬럼명",
+       A.DATA_TYPE AS "데이터타입",
+       A.DATA_LENGTH AS "길이",
+       A.NULLABLE AS "Null 여부",
+       B.COMMENTS AS "Comments"
+FROM   dba_tab_columns A,
+       all_col_comments B
+WHERE  A.OWNER = B.OWNER
+AND    A.TABLE_NAME = B.TABLE_NAME
+AND    A.COLUMN_NAME = B.COLUMN_NAME
+AND    A.OWNER = 'LOTOSDEV'  -- DB명
+ORDER BY A.TABLE_NAME
+    
+
