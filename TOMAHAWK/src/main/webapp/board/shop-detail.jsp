@@ -75,12 +75,6 @@
 	</c:if>
 </table>
 <div>
-	<div class="comment-text">
-		<textarea id="writeComment" name="writeComment" placeholder="댓글을 입력해주세요."></textarea>
-	</div>
-	<div class="commentBtn">
-		<button id="commentBtn">댓글 입력</button>
-	</div>
 </div>
 <script type="text/javascript">
 $(function () {

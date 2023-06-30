@@ -55,7 +55,7 @@
                 <div class="img-box">
                 <c:choose>
                 <c:when test="${shop.shopImg == null}">
-                	<img src="images/f1.png" alt="">
+                	<img src="images/f1.png" alt="" width="350" height="220">
                 </c:when>
                 <c:otherwise>
                 	${shop.shopImg}
