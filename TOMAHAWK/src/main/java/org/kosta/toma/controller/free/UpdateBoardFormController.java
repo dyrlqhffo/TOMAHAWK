@@ -9,7 +9,6 @@ import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BoardDAO;
 
 public class UpdateBoardFormController implements Controller {
-
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
         if (request.getMethod().equals("POST") == false) {
@@ -17,7 +16,7 @@ public class UpdateBoardFormController implements Controller {
         }
         HttpSession session = request.getSession();
         if (session == null || session.getAttribute("mvo") == null) {		// null이거나 인증 정보가 없을 때
-            System.out.println("**비인증 상태이므로 서비스 제공 불가합니다.**");
+            // System.out.println("**비인증 상태이므로 서비스 제공 불가합니다.**");
             return "redirect:index.jsp";
         }
 
@@ -25,5 +24,4 @@ public class UpdateBoardFormController implements Controller {
         request.setAttribute("board",BoardDAO.getInstance().findBoardByNo(boardNo));
         return "board/update-form.jsp";
 	}
-
 }

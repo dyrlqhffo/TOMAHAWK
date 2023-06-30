@@ -9,7 +9,6 @@ import org.kosta.toma.controller.Controller;
 import org.kosta.toma.model.dao.BoardDAO;
 
 public class DeleteBoardController implements Controller{
-	
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if (request.getMethod().equals("POST") == false) {

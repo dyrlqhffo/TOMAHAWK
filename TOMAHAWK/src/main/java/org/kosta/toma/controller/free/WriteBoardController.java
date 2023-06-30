@@ -11,7 +11,6 @@ import org.kosta.toma.model.vo.MemberVO;
 import org.kosta.toma.model.vo.BoardVO;
 
 public class WriteBoardController implements Controller{
-
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if (request.getMethod().equals("POST") == false) {
@@ -19,7 +18,7 @@ public class WriteBoardController implements Controller{
         }
         HttpSession session = request.getSession(false);
         if (session == null || session.getAttribute("mvo") == null) {
-            System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다.**");
+            // System.out.println("**비인증 상태이므로 서비스 제공이 불가합니다.**");
             return "redirect:index.jsp";
         }
 
@@ -37,5 +36,4 @@ public class WriteBoardController implements Controller{
         // 글작성 완료 후, 게시물 리스트 화면을 제공한다.
         return "redirect:FreeBoardList.do";		
 	}
-
 }
