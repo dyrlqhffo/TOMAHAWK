@@ -11,7 +11,6 @@ import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.MemberVO;
 
 public class UpdateBoardController implements Controller {
-
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if(request.getMethod().equals("POST") == false)
@@ -38,4 +37,4 @@ public class UpdateBoardController implements Controller {
         return "redirect:FreeBoardList.do";
 	}
 }
-
+

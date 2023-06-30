@@ -11,7 +11,6 @@ import org.kosta.toma.model.vo.MemberVO;
 import org.kosta.toma.model.vo.BoardVO;
 
 public class WriteBoardController implements Controller{
-
 	@Override
 	public String handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
 		if (request.getMethod().equals("POST") == false) {
