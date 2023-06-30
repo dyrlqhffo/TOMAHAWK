@@ -69,8 +69,8 @@
 				</tbody>
 			</table>
 				<c:if test="${sessionScope.mvo != null}">
-				     <form action="${pageContext.request.contextPath}/WriteReviewForm.do" id="writeReviewBoard">
-				     <button type="button" class="btn btn-primary"  onclick="writeReview()">글쓰기</button> 
+				     <form action="${pageContext.request.contextPath}/WriteBoardForm.do" method="post">
+				     <button type="submit" class="btn btn-primary pull-right"><i class="fa fa-edit fa-fw"></i>글쓰기</button> 
 				     </form>
 				</c:if>
 			<ul class="pagination justify-content-center" style="margin:20px 0">	

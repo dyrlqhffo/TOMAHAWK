@@ -45,7 +45,7 @@
   </div>
 
 <div class="container pt-3">
-<a href="${pageContext.request.contextPath}/index.jsp">HOME</a> &nbsp;&nbsp;&nbsp;
+<!--   <a href="${pageContext.request.contextPath}/index.jsp">HOME</a> &nbsp;&nbsp;&nbsp;
 	<c:if test="${sessionScope.mvo != null}">
 		<a id="logoutLink" href="#">로그아웃</a>
 		<form method="post" action="${pageContext.request.contextPath}/Logout.do" id="logoutForm"></form>
@@ -57,9 +57,9 @@
 				}
 			});
 		</script>
-	</c:if>
+	</c:if> -->
 <hr><br><br>
-<h1>공 지 사 항</h1>
+<h1 align="center"><strong>Notice Board</strong></h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
 

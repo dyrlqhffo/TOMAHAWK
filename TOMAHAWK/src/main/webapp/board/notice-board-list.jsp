@@ -35,7 +35,7 @@
     <c:import url="../header.jsp"/>
   </div>
 <div class="container pt-3">
-	<hr><br><br>
+<hr><br><br>
 <h1 align="center"><strong>Notice Board</strong></h1>
 <hr style="border-top: 3px solid gray"> 
 <br>

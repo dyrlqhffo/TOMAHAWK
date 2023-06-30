@@ -6,6 +6,7 @@ CREATE TABLE member(
 	tel CHAR(11) NOT NULL,
 	admin NUMBER DEFAULT 0
 )
+
 select*from member
 CREATE TABLE board(
 

@@ -88,7 +88,7 @@ public class ReviewBoardDAO {
 		try {
 			con = dataSource.getConnection();
 			StringBuilder sb = new StringBuilder();
-			sb.append("select b.board_no, m.email, m.nick, b.title, b.content, to_char(reg_date, 'yyyy.mm.dd hh24:mi') as reg_date, b.board_type ");
+			sb.append("select b.board_no, m.email, m.nick, b.title, b.content, to_char(reg_date, 'yyyy.mm.dd hh24:mi') as reg_date, b.board_type, b.hits ");
 			sb.append("from board b inner join member m on b.email=m.email where b.board_no=?");
 			ps = con.prepareStatement(sb.toString());
 			ps.setLong(1, no);
@@ -104,6 +104,7 @@ public class ReviewBoardDAO {
 				board.setContent(rs.getString("content"));
 				board.setRegisterDate(rs.getString("reg_date"));
 				board.setBoardType(rs.getString("board_type"));
+				board.setHits(rs.getLong("hits"));
 				board.setMember(member);
 			}
 		}finally {

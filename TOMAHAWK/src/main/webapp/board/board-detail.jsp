@@ -73,7 +73,7 @@
 		<c:if test="${sessionScope.mvo.email == requestScope.board.member.email}">
 		<tr>
 		<td colspan="5" class="text-center">								
-			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
+			<button type="button" class="btn btn-outline-primary" onclick="updtkratePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost(event)">삭제</button>		
 			<button type="button" class="btn btn-outline-secondary" id="reviewList" onclick="javascript:history.back()">목록</button>	
 			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.do" id="deleteBoardForm">

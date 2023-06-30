@@ -46,7 +46,7 @@
   </div>
 <div class="container pt-3">
 <hr><br><br>
-<h1>리뷰게시판 상세조회</h1>
+<h1 align="center"><strong>Review Board</strong></h1>
 <hr style="border-top: 3px solid gray"> 
 <br>
 <table class="table table-boarderd">

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.kosta.toma.controller.Controller;
+import org.kosta.toma.model.Pagination;
 import org.kosta.toma.model.dao.BoardDAO;
 import org.kosta.toma.model.vo.BoardVO;
 import org.kosta.toma.model.vo.ShopVO;
@@ -21,7 +22,7 @@ public class SearchBoardController implements Controller {
 	            request.setAttribute("message", "검색창을 이용하기 위해서는 로그인해주시기 바랍니다.");
 	            return "index.jsp";
 	        }
-
+	        
 	        String boardType = request.getParameter("board-search");	// 게시판 종류를 받아와 저장하는 변수
 	        String title = request.getParameter("search");							// 검색 키워드를 받아와 저장하는 변수
 
