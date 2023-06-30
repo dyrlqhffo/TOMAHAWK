@@ -106,10 +106,7 @@
 						document.getElementById("noticeUpdateForm").submit();
 				    }
 				}
-				
-			
 			</script>					
-						
 		</td>
 	</tr>
 	
