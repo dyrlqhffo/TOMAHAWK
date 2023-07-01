@@ -34,10 +34,11 @@
 <fieldset>
 	<div class="container pt-3 col-md-7 grid-margin stretch-card">
 	<div class="d-flex justify-content-end">
-    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
-    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/bookmark.png"></a>
-    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/SEARCH.png"></a>
-	</div>
+    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/UpdateMemberForm.do"><img src="${pageContext.request.contextPath}/images/user1.png"></a>&nbsp;&nbsp;&nbsp;
+    <a href="${pageContext.request.contextPath}/BookmarkList.do"><img src="${pageContext.request.contextPath}/images/bookmark1.png"></a>&nbsp;&nbsp;&nbsp;
+    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/searchcon2.png"></a>
+	</div><br>
               <div class="card">
                 <div class="card-body">
                   <h1 class="card-title"><span style='font-size:100px;'>&#128221;</span>공지사항 글쓰기</h1>

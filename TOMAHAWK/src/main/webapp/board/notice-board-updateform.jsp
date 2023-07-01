@@ -25,9 +25,12 @@
 </head>
 <body>
 <div class="container pt-3">
-<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/HOME.png"></a>
-<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/bookmark.png"></a>
-<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/SEARCH.png"></a><hr><br><br>
+	<div class="d-flex justify-content-end">
+	<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/homecon2.png"></a>&nbsp;&nbsp;&nbsp;
+	<a href="${pageContext.request.contextPath}/UpdateMemberForm.do"><img src="${pageContext.request.contextPath}/images/user1.png"></a>&nbsp;&nbsp;&nbsp;
+    <a href="${pageContext.request.contextPath}/BookmarkList.do"><img src="${pageContext.request.contextPath}/images/bookmark1.png"></a>&nbsp;&nbsp;&nbsp;
+    <a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/searchcon2.png"></a>
+	</div><br>
 <h1>공지사항 글 수정하기</h1>
 <hr style="border-top: 3px solid gray">
 <br>
@@ -69,7 +72,6 @@
 						placeholder: '내용을 이곳에 작성해주세요.',
 						tabsize: 2,
 						height: 100
-						
 					  });
 				    </script> 
           </li>     
@@ -78,7 +80,7 @@
       </form>
 		<div class="text-center">
 			<button type="button" onclick="updateNotice()" class="btn btn-primary">수정하기</button>
-			<button type="button" onclick="location.href='notice-board-list.jsp'" class="btn btn-secondary">취소하기</button>
+			<button type="button" onclick="javascript:history.back()" class="btn btn-outline-secondary">취소하기</button>
 		</div>
 </div>
 <script type="text/javascript">
