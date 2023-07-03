@@ -64,7 +64,7 @@
                                     <input type="text" placeholder="검색어를 입력해주세요..." class="board-search" id="search" name="search">
                                 </div>
                                 <div class="col-lg-1 col-md-3 col-sm-12 p-0">
-                                    <button type="submit" class="btn btn-base">
+                                    <button type="submit" class="btn btn-base" onclick="notMemberAlert(event);">
                                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-search"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
                                     </button>
                                 </div>
@@ -101,9 +101,7 @@ function checkIfType() {
               <div class="row">
                 <div class="col-md-7 col-lg-6 ">
                   <div class="detail-box">
-                    <h1>
-                      TOMAHAWK COMMUNITY
-                    </h1>
+                    <h1>TOMAHAWK COMMUNITY</h1>
                     <div style="border-radius:10px; background-color: rgba(255, 255, 255, 0.75); color:black; padding:10px;">
 					  <p>
 					  전세계의 맛집들을 직접 내돈내산을 한 유저들이 실시간 후기들을 보고

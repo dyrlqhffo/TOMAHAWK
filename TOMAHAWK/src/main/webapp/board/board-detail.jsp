@@ -73,7 +73,7 @@
 		<c:if test="${sessionScope.mvo.email == requestScope.board.member.email}">
 		<tr>
 		<td colspan="5" class="text-center">								
-			<button type="button" class="btn btn-outline-primary" onclick="updtkratePost()">수정</button>	
+			<button type="button" class="btn btn-outline-primary" onclick="updatePost()">수정</button>	
 			<button type="button" class="btn btn-outline-danger" onclick="deletePost(event)">삭제</button>		
 			<button type="button" class="btn btn-outline-secondary" id="reviewList" onclick="javascript:history.back()">목록</button>	
 			<form method="post" action="${pageContext.request.contextPath}/DeleteBoard.do" id="deleteBoardForm">
@@ -125,7 +125,7 @@
 	</c:if>
 </table>
 
-			<!-- 좋아요 버튼(미완성: 클릭시 이미지 변경만 가능) -->
+			<!-- 좋아요 버튼(미완성 기능: 클릭시 이미지 변경만 가능) -->
 			<div align="center">								
 				<img id="heartImg" src="${pageContext.request.contextPath}/images/like_default.png" width="100"/>
 				<script type="text/javascript">
@@ -140,7 +140,6 @@
 					});
 				</script>			
 			</div>
-	
 		<br><br>
 		<!-- 
 		위의 heartImg id 이미지를 클릭하면 images/like_default.png 와
